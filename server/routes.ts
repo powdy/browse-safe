@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { z } from "zod";
 import { getWhoisData, calculateWhoisReputation } from "./services/whois-service";
 import { getDomainInfo, estimateDomainReputation, checkSuspiciousPatterns, estimateSSLSecurity } from "./services/domain-service";
+import axios from "axios";
 import { getIpFromDomain, getIpInfo, calculateIpReputation } from "./services/ip-service";
 import { checkBlacklist } from "./services/blacklist-service";
 
@@ -11,6 +12,42 @@ import { checkBlacklist } from "./services/blacklist-service";
 const urlSchema = z.object({
   url: z.string().url().or(z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/))
 });
+
+// Function to check for security headers
+async function checkSecurityHeaders(domain: string): Promise<boolean> {
+  try {
+    // Try to make a request to the domain
+    const url = `https://${domain}`;
+    const response = await axios.get(url, { 
+      timeout: 5000,
+      validateStatus: () => true, // Don't throw on any status code
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+      }
+    });
+    
+    // Check for security headers
+    const headers = response.headers;
+    const securityHeaders = [
+      'strict-transport-security',
+      'content-security-policy',
+      'x-content-type-options',
+      'x-frame-options',
+      'x-xss-protection'
+    ];
+    
+    // Count how many security headers are present
+    const securityHeaderCount = securityHeaders.filter(header => 
+      headers[header] !== undefined && headers[header] !== null
+    ).length;
+    
+    // Return true if at least 2 security headers are present
+    return securityHeaderCount >= 2;
+  } catch (error) {
+    console.error(`Error checking security headers for ${domain}:`, error);
+    return false;
+  }
+}
 
 // Report schema
 const reportSchema = z.object({
@@ -87,8 +124,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         ipScore = calculateIpReputation(ipInfo);
       }
       
-      // 4. Check blacklists
-      const blacklistResult = checkBlacklist(cleanUrl);
+      // 4. Check blacklists using VirusTotal API if available
+      const blacklistResult = await checkBlacklist(cleanUrl);
       
       // 5. Calculate overall trust score
       // Weight each component based on importance
@@ -121,15 +158,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         nameServers: whoisData.nameServers?.join(", ") || domainInfo.nameservers.join(", ") || "Unknown",
         hasValidSSL,
         hasDNSSEC: domainInfo.hasDNSSEC,
-        hasSecurityHeaders: Math.random() > 0.3, // Simplified for demo
+        hasSecurityHeaders: await checkSecurityHeaders(cleanUrl),
         hasMalware: blacklistResult.hasMalware,
         hasPhishing: blacklistResult.hasPhishing,
         blacklistStatus: blacklistResult.isBlacklisted 
-          ? `Listed on ${blacklistResult.blacklistedOn.length} of 75 blacklists` 
+          ? `Listed on ${blacklistResult.blacklistedOn.length} blacklist${blacklistResult.blacklistedOn.length !== 1 ? 's' : ''}` 
           : "Not blacklisted",
         suspiciousPatterns: suspiciousPatterns.length > 0 ? suspiciousPatterns.join(", ") : "None",
-        userReports: Math.floor(Math.random() * 5), // Simplified for demo
-        relatedSites: Math.floor(Math.random() * 3), // Simplified for demo
+        userReports: 0, // Will be populated from actual reports
+        relatedSites: 0, // Will be populated from actual related sites
         lastScanned: new Date(),
         status,
         details: {
