@@ -199,21 +199,34 @@ async function getAbuseReports(ip: string): Promise<{
 export async function getIpInfo(ip: string): Promise<IpInfo> {
   try {
     const hostname = await getHostnameFromIp(ip);
-    const { country, isp } = getIpGeoInfo(ip);
+    
+    // Get AbuseIPDB data
+    const abuseData = await getAbuseReports(ip);
+    
+    // Get geo info as fallback
+    const geoInfo = getIpGeoInfo(ip);
+    
+    // Use AbuseIPDB data if available, otherwise fallback to simulated data
+    const country = abuseData.country || geoInfo.country;
+    const isp = abuseData.isp || geoInfo.isp;
     const isInBadRange = isInSuspiciousRange(ip);
-    const hosting = isHostingProvider(isp);
-    const abuseReports = getAbuseReports(ip);
+    const isProxy = abuseData.isProxy || isInBadRange;
+    const isTor = abuseData.isTor || (isp.toLowerCase().includes('tor') || isInBadRange);
+    const isHosting = abuseData.isHosting || isHostingProvider(isp);
+    
+    // Determine if blacklisted based on number of reports
+    const isBlacklisted = abuseData.reports > 5; // Lower threshold with real data
     
     return {
       ip,
       hostname,
       country,
       isp,
-      isProxy: isInBadRange, // Simplified proxy detection
-      isTor: isp.toLowerCase().includes('tor') || isInBadRange, // Simplified TOR detection
-      isHosting: hosting,
-      blacklisted: abuseReports > 10, // Consider blacklisted if many abuse reports
-      abuseReports
+      isProxy,
+      isTor,
+      isHosting,
+      blacklisted: isBlacklisted,
+      abuseReports: abuseData.reports
     };
   } catch (error) {
     console.error(`Error getting IP info for ${ip}:`, error);
