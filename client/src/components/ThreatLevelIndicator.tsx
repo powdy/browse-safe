@@ -1,6 +1,7 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, ResponsiveContainer, Cell, LabelList } from 'recharts';
+import { BarChart, Bar, XAxis, ResponsiveContainer, Cell, LabelList, PieChart, Pie, Tooltip } from 'recharts';
 import { cn } from '@/lib/utils';
+import { AlertTriangle, CheckCircle, Shield, ShieldAlert, ShieldCheck, ShieldQuestion, ShieldX } from 'lucide-react';
 
 interface ThreatLevelIndicatorProps {
   trustScore: number;
@@ -21,10 +22,19 @@ export default function ThreatLevelIndicator({
   // Determine color based on threat level
   const getColor = (score: number) => {
     if (score <= 20) return 'var(--green-600)'; // Safe - green
-    if (score <= 40) return 'var(--lime-500)'; // Mostly safe - lime green
+    if (score <= 40) return 'var(--green-500)'; // Mostly safe - lighter green
     if (score <= 60) return 'var(--yellow-500)'; // Moderate - yellow
     if (score <= 80) return 'var(--orange-500)'; // Suspicious - orange
     return 'var(--red-600)'; // Dangerous - red
+  };
+  
+  // Get color for the gradient (lighter variant)
+  const getGradientColor = (score: number) => {
+    if (score <= 20) return 'var(--green-400)'; // Safe - light green
+    if (score <= 40) return 'var(--green-300)'; // Mostly safe - lighter green
+    if (score <= 60) return 'var(--yellow-300)'; // Moderate - light yellow
+    if (score <= 80) return 'var(--orange-300)'; // Suspicious - light orange
+    return 'var(--red-400)'; // Dangerous - light red
   };
   
   // Determine label based on threat level
@@ -36,29 +46,50 @@ export default function ThreatLevelIndicator({
     return 'Very High';
   };
   
-  // Create data for the bar chart
+  // Get appropriate icon based on threat level
+  const getThreatIcon = (score: number) => {
+    if (score <= 20) return <ShieldCheck size={size === 'sm' ? 18 : 24} className="text-green-600" />;
+    if (score <= 40) return <Shield size={size === 'sm' ? 18 : 24} className="text-green-500" />;
+    if (score <= 60) return <ShieldQuestion size={size === 'sm' ? 18 : 24} className="text-yellow-500" />;
+    if (score <= 80) return <ShieldAlert size={size === 'sm' ? 18 : 24} className="text-orange-500" />;
+    return <ShieldX size={size === 'sm' ? 18 : 24} className="text-red-600" />;
+  };
+  
+  // Create data for the gauge chart
   const data = [
     { 
       name: 'Threat Level', 
       value: threatLevel,
-      label: getThreatLabel(threatLevel)
+      label: getThreatLabel(threatLevel),
+      color: getColor(threatLevel),
+      gradientColor: getGradientColor(threatLevel)
     }
   ];
   
+  // Data for the pie chart segments
+  const pieData = [
+    { name: 'Safe', value: 20, color: 'var(--green-600)' },
+    { name: 'Low', value: 20, color: 'var(--green-500)' },
+    { name: 'Moderate', value: 20, color: 'var(--yellow-500)' },
+    { name: 'High', value: 20, color: 'var(--orange-500)' },
+    { name: 'Danger', value: 20, color: 'var(--red-600)' }
+  ];
+
   // Determine the height based on size
   const getHeight = () => {
     switch(size) {
-      case 'sm': return 40;
-      case 'lg': return 80;
-      default: return 60;
+      case 'sm': return 60;
+      case 'lg': return 120;
+      default: return 90;
     }
   };
   
-  // Formatting for label
-  const renderCustomizedLabel = (props: any) => {
+  // Custom label for the gauge
+  const renderGaugeLabel = (props: any) => {
     const { x, y, width, value, index } = props;
     const label = data[index].label;
     
+    // Position the text within the bar
     return (
       <text 
         x={x + width / 2} 
@@ -68,43 +99,80 @@ export default function ThreatLevelIndicator({
         dominantBaseline="middle"
         fontWeight="bold"
         fontSize={size === 'sm' ? 12 : 14}
+        strokeWidth="0.5"
+        stroke="#00000020"
       >
         {showLabel ? `${label} (${value}%)` : `${value}%`}
       </text>
     );
   };
-  
+
+  // Render a gauge meter with gradient and animated appearance
   return (
     <div className={cn("w-full", className)}>
       {showLabel && (
-        <div className="mb-1 flex justify-between text-sm">
+        <div className="mb-2 flex justify-between items-center text-sm">
           <span className="font-medium">Threat Level</span>
-          <span className="font-bold" style={{ color: getColor(threatLevel) }}>
-            {getThreatLabel(threatLevel)}
-          </span>
+          <div className="flex items-center gap-2">
+            {getThreatIcon(threatLevel)}
+            <span className="font-bold" style={{ color: getColor(threatLevel) }}>
+              {getThreatLabel(threatLevel)} ({threatLevel}%)
+            </span>
+          </div>
         </div>
       )}
-      <ResponsiveContainer width="100%" height={getHeight()}>
-        <BarChart
-          data={data}
-          layout="vertical"
-          margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
-        >
-          <XAxis type="number" domain={[0, 100]} hide />
-          <Bar 
-            dataKey="value" 
-            radius={[4, 4, 4, 4]} 
-            barSize={size === 'sm' ? 16 : 24}
+      
+      {/* Modern gauge-style visualization */}
+      <div className="relative">
+        <div className="w-full h-12 bg-gray-100 rounded-full overflow-hidden mb-1 shadow-inner">
+          <div 
+            className="h-full flex items-center justify-center transition-all duration-500 ease-out"
+            style={{ 
+              width: `${threatLevel}%`,
+              background: `linear-gradient(90deg, ${getGradientColor(threatLevel)} 0%, ${getColor(threatLevel)} 100%)`,
+              boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)'
+            }}
           >
-            <Cell fill={getColor(threatLevel)} />
-            <LabelList content={renderCustomizedLabel} />
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-      <div className="w-full flex justify-between text-xs mt-1">
-        <span className="text-green-600 font-medium">Low Risk</span>
-        <span className="text-yellow-500 font-medium">Medium</span>
-        <span className="text-red-600 font-medium">High Risk</span>
+            {threatLevel > 15 && (
+              <span className="text-white font-bold text-sm drop-shadow-md">
+                {getThreatLabel(threatLevel)}
+              </span>
+            )}
+          </div>
+        </div>
+        
+        <div className="w-full grid grid-cols-5 gap-0.5 mb-3">
+          {[
+            { color: 'bg-green-600', label: 'Very Low' },
+            { color: 'bg-green-500', label: 'Low' },
+            { color: 'bg-yellow-500', label: 'Medium' },
+            { color: 'bg-orange-500', label: 'High' },
+            { color: 'bg-red-600', label: 'Very High' }
+          ].map((segment, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div 
+                className={`h-1.5 w-full ${segment.color} ${index === 0 ? 'rounded-l-full' : ''} ${index === 4 ? 'rounded-r-full' : ''}`}
+              ></div>
+              <span className="text-xs text-gray-600 mt-1">{segment.label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Risk indicators */}
+        <div className="flex justify-between text-xs">
+          <div className="flex items-center">
+            <CheckCircle size={14} className="text-green-600 mr-1" />
+            <span className="text-green-700 font-medium">Low Risk</span>
+          </div>
+          <div className="flex items-center">
+            <AlertTriangle size={14} className="text-yellow-500 mr-1" />
+            <span className="text-yellow-600 font-medium">Medium</span>
+          </div>
+          <div className="flex items-center">
+            <ShieldX size={14} className="text-red-600 mr-1" />
+            <span className="text-red-700 font-medium">High Risk</span>
+          </div>
+        </div>
       </div>
     </div>
   );

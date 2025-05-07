@@ -85,117 +85,221 @@ export default function TrustScoreCard({
         <h3 className="text-xl font-heading font-semibold mb-4">Trust Score</h3>
         
         <div className="mb-6">
-          <div className="flex justify-between items-center mb-2">
-            <div>
-              <span className="text-4xl font-bold">{trustScore}</span>
-              <span className="text-lg">/100</span>
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center">
+              <div className="mr-3 relative">
+                {/* Circular progress indicator */}
+                <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center relative">
+                  {/* Circular background */}
+                  <svg className="absolute inset-0" width="100%" height="100%" viewBox="0 0 100 100">
+                    <circle 
+                      cx="50" cy="50" r="45" 
+                      fill="none" 
+                      stroke="#f0f0f0" 
+                      strokeWidth="8"
+                    />
+                    {/* Foreground circle with stroke-dasharray animation */}
+                    <circle 
+                      cx="50" cy="50" r="45" 
+                      fill="none" 
+                      stroke={trustScore >= 80 ? "#10b981" : trustScore >= 40 ? "#f59e0b" : "#ef4444"} 
+                      strokeWidth="8" 
+                      strokeLinecap="round"
+                      strokeDasharray={`${trustScore * 2.83}, 1000`} 
+                      transform="rotate(-90 50 50)"
+                      style={{ transition: "stroke-dasharray 0.8s ease-in-out" }}
+                    />
+                  </svg>
+                  {/* Score number */}
+                  <div className="z-10 flex flex-col items-center justify-center">
+                    <span className="text-xl font-bold">{trustScore}</span>
+                    <span className="text-xs text-gray-500">/100</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex flex-col">
+                <span className="text-lg font-medium">Trust Score</span>
+                <span className="text-sm text-gray-500">
+                  {status === "safe" ? "Trustworthy" : status === "suspicious" ? "Needs Caution" : "Potentially Harmful"}
+                </span>
+              </div>
             </div>
             
-            <StatusBadge status={status} size="md" />
+            <StatusBadge status={status} size="lg" />
           </div>
           
-          <div className="trust-score-indicator h-2.5 bg-gray-200 rounded-full overflow-hidden">
+          {/* Gradient progress bar */}
+          <div className="trust-score-indicator h-2 bg-gray-200 rounded-full overflow-hidden">
             <div 
-              className={`trust-score-fill h-full ${getScoreIndicator(trustScore).color}`} 
-              style={{ width: `${trustScore}%`, transition: "width 0.5s ease-in-out" }}
+              className="trust-score-fill h-full" 
+              style={{ 
+                width: `${trustScore}%`, 
+                transition: "width 0.5s ease-in-out",
+                background: `linear-gradient(90deg, 
+                  ${trustScore >= 80 ? 'var(--green-400)' : trustScore >= 40 ? 'var(--yellow-400)' : 'var(--red-400)'} 0%, 
+                  ${trustScore >= 80 ? 'var(--green-600)' : trustScore >= 40 ? 'var(--yellow-600)' : 'var(--red-600)'} 100%)`,
+              }}
             ></div>
           </div>
         </div>
         
-        {/* New Threat Level Indicator */}
-        <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+        {/* Enhanced Threat Level Indicator */}
+        <div className="mb-6 p-5 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg shadow-sm border border-gray-100">
           <div className="flex gap-3 items-center mb-3">
             {status === "safe" ? (
-              <Shield className="h-5 w-5 text-green-600" />
+              <Shield className="h-6 w-6 text-green-600" />
             ) : status === "suspicious" ? (
-              <ShieldAlert className="h-5 w-5 text-yellow-600" />
+              <ShieldAlert className="h-6 w-6 text-yellow-600" />
             ) : (
-              <ShieldX className="h-5 w-5 text-red-600" />
+              <ShieldX className="h-6 w-6 text-red-600" />
             )}
-            <h4 className="font-semibold">Threat Analysis</h4>
+            <h4 className="font-semibold text-lg">Threat Analysis</h4>
           </div>
-          <ThreatLevelIndicator trustScore={trustScore} />
+          <ThreatLevelIndicator trustScore={trustScore} showLabel={true} size="lg" />
         </div>
         
         <div className="space-y-4">
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span>Domain Age</span>
+          <h4 className="font-semibold mb-2">Security Factors</h4>
+          
+          {/* Domain Age */}
+          <div className="p-3 rounded-lg bg-white border border-gray-100 shadow-sm">
+            <div className="flex justify-between items-center text-sm mb-2">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${domainAge.includes("years") && parseInt(domainAge) >= 2 ? "bg-green-600" : domainAge === "Unknown" ? "bg-gray-400" : "bg-yellow-500"}`}></div>
+                <span className="font-medium">Domain Age</span>
+              </div>
               <span className={`font-medium ${getScoreCategory("domainAge", domainAge)}`}>{domainAge}</span>
             </div>
             <div className="trust-score-indicator h-2 bg-gray-200 rounded-full overflow-hidden">
               <div 
-                className={`trust-score-fill h-full ${domainAge.includes("years") && parseInt(domainAge) >= 2 ? "bg-success" : "bg-warning"}`} 
-                style={{ width: `${domainAge.includes("years") ? (parseInt(domainAge) * 10 + 50) : 30}%` }}
+                className="trust-score-fill h-full" 
+                style={{ 
+                  width: domainAge === "Unknown" ? "30%" : `${domainAge.includes("years") ? (parseInt(domainAge) * 10 + 50) : 30}%`,
+                  background: domainAge.includes("years") && parseInt(domainAge) >= 2 
+                    ? "linear-gradient(90deg, var(--green-400) 0%, var(--green-600) 100%)" 
+                    : domainAge === "Unknown"
+                      ? "linear-gradient(90deg, var(--gray-300) 0%, var(--gray-500) 100%)"
+                      : "linear-gradient(90deg, var(--yellow-300) 0%, var(--yellow-500) 100%)"
+                }}
               ></div>
             </div>
           </div>
           
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span>WHOIS Data</span>
+          {/* WHOIS Data */}
+          <div className="p-3 rounded-lg bg-white border border-gray-100 shadow-sm">
+            <div className="flex justify-between items-center text-sm mb-2">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${formattedWhoisStatus === "Verified" ? "bg-green-600" : formattedWhoisStatus === "Unknown" ? "bg-gray-400" : "bg-yellow-500"}`}></div>
+                <span className="font-medium">WHOIS Data</span>
+              </div>
               <span className={`font-medium ${getScoreCategory("whois", formattedWhoisStatus)}`}>{formattedWhoisStatus}</span>
             </div>
             <div className="trust-score-indicator h-2 bg-gray-200 rounded-full overflow-hidden">
               <div 
-                className={`trust-score-fill h-full ${formattedWhoisStatus === "Verified" ? "bg-success" : "bg-warning"}`} 
-                style={{ width: `${formattedWhoisStatus === "Verified" ? 95 : 60}%` }}
+                className="trust-score-fill h-full" 
+                style={{ 
+                  width: `${formattedWhoisStatus === "Verified" ? 95 : formattedWhoisStatus === "Unknown" ? 30 : 60}%`,
+                  background: formattedWhoisStatus === "Verified" 
+                    ? "linear-gradient(90deg, var(--green-400) 0%, var(--green-600) 100%)" 
+                    : formattedWhoisStatus === "Unknown"
+                      ? "linear-gradient(90deg, var(--gray-300) 0%, var(--gray-500) 100%)"
+                      : "linear-gradient(90deg, var(--yellow-300) 0%, var(--yellow-500) 100%)"
+                }}
               ></div>
             </div>
           </div>
           
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span>SSL Certificate</span>
+          {/* SSL Certificate */}
+          <div className="p-3 rounded-lg bg-white border border-gray-100 shadow-sm">
+            <div className="flex justify-between items-center text-sm mb-2">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${sslStatus ? "bg-green-600" : "bg-red-600"}`}></div>
+                <span className="font-medium">SSL Certificate</span>
+              </div>
               <span className={`font-medium ${getScoreCategory("ssl", sslStatus)}`}>{formattedSslStatus}</span>
             </div>
             <div className="trust-score-indicator h-2 bg-gray-200 rounded-full overflow-hidden">
               <div 
-                className={`trust-score-fill h-full ${sslStatus ? "bg-success" : "bg-danger"}`} 
-                style={{ width: `${sslStatus ? 100 : 20}%` }}
+                className="trust-score-fill h-full" 
+                style={{ 
+                  width: `${sslStatus ? 100 : 20}%`,
+                  background: sslStatus 
+                    ? "linear-gradient(90deg, var(--green-400) 0%, var(--green-600) 100%)" 
+                    : "linear-gradient(90deg, var(--red-400) 0%, var(--red-600) 100%)"
+                }}
               ></div>
             </div>
           </div>
           
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span>Malware Detection</span>
+          {/* Malware Detection */}
+          <div className="p-3 rounded-lg bg-white border border-gray-100 shadow-sm">
+            <div className="flex justify-between items-center text-sm mb-2">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${!malwareStatus ? "bg-green-600" : "bg-red-600"}`}></div>
+                <span className="font-medium">Malware Detection</span>
+              </div>
               <span className={`font-medium ${getScoreCategory("malware", !malwareStatus)}`}>{formattedMalwareStatus}</span>
             </div>
             <div className="trust-score-indicator h-2 bg-gray-200 rounded-full overflow-hidden">
               <div 
-                className={`trust-score-fill h-full ${!malwareStatus ? "bg-success" : "bg-danger"}`} 
-                style={{ width: `${!malwareStatus ? 100 : 10}%` }}
+                className="trust-score-fill h-full" 
+                style={{ 
+                  width: `${!malwareStatus ? 100 : 10}%`,
+                  background: !malwareStatus 
+                    ? "linear-gradient(90deg, var(--green-400) 0%, var(--green-600) 100%)" 
+                    : "linear-gradient(90deg, var(--red-400) 0%, var(--red-600) 100%)"
+                }}
               ></div>
             </div>
           </div>
           
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span>Blacklist Status</span>
+          {/* Blacklist Status */}
+          <div className="p-3 rounded-lg bg-white border border-gray-100 shadow-sm">
+            <div className="flex justify-between items-center text-sm mb-2">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${blacklistStatus.includes("Not") ? "bg-green-600" : "bg-yellow-500"}`}></div>
+                <span className="font-medium">Blacklist Status</span>
+              </div>
               <span className={`font-medium ${getScoreCategory("blacklist", blacklistStatus)}`}>
                 {blacklistStatus.includes("Not") ? "Not Listed" : "Listed"}
               </span>
             </div>
             <div className="trust-score-indicator h-2 bg-gray-200 rounded-full overflow-hidden">
               <div 
-                className={`trust-score-fill h-full ${blacklistStatus.includes("Not") ? "bg-success" : "bg-warning"}`} 
-                style={{ width: `${blacklistStatus.includes("Not") ? 100 : 30}%` }}
+                className="trust-score-fill h-full" 
+                style={{ 
+                  width: `${blacklistStatus.includes("Not") ? 100 : 30}%`,
+                  background: blacklistStatus.includes("Not") 
+                    ? "linear-gradient(90deg, var(--green-400) 0%, var(--green-600) 100%)" 
+                    : "linear-gradient(90deg, var(--yellow-300) 0%, var(--yellow-500) 100%)"
+                }}
               ></div>
             </div>
           </div>
           
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span>User Reports</span>
+          {/* User Reports */}
+          <div className="p-3 rounded-lg bg-white border border-gray-100 shadow-sm">
+            <div className="flex justify-between items-center text-sm mb-2">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${
+                  userReports === 0 ? "bg-green-600" : userReports < 5 ? "bg-yellow-500" : "bg-red-600"
+                }`}></div>
+                <span className="font-medium">User Reports</span>
+              </div>
               <span className={`font-medium ${getScoreCategory("userReports", userReports)}`}>{formattedUserReports}</span>
             </div>
             <div className="trust-score-indicator h-2 bg-gray-200 rounded-full overflow-hidden">
               <div 
-                className={`trust-score-fill h-full ${
-                  userReports === 0 ? "bg-success" : userReports < 5 ? "bg-accent-500" : "bg-warning"
-                }`} 
-                style={{ width: `${100 - (userReports * 5)}%` }}
+                className="trust-score-fill h-full" 
+                style={{ 
+                  width: `${100 - (userReports * 5)}%`,
+                  background: userReports === 0 
+                    ? "linear-gradient(90deg, var(--green-400) 0%, var(--green-600) 100%)" 
+                    : userReports < 5 
+                      ? "linear-gradient(90deg, var(--yellow-300) 0%, var(--yellow-500) 100%)"
+                      : "linear-gradient(90deg, var(--red-400) 0%, var(--red-600) 100%)"
+                }}
               ></div>
             </div>
           </div>
