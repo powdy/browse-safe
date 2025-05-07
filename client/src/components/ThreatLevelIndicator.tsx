@@ -124,18 +124,18 @@ export default function ThreatLevelIndicator({
       
       {/* Modern gauge-style visualization */}
       <div className="relative">
-        <div className="w-full h-12 bg-gray-100 rounded-full overflow-hidden mb-1 shadow-inner">
+        <div className="w-full h-12 bg-gray-200 rounded-full overflow-hidden mb-1 shadow-inner border border-gray-300">
           <div 
             className="h-full flex items-center justify-center transition-all duration-500 ease-out"
             style={{ 
               width: `${threatLevel}%`,
-              background: `linear-gradient(90deg, ${getGradientColor(threatLevel)} 0%, ${getColor(threatLevel)} 100%)`,
-              boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)'
+              background: `linear-gradient(90deg, ${getColor(threatLevel)} 0%, ${getColor(threatLevel)} 100%)`,
+              boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)'
             }}
           >
             {threatLevel > 15 && (
-              <span className="text-white font-bold text-sm drop-shadow-md">
-                {getThreatLabel(threatLevel)}
+              <span className="text-white font-bold text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+                {getThreatLabel(threatLevel)} ({threatLevel}%)
               </span>
             )}
           </div>
@@ -151,9 +151,9 @@ export default function ThreatLevelIndicator({
           ].map((segment, index) => (
             <div key={index} className="flex flex-col items-center">
               <div 
-                className={`h-1.5 w-full ${segment.color} ${index === 0 ? 'rounded-l-full' : ''} ${index === 4 ? 'rounded-r-full' : ''}`}
+                className={`h-2.5 w-full ${segment.color} ${index === 0 ? 'rounded-l-full' : ''} ${index === 4 ? 'rounded-r-full' : ''} border border-gray-200 shadow-sm`}
               ></div>
-              <span className="text-xs text-gray-600 mt-1">{segment.label}</span>
+              <span className="text-xs font-medium mt-1" style={{ color: segment.color.replace('bg-', 'var(--') + ')' }}>{segment.label}</span>
             </div>
           ))}
         </div>
