@@ -122,294 +122,384 @@ export default function HowItWorks() {
             </div>
           </div>
           
-          {/* Main steps */}
-          <div className="space-y-6 mb-12">
-            <div className="relative">
-              <div className="absolute left-4 inset-y-0 w-0.5 bg-accent-200 z-0"></div>
-              
-              <Card className="relative z-10 border-accent-200">
-                <CardContent className="p-6">
-                  <div className="flex">
-                    <div className="flex-shrink-0 mr-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent-100 text-accent-600">
-                        <Search className="h-6 w-6" />
-                      </div>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-medium mb-2">Step 1: Domain Analysis</h2>
-                      <p className="text-primary-700 mb-4">
-                        We start by examining the domain's basic information to assess its legitimacy.
-                      </p>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Verify the domain's age (newer domains are higher risk)</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Check registration and expiration dates</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Analyze domain name for suspicious patterns</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Compare against known brand impersonations</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+          {/* Security Analysis Process */}
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold mb-8 text-gray-800 text-center">Our 6-Step Security Analysis Process</h2>
             
-            <div className="relative">
-              <div className="absolute left-4 inset-y-0 w-0.5 bg-accent-200 z-0"></div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Step 1 */}
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-blue-200">
+                <div className="flex justify-center -mt-6">
+                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                    <Search className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+                <div className="p-6 pt-3">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
+                    <h3 className="text-xl font-bold text-blue-700 mb-2 flex items-center">
+                      <span className="bg-blue-100 text-blue-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">1</span>
+                      Domain Analysis
+                    </h3>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      We thoroughly examine the domain's registration information to determine its legitimacy and identify potential red flags.
+                    </p>
+                  </div>
+                  
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Verify domain age and history</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Check registration and expiration</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Analyze for typosquatting patterns</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Compare against known scams</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               
-              <Card className="relative z-10 border-accent-200">
-                <CardContent className="p-6">
-                  <div className="flex">
-                    <div className="flex-shrink-0 mr-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent-100 text-accent-600">
-                        <Server className="h-6 w-6" />
-                      </div>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-medium mb-2">Step 2: WHOIS Data Verification</h2>
-                      <p className="text-primary-700 mb-4">
-                        We check the domain's WHOIS information to verify ownership and registration details.
-                      </p>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Validate registrar information</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Check for privacy protection services</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Analyze registrant country and organization</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Check consistency of registration information</span>
-                        </div>
-                      </div>
-                    </div>
+              {/* Step 2 */}
+              <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-indigo-200">
+                <div className="flex justify-center -mt-6">
+                  <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                    <Server className="h-8 w-8 text-white" />
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            <div className="relative">
-              <div className="absolute left-4 inset-y-0 w-0.5 bg-accent-200 z-0"></div>
+                </div>
+                <div className="p-6 pt-3">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
+                    <h3 className="text-xl font-bold text-indigo-700 mb-2 flex items-center">
+                      <span className="bg-indigo-100 text-indigo-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">2</span>
+                      WHOIS Verification
+                    </h3>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      We examine the domain's ownership records to verify authenticity and detect suspicious registration patterns.
+                    </p>
+                  </div>
+                  
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Verify registrar reputation</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Analyze privacy protection usage</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Check registrant location/country</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Identify inconsistent information</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               
-              <Card className="relative z-10 border-accent-200">
-                <CardContent className="p-6">
-                  <div className="flex">
-                    <div className="flex-shrink-0 mr-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent-100 text-accent-600">
-                        <Globe className="h-6 w-6" />
-                      </div>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-medium mb-2">Step 3: IP Address & Server Analysis</h2>
-                      <p className="text-primary-700 mb-4">
-                        We analyze the website's hosting infrastructure to identify potential risks.
-                      </p>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Check IP reputation and location</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Verify nameserver configuration</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Detect proxy or VPN usage</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Check hosting provider reputation</span>
-                        </div>
-                      </div>
-                    </div>
+              {/* Step 3 */}
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-purple-200">
+                <div className="flex justify-center -mt-6">
+                  <div className="bg-gradient-to-br from-purple-500 to-purple-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                    <Globe className="h-8 w-8 text-white" />
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            <div className="relative">
-              <div className="absolute left-4 inset-y-0 w-0.5 bg-accent-200 z-0"></div>
+                </div>
+                <div className="p-6 pt-3">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
+                    <h3 className="text-xl font-bold text-purple-700 mb-2 flex items-center">
+                      <span className="bg-purple-100 text-purple-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">3</span>
+                      Infrastructure Analysis
+                    </h3>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      We analyze the site's hosting environment and network configuration to detect suspicious infrastructure.
+                    </p>
+                  </div>
+                  
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Check IP reputation & geography</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Analyze nameserver configuration</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Identify proxy or VPN masking</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Evaluate hosting provider history</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               
-              <Card className="relative z-10 border-accent-200">
-                <CardContent className="p-6">
-                  <div className="flex">
-                    <div className="flex-shrink-0 mr-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent-100 text-accent-600">
-                        <Lock className="h-6 w-6" />
-                      </div>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-medium mb-2">Step 4: SSL & Security Implementation</h2>
-                      <p className="text-primary-700 mb-4">
-                        We check the website's security measures to ensure your data is protected.
-                      </p>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Verify SSL certificate validity</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Check HTTPS implementation</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Analyze DNSSEC implementation</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Check security headers and best practices</span>
-                        </div>
-                      </div>
-                    </div>
+              {/* Step 4 */}
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-green-200">
+                <div className="flex justify-center -mt-6">
+                  <div className="bg-gradient-to-br from-green-500 to-green-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                    <Lock className="h-8 w-8 text-white" />
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            <div className="relative">
-              <div className="absolute left-4 inset-y-0 w-0.5 bg-accent-200 z-0"></div>
+                </div>
+                <div className="p-6 pt-3">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
+                    <h3 className="text-xl font-bold text-green-700 mb-2 flex items-center">
+                      <span className="bg-green-100 text-green-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">4</span>
+                      Security Implementation
+                    </h3>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      We examine the website's encryption and security practices to ensure your data will be properly protected.
+                    </p>
+                  </div>
+                  
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Verify SSL certificate authenticity</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Assess HTTPS implementation</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Check for DNSSEC protection</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Test security headers & configs</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               
-              <Card className="relative z-10 border-accent-200">
-                <CardContent className="p-6">
-                  <div className="flex">
-                    <div className="flex-shrink-0 mr-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent-100 text-accent-600">
-                        <Database className="h-6 w-6" />
-                      </div>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-medium mb-2">Step 5: Blacklist & Reputation Check</h2>
-                      <p className="text-primary-700 mb-4">
-                        We verify if the website has been reported for malicious activity.
-                      </p>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Cross-check against malware databases</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Check phishing detection systems</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Analyze user reports and feedback</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Check multiple security blacklists</span>
-                        </div>
-                      </div>
-                    </div>
+              {/* Step 5 */}
+              <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-red-200">
+                <div className="flex justify-center -mt-6">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                    <Database className="h-8 w-8 text-white" />
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            <div className="relative">
-              <Card className="relative z-10 border-accent-200">
-                <CardContent className="p-6">
-                  <div className="flex">
-                    <div className="flex-shrink-0 mr-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent-100 text-accent-600">
-                        <ShieldCheck className="h-6 w-6" />
-                      </div>
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-medium mb-2">Final Step: Trust Score Calculation</h2>
-                      <p className="text-primary-700 mb-4">
-                        We compile all analysis data to generate a comprehensive trust score and assessment.
-                      </p>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Weighted scoring algorithm</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Risk factor identification</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Detailed security recommendations</span>
-                        </div>
-                        <div className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-success mr-2 flex-shrink-0 mt-0.5" />
-                          <span>Continuous learning system</span>
-                        </div>
-                      </div>
-                    </div>
+                </div>
+                <div className="p-6 pt-3">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
+                    <h3 className="text-xl font-bold text-red-700 mb-2 flex items-center">
+                      <span className="bg-red-100 text-red-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">5</span>
+                      Threat Intelligence
+                    </h3>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      We check multiple security databases to see if the website has been reported for malicious activity or scams.
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
+                  
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-red-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Scan malware intelligence databases</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-red-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Check phishing detection systems</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-red-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Analyze community fraud reports</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-red-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Query multiple security blacklists</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              {/* Step 6 */}
+              <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-amber-200">
+                <div className="flex justify-center -mt-6">
+                  <div className="bg-gradient-to-br from-amber-500 to-amber-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                    <ShieldCheck className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+                <div className="p-6 pt-3">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
+                    <h3 className="text-xl font-bold text-amber-700 mb-2 flex items-center">
+                      <span className="bg-amber-100 text-amber-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">6</span>
+                      Trust Score Generation
+                    </h3>
+                    <p className="text-gray-700 mb-3 text-sm">
+                      We combine all analysis data using advanced algorithms to generate a comprehensive trust score and security assessment.
+                    </p>
+                  </div>
+                  
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Apply sophisticated scoring model</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Identify specific security risks</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Generate custom recommendations</span>
+                    </li>
+                    <li className="flex items-start bg-white/40 rounded-lg p-2">
+                      <CheckCircle className="h-5 w-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">Apply machine learning insights</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
           
           {/* Trust Score Explanation */}
-          <div className="bg-white rounded-xl shadow-md p-6 mb-12">
-            <h2 className="text-2xl font-heading font-bold mb-4">Understanding Trust Scores</h2>
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold mb-8 text-gray-800 text-center">Understanding Trust Scores</h2>
             
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="w-16 h-16 bg-success-light rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                  <span className="text-2xl font-bold text-success">80+</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium mb-1 text-success">Safe (80-100)</h3>
-                  <p className="text-primary-700 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Safe */}
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl border border-green-200">
+                <div className="h-3 bg-gradient-to-r from-green-500 to-green-400"></div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center">
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center shadow-lg mr-3">
+                        <CheckCircle className="h-7 w-7 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-green-700">Safe</h3>
+                    </div>
+                    <div className="px-4 py-1 bg-green-100 rounded-full text-green-700 font-bold text-sm">
+                      80-100
+                    </div>
+                  </div>
+                  
+                  <div className="relative mb-4">
+                    <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-green-400 to-green-600 rounded-full w-full"></div>
+                    </div>
+                    <div className="absolute -top-1 right-0 transform translate-x-1/2 w-4 h-4 bg-white border-2 border-green-500 rounded-full"></div>
+                  </div>
+                  
+                  <p className="text-gray-700 mb-4">
                     These websites have established histories, strong security measures, and no significant 
                     suspicious signals. They are generally safe for browsing and transactions.
                   </p>
+                  
+                  <ul className="space-y-1.5 text-sm">
+                    <li className="flex items-start">
+                      <span className="inline-block w-5 h-5 rounded-full bg-green-100 text-green-600 flex-shrink-0 mr-2 flex items-center justify-center">✓</span>
+                      <span className="text-gray-600">Established domain with history</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-5 h-5 rounded-full bg-green-100 text-green-600 flex-shrink-0 mr-2 flex items-center justify-center">✓</span>
+                      <span className="text-gray-600">Proper security implementations</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-5 h-5 rounded-full bg-green-100 text-green-600 flex-shrink-0 mr-2 flex items-center justify-center">✓</span>
+                      <span className="text-gray-600">No blacklist appearances</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="w-16 h-16 bg-warning-light rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                  <span className="text-2xl font-bold text-warning">40-79</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium mb-1 text-warning">Suspicious (40-79)</h3>
-                  <p className="text-primary-700 text-sm">
+              {/* Suspicious */}
+              <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl border border-amber-200">
+                <div className="h-3 bg-gradient-to-r from-amber-500 to-amber-400"></div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center">
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg mr-3">
+                        <AlertTriangle className="h-7 w-7 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-amber-700">Suspicious</h3>
+                    </div>
+                    <div className="px-4 py-1 bg-amber-100 rounded-full text-amber-700 font-bold text-sm">
+                      40-79
+                    </div>
+                  </div>
+                  
+                  <div className="relative mb-4">
+                    <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-amber-400 to-amber-600 rounded-full w-3/4"></div>
+                    </div>
+                    <div className="absolute -top-1 right-1/4 transform translate-x-1/2 w-4 h-4 bg-white border-2 border-amber-500 rounded-full"></div>
+                  </div>
+                  
+                  <p className="text-gray-700 mb-4">
                     These websites have some concerning elements that warrant caution. They may be legitimate 
-                    but have security issues or questionable practices. Use caution when providing information.
+                    but have security issues or questionable practices.
                   </p>
+                  
+                  <ul className="space-y-1.5 text-sm">
+                    <li className="flex items-start">
+                      <span className="inline-block w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex-shrink-0 mr-2 flex items-center justify-center">!</span>
+                      <span className="text-gray-600">New or recently registered domain</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex-shrink-0 mr-2 flex items-center justify-center">!</span>
+                      <span className="text-gray-600">Security issues or misconfigurations</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex-shrink-0 mr-2 flex items-center justify-center">!</span>
+                      <span className="text-gray-600">Hosted on questionable infrastructure</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="w-16 h-16 bg-danger-light rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                  <span className="text-2xl font-bold text-danger">0-39</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium mb-1 text-danger">Dangerous (0-39)</h3>
-                  <p className="text-primary-700 text-sm">
+              {/* Dangerous */}
+              <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-xl shadow-lg overflow-hidden transform transition-all hover:shadow-xl border border-red-200">
+                <div className="h-3 bg-gradient-to-r from-red-500 to-red-400"></div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center">
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg mr-3">
+                        <AlertTriangle className="h-7 w-7 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-red-700">Dangerous</h3>
+                    </div>
+                    <div className="px-4 py-1 bg-red-100 rounded-full text-red-700 font-bold text-sm">
+                      0-39
+                    </div>
+                  </div>
+                  
+                  <div className="relative mb-4">
+                    <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-red-400 to-red-600 rounded-full w-1/3"></div>
+                    </div>
+                    <div className="absolute -top-1 right-2/3 transform translate-x-1/2 w-4 h-4 bg-white border-2 border-red-500 rounded-full"></div>
+                  </div>
+                  
+                  <p className="text-gray-700 mb-4">
                     These websites show strong indicators of fraudulent activity, malware, or phishing attempts. 
                     They likely pose a significant risk and should be avoided.
                   </p>
+                  
+                  <ul className="space-y-1.5 text-sm">
+                    <li className="flex items-start">
+                      <span className="inline-block w-5 h-5 rounded-full bg-red-100 text-red-600 flex-shrink-0 mr-2 flex items-center justify-center">✗</span>
+                      <span className="text-gray-600">Appears on multiple blacklists</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-5 h-5 rounded-full bg-red-100 text-red-600 flex-shrink-0 mr-2 flex items-center justify-center">✗</span>
+                      <span className="text-gray-600">Brand impersonation or typosquatting</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-5 h-5 rounded-full bg-red-100 text-red-600 flex-shrink-0 mr-2 flex items-center justify-center">✗</span>
+                      <span className="text-gray-600">Malware or phishing detected</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

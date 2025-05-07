@@ -1,0 +1,54 @@
+Step 1: Domain Analysis
+We start by examining the domain's basic information to assess its legitimacy.
+
+Verify the domain's age (newer domains are higher risk)
+Check registration and expiration dates
+Analyze domain name for suspicious patterns
+Compare against known brand impersonations
+Step 2: WHOIS Data Verification
+We check the domain's WHOIS information to verify ownership and registration details.
+
+Validate registrar information
+Check for privacy protection services
+Analyze registrant country and organization
+Check consistency of registration information
+Step 3: IP Address & Server Analysis
+We analyze the website's hosting infrastructure to identify potential risks.
+
+Check IP reputation and location
+Verify nameserver configuration
+Detect proxy or VPN usage
+Check hosting provider reputation
+Step 4: SSL & Security Implementation
+We check the website's security measures to ensure your data is protected.
+
+Verify SSL certificate validity
+Check HTTPS implementation
+Analyze DNSSEC implementation
+Check security headers and best practices
+Step 5: Blacklist & Reputation Check
+We verify if the website has been reported for malicious activity.
+
+Cross-check against malware databases
+Check phishing detection systems
+Analyze user reports and feedback
+Check multiple security blacklists
+Final Step: Trust Score Calculation
+We compile all analysis data to generate a comprehensive trust score and assessment.
+
+Weighted scoring algorithm
+Risk factor identification
+Detailed security recommendations
+Continuous learning system
+Understanding Trust Scores
+80+
+Safe (80-100)
+These websites have established histories, strong security measures, and no significant suspicious signals. They are generally safe for browsing and transactions.
+
+40-79
+Suspicious (40-79)
+These websites have some concerning elements that warrant caution. They may be legitimate but have security issues or questionable practices. Use caution when providing information.
+
+0-39
+Dangerous (0-39)
+These websites show strong indicators of fraudulent activity, malware, or phishing attempts. They likely pose a significant risk and should be avoided.
