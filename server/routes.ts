@@ -109,8 +109,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Clean the URL for scanning
       const cleanUrl = url.replace(/^(https?:\/\/)?(www\.)?/, '').trim();
       
-      // Check if this is our own website
-      if (cleanUrl === "browse-safe.com" || cleanUrl.endsWith(".browse-safe.com")) {
+      console.log(`Scanning URL: ${url}, cleaned to: ${cleanUrl}`);
+      
+      // Check if this is our own website - very comprehensive check
+      if (cleanUrl === "browse-safe.com" || 
+          cleanUrl.endsWith(".browse-safe.com") || 
+          url.includes("browse-safe.com") ||
+          url.toLowerCase().includes("browse-safe") ||
+          cleanUrl.toLowerCase().includes("browse-safe")) {
+          
+        console.log("Detected our own domain - returning safe result");
         // Return a guaranteed safe result for our own domain
         const currentDate = new Date();
         const registrationDate = new Date(currentDate);
@@ -118,10 +126,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const expirationDate = new Date(currentDate);
         expirationDate.setFullYear(currentDate.getFullYear() + 3); // expires in 3 years
         
+        // Store the original URL format but remove protocol
+        const displayUrl = url.replace(/^(https?:\/\/)/, '');
+        
         const ourSiteScan = {
           id: 9999,
-          url: cleanUrl,
-          trustScore: 98,
+          url: displayUrl,
+          trustScore: 95,
           domainAge: "2 years",
           registrationDate: registrationDate.toISOString(),
           expirationDate: expirationDate.toISOString(),
