@@ -136,24 +136,18 @@ export default function ReportWebsite() {
           
           {/* Feature cards with vibrant gradients and animations */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-gradient-to-br from-white to-primary-50 p-6 rounded-xl border border-primary-100 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="bg-primary-600 p-4 rounded-full shadow-md text-white mb-5">
-                <Search className="h-7 w-7" />
-              </div>
+            <div className="bg-white p-6 rounded-xl border border-gray-200 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <Search className="h-14 w-14 text-blue-600 mb-5" />
               <h3 className="text-lg font-medium mb-3 text-primary-800">Identify Threats</h3>
               <p className="text-primary-600">Your reports help identify new threats in the ever-changing online landscape</p>
             </div>
-            <div className="bg-gradient-to-br from-white to-primary-50 p-6 rounded-xl border border-primary-100 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="bg-primary-600 p-4 rounded-full shadow-md text-white mb-5">
-                <Shield className="h-7 w-7" />
-              </div>
+            <div className="bg-white p-6 rounded-xl border border-gray-200 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <Shield className="h-14 w-14 text-blue-600 mb-5" />
               <h3 className="text-lg font-medium mb-3 text-primary-800">Protect Others</h3>
               <p className="text-primary-600">Help warn the community about suspicious websites and online scams</p>
             </div>
-            <div className="bg-gradient-to-br from-white to-primary-50 p-6 rounded-xl border border-primary-100 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="bg-primary-600 p-4 rounded-full shadow-md text-white mb-5">
-                <Lock className="h-7 w-7" />
-              </div>
+            <div className="bg-white p-6 rounded-xl border border-gray-200 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <Lock className="h-14 w-14 text-blue-600 mb-5" />
               <h3 className="text-lg font-medium mb-3 text-primary-800">Take Action</h3>
               <p className="text-primary-600">Our team reviews all reports and takes appropriate action against malicious sites</p>
             </div>
@@ -168,14 +162,12 @@ export default function ReportWebsite() {
                   <div className="absolute bottom-0 -left-16 w-64 h-64 rounded-full bg-primary-100/20 blur-3xl"></div>
                 </div>
                 
-                <CardHeader className="bg-gradient-to-r from-success/10 to-success/5 border-b border-success/20 relative z-10">
+                <CardHeader className="bg-gradient-to-r from-green-50 to-white border-b border-green-100 relative z-10">
                   <div className="flex items-center gap-4">
-                    <div className="bg-gradient-to-br from-success to-green-500 p-3 rounded-full shadow-md">
-                      <CheckCircle className="h-7 w-7 text-white" />
-                    </div>
+                    <CheckCircle className="h-10 w-10 text-green-500" />
                     <div>
-                      <CardTitle className="text-2xl font-bold text-success">Report Submitted Successfully</CardTitle>
-                      <CardDescription className="text-success/80">
+                      <CardTitle className="text-2xl font-bold text-green-600">Report Submitted Successfully</CardTitle>
+                      <CardDescription className="text-green-500">
                         Thank you for helping make the web safer for everyone
                       </CardDescription>
                     </div>
@@ -197,7 +189,7 @@ export default function ReportWebsite() {
                       </p>
                       <Button 
                         onClick={() => setIsSuccess(false)}
-                        className="bg-gradient-to-r from-success to-green-500 hover:from-success/90 hover:to-green-400 transition-all text-lg py-6 px-8"
+                        className="bg-green-600 hover:bg-green-700 text-white font-medium transition-all text-lg py-6 px-8"
                         size="lg"
                       >
                         <span className="flex items-center">
@@ -217,11 +209,9 @@ export default function ReportWebsite() {
                   <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-primary-50/20 blur-3xl"></div>
                 </div>
                 
-                <CardHeader className="bg-gradient-to-r from-primary-100 to-primary-50 border-b border-primary-200 relative z-10">
+                <CardHeader className="bg-gradient-to-r from-blue-50 to-white border-b border-gray-200 relative z-10">
                   <div className="flex items-center gap-4">
-                    <div className="bg-primary-600 p-4 rounded-full shadow-md">
-                      <FileWarning className="h-7 w-7 text-white" />
-                    </div>
+                    <FileWarning className="h-10 w-10 text-blue-600" />
                     <div>
                       <CardTitle className="text-2xl font-bold text-primary-800">Website Report Form</CardTitle>
                       <CardDescription className="text-primary-600 text-base">
