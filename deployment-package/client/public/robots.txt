@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow admin access
+Disallow: /admin/
+Disallow: /admin-login/
+
+# Sitemap location
+Sitemap: https://browse-safe.com/sitemap.xml
+
+# Crawl delay to be nice to search engines
+Crawl-delay: 10
