@@ -142,7 +142,8 @@ function ScanCard({ scan }: ScanCardProps) {
   );
 }
 
-export default function RecentScansList() {
+// Main component with full section and heading
+export default function RecentScansList({ noContainer = false }: { noContainer?: boolean }) {
   const { data: recentScans, isLoading, error } = useQuery({
     queryKey: ['/api/scans/recent'],
   });
@@ -162,7 +163,19 @@ export default function RecentScansList() {
       </div>
     );
   }
+  
+  // If noContainer is true, just render the cards without section wrapper
+  if (noContainer) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Array.isArray(recentScans) && recentScans.map((scan: Scan) => (
+          <ScanCard key={scan.id} scan={scan} />
+        ))}
+      </div>
+    );
+  }
 
+  // Default view with full container
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">

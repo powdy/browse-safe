@@ -232,7 +232,7 @@ export default function Home() {
           </div>
           
           {/* Recent scans will be displayed here */}
-          <RecentScansList />
+          <RecentScansList noContainer={true} />
           
           {/* View all button */}
           <div className="text-center mt-10">
