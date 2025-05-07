@@ -113,7 +113,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // 2. Get WHOIS data
         let whoisData;
         try {
+          console.log(`Fetching WHOIS data for ${cleanUrl}`);
           whoisData = await getWhoisData(cleanUrl);
+          console.log(`WHOIS data received:`, JSON.stringify(whoisData, null, 2));
         } catch (whoisError) {
           console.error(`WHOIS error: ${whoisError}`);
           whoisData = { domainName: cleanUrl, error: "Could not retrieve WHOIS data" };

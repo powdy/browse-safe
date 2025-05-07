@@ -1,8 +1,10 @@
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import axios from 'axios';
+import dns from 'dns';
 
 const execPromise = promisify(exec);
+const dnsLookup = promisify(dns.lookup);
 
 interface WhoisData {
   domainName?: string;
@@ -27,44 +29,213 @@ export async function getWhoisData(domain: string): Promise<WhoisData> {
   const cleanDomain = domain.replace(/^(https?:\/\/)?(www\.)?/, '').trim();
   
   try {
-    // First try with external API for WHOIS data
+    // First check if domain actually exists by doing a DNS lookup
     try {
-      // Use a public WHOIS API
-      const response = await axios.get(`https://www.whois.com/whois/${cleanDomain}`, {
-        timeout: 5000,
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        }
-      });
-      
-      if (response.data) {
-        // Extract whois text from HTML response
-        const whoisTextMatch = response.data.match(/<pre id="registryData">([^]+?)<\/pre>/i);
-        if (whoisTextMatch && whoisTextMatch[1]) {
-          return parseWhoisData(whoisTextMatch[1]);
-        }
-      }
-    } catch (apiError) {
-      console.log("API WHOIS lookup failed, falling back to command line:", apiError);
+      await dnsLookup(cleanDomain);
+    } catch (dnsError) {
+      console.log(`Domain ${cleanDomain} does not exist or cannot be resolved:`, dnsError);
+      return {
+        domainName: cleanDomain,
+        error: "Domain does not exist or cannot be resolved"
+      };
     }
     
-    // Fallback to command line whois
+    // Try RDAP API first (more reliable than WHOIS)
     try {
+      // RDAP is a modern JSON API for domain registration data 
+      // Try .com/.net/.org first with Verisign
+      let rdapResponse = null;
+      
+      try {
+        rdapResponse = await axios.get(`https://rdap.verisign.com/com/v1/domain/${cleanDomain}`, {
+          timeout: 3000
+        });
+      } catch (e) {
+        // Try public RDAP bootstrap service
+        try {
+          rdapResponse = await axios.get(`https://rdap.org/domain/${cleanDomain}`, {
+            timeout: 3000
+          });
+        } catch (e2) {
+          // Try IANA bootstrap
+          try {
+            rdapResponse = await axios.get(`https://data.iana.org/rdap/dns.json`, {
+              timeout: 3000
+            });
+            
+            // Find appropriate RDAP server from bootstrap
+            if (rdapResponse.data && rdapResponse.data.services) {
+              const tld = cleanDomain.split('.').pop();
+              let rdapServer = null;
+              
+              for (const service of rdapResponse.data.services) {
+                if (service[0].includes(`.${tld}`)) {
+                  rdapServer = service[1][0];
+                  break;
+                }
+              }
+              
+              if (rdapServer) {
+                rdapResponse = await axios.get(`${rdapServer}/domain/${cleanDomain}`, {
+                  timeout: 3000
+                });
+              }
+            }
+          } catch (e3) {
+            // Continue to next method if all RDAP attempts fail
+            console.log("RDAP lookup failed completely");
+          }
+        }
+      }
+      
+      if (rdapResponse && rdapResponse.data) {
+        console.log("Successfully retrieved RDAP data");
+        const data = rdapResponse.data;
+        
+        const whoisData: WhoisData = {
+          domainName: cleanDomain,
+          registrar: data.entities?.[0]?.vcardArray?.[1]?.[1]?.[3] || 
+                    data.entities?.[0]?.vcardArray?.[1]?.find((v: any) => v[0] === 'fn')?.[3] || 
+                    data.entities?.[0]?.handle,
+        };
+        
+        // Extract creation date
+        if (data.events) {
+          const registrationEvent = data.events.find((event: any) => 
+            event.eventAction === 'registration');
+            
+          if (registrationEvent) {
+            whoisData.creationDate = registrationEvent.eventDate;
+            
+            // Calculate domain age
+            const creationDate = new Date(registrationEvent.eventDate);
+            const currentDate = new Date();
+            const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
+            const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+            const years = Math.floor(ageInYears);
+            const months = Math.floor((ageInYears - years) * 12);
+            whoisData.domainAge = `${years} years, ${months} months`;
+          }
+          
+          // Extract expiration date
+          const expirationEvent = data.events.find((event: any) => 
+            event.eventAction === 'expiration');
+            
+          if (expirationEvent) {
+            whoisData.expirationDate = expirationEvent.eventDate;
+          }
+        }
+        
+        // Extract registrant information if available
+        if (data.entities) {
+          const registrant = data.entities.find((entity: any) => 
+            entity.roles && entity.roles.includes('registrant'));
+            
+          if (registrant && registrant.vcardArray && registrant.vcardArray[1]) {
+            const vcard = registrant.vcardArray[1];
+            
+            // Extract organization
+            const orgField = vcard.find((field: any) => field[0] === 'org');
+            if (orgField) {
+              whoisData.registrantOrganization = orgField[3];
+            }
+            
+            // Extract country
+            const addrField = vcard.find((field: any) => field[0] === 'adr');
+            if (addrField && addrField[3] && addrField[3].country) {
+              whoisData.registrantCountry = addrField[3].country;
+            }
+          }
+        }
+        
+        // Extract nameservers
+        if (data.nameservers) {
+          whoisData.nameServers = data.nameservers.map((ns: any) => ns.ldhName);
+        }
+        
+        return whoisData;
+      }
+    } catch (rdapError) {
+      console.log("RDAP error:", rdapError);
+    }
+    
+    // Try WHOIS API as a fallback
+    try {
+      const response = await axios.get(`https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_demo&domainName=${cleanDomain}&outputFormat=json`, {
+        timeout: 5000
+      });
+      
+      if (response.data && response.data.WhoisRecord) {
+        console.log("Successfully retrieved WHOIS XML API data");
+        const record = response.data.WhoisRecord;
+        
+        const whoisData: WhoisData = {
+          domainName: cleanDomain,
+          registrar: record.registrarName || undefined,
+          registrarUrl: record.registrarUrl || undefined,
+          creationDate: record.createdDate || undefined,
+          expirationDate: record.expiresDate || undefined,
+          updatedDate: record.updatedDate || undefined,
+          registrantOrganization: record.registrant?.organization || undefined,
+          registrantCountry: record.registrant?.country || undefined
+        };
+        
+        // Extract name servers
+        if (record.nameServers && record.nameServers.hostNames) {
+          whoisData.nameServers = record.nameServers.hostNames;
+        }
+        
+        // Calculate domain age if creation date is available
+        if (whoisData.creationDate) {
+          const creationDate = new Date(whoisData.creationDate);
+          const currentDate = new Date();
+          const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
+          const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+          const years = Math.floor(ageInYears);
+          const months = Math.floor((ageInYears - years) * 12);
+          whoisData.domainAge = `${years} years, ${months} months`;
+        }
+        
+        return whoisData;
+      }
+    } catch (apiError) {
+      console.log("WHOIS XML API lookup failed:", apiError);
+    }
+    
+    // Last resort: Try IP-API for general domain information
+    // This won't give us WHOIS data but will give us some info
+    try {
+      const ipApiResponse = await axios.get(`http://ip-api.com/json/${cleanDomain}`, {
+        timeout: 3000
+      });
+      
+      if (ipApiResponse.data && ipApiResponse.data.status === "success") {
+        console.log("Successfully retrieved IP-API data");
+        const data = ipApiResponse.data;
+        
+        return {
+          domainName: cleanDomain,
+          registrantCountry: data.country || undefined,
+          error: "Limited domain information available"
+        };
+      }
+    } catch (ipApiError) {
+      console.log("IP-API lookup failed:", ipApiError);
+    }
+    
+    // If all external APIs fail, try command line as last resort
+    try {
+      console.log("Trying command line WHOIS as last resort");
       const { stdout } = await execPromise(`whois ${cleanDomain}`);
       return parseWhoisData(stdout);
     } catch (cmdError) {
       console.error(`Command-line WHOIS error for ${cleanDomain}:`, cmdError);
       
-      // If both methods fail, use the DNS data to determine domain age
-      const whoisData: WhoisData = {
+      // Return basic data with error message
+      return {
         domainName: cleanDomain,
-        // Add estimated values based on DNS data
-        creationDate: new Date(Date.now() - 365 * 24 * 60 * 60 * 1000).toISOString(), // Assume 1 year old as neutral value
-        domainAge: "1 years, 0 months", // Default assumption 
-        error: "Could not retrieve WHOIS data"
+        error: "Could not retrieve domain registration data"
       };
-      
-      return whoisData;
     }
   } catch (error) {
     console.error(`WHOIS error for ${cleanDomain}:`, error);
