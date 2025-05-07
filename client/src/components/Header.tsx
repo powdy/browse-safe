@@ -22,7 +22,7 @@ export default function Header() {
               <ShieldCheck className="h-6 w-6" />
             </div>
             <div>
-              <h1 className="text-2xl font-heading font-bold text-primary-900">TrustGuard</h1>
+              <h1 className="text-2xl font-heading font-bold text-primary-900">BrowseSafe</h1>
               <p className="text-sm text-primary-500">Website Security Scanner</p>
             </div>
           </a>

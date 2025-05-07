@@ -14,7 +14,7 @@ export default function Footer() {
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <div>
-                <h2 className="text-xl font-heading font-bold">TrustGuard</h2>
+                <h2 className="text-xl font-heading font-bold">BrowseSafe</h2>
                 <p className="text-xs text-primary-400">Website Security Scanner</p>
               </div>
             </div>
@@ -67,7 +67,7 @@ export default function Footer() {
         
         <div className="border-t border-primary-800 mt-10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-primary-400 mb-4 md:mb-0">&copy; {new Date().getFullYear()} TrustGuard. All rights reserved.</p>
+            <p className="text-sm text-primary-400 mb-4 md:mb-0">&copy; {new Date().getFullYear()} BrowseSafe. All rights reserved.</p>
             
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-primary-400">
               <CookieConsent />
