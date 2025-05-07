@@ -23,18 +23,20 @@ export default function RecentScans() {
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/20 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            {/* Icon with particle effects */}
-            <div className="inline-block relative mb-6">
-              <div className="absolute -inset-6 bg-violet-500/10 rounded-full blur-xl"></div>
-              <div className="relative">
-                <div className="p-3 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full shadow-lg">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
+            <div className="mx-auto text-center mb-8">
+              {/* Icon with particle effects */}
+              <div className="inline-block relative mb-6">
+                <div className="absolute -inset-6 bg-violet-500/10 rounded-full blur-xl"></div>
+                <div className="relative">
+                  <div className="p-3 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full shadow-lg">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  {/* Small decorative dots */}
+                  <span className="absolute -top-1 -right-1 h-3 w-3 bg-purple-400 rounded-full animate-pulse"></span>
+                  <span className="absolute -bottom-1 -left-1 h-2 w-2 bg-violet-300 rounded-full animate-ping"></span>
                 </div>
-                {/* Small decorative dots */}
-                <span className="absolute -top-1 -right-1 h-3 w-3 bg-purple-400 rounded-full animate-pulse"></span>
-                <span className="absolute -bottom-1 -left-1 h-2 w-2 bg-violet-300 rounded-full animate-ping"></span>
               </div>
             </div>
             
