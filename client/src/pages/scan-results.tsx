@@ -14,8 +14,11 @@ import { Helmet } from "react-helmet";
 
 export default function ScanResults() {
   const [location, setLocation] = useLocation();
-  const urlParams = new URLSearchParams(location.split("?")[1]);
+  const urlParams = new URLSearchParams(location.split("?")[1] || "");
   const url = urlParams.get("url");
+  
+  console.log("Current location:", location);
+  console.log("URL parameter:", url);
   const [showSharePopup, setShowSharePopup] = useState(false);
   
   useEffect(() => {

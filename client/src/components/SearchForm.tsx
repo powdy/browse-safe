@@ -26,8 +26,13 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
       url = `https://${url}`;
     }
     
+    console.log("Searching for URL:", url);
+    
     // Encode the URL and navigate to scan page
     const encodedUrl = encodeURIComponent(url);
+    console.log("Encoded URL:", encodedUrl);
+    console.log("Navigating to:", `/scan?url=${encodedUrl}`);
+    
     setLocation(`/scan?url=${encodedUrl}`);
   };
 
@@ -38,7 +43,26 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
   ];
 
   const handlePopularSearch = (url: string) => {
+    // Set the URL in the input field
     setWebsiteUrl(url);
+    
+    // Then immediately submit the search
+    // Basic URL validation
+    let searchUrl = url.trim();
+    
+    // Prepend https:// if not present
+    if (!/^https?:\/\//i.test(searchUrl)) {
+      searchUrl = `https://${searchUrl}`;
+    }
+    
+    console.log("Popular search for URL:", searchUrl);
+    
+    // Encode the URL and navigate to scan page
+    const encodedUrl = encodeURIComponent(searchUrl);
+    console.log("Encoded URL:", encodedUrl);
+    console.log("Navigating to:", `/scan?url=${encodedUrl}`);
+    
+    setLocation(`/scan?url=${encodedUrl}`);
   };
 
   const inputBgColor = darkMode ? "bg-primary-800/60 border-primary-700" : "bg-white border-gray-300";
