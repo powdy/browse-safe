@@ -67,7 +67,7 @@ export default function AboutUs() {
           <div className="bg-blue-100 p-3 rounded-full mr-4">
             <Lock className="h-8 w-8 text-blue-600" />
           </div>
-          <h2 className="text-3xl font-bold text-gray-800">How TrustGuard Works</h2>
+          <h2 className="text-3xl font-bold text-gray-800">How BrowseSafe Works</h2>
         </div>
         <div className="bg-white rounded-lg shadow-md p-8 border border-gray-100">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -144,7 +144,7 @@ export default function AboutUs() {
         </div>
         <div className="bg-white rounded-lg shadow-md p-8 border border-gray-100">
           <p className="text-lg text-gray-600 mb-4">
-            TrustGuard leverages multiple API integrations with leading security providers to deliver comprehensive website analysis:
+            BrowseSafe leverages multiple API integrations with leading security providers to deliver comprehensive website analysis:
           </p>
           <ul className="list-disc pl-6 mb-6 text-gray-600 space-y-2">
             <li><span className="font-semibold">VirusTotal API:</span> Checks websites against 70+ antivirus scanners and URL/domain blacklisting services</li>
@@ -165,7 +165,7 @@ export default function AboutUs() {
           <div className="bg-blue-100 p-3 rounded-full mr-4">
             <Award className="h-8 w-8 text-blue-600" />
           </div>
-          <h2 className="text-3xl font-bold text-gray-800">Why Choose TrustGuard</h2>
+          <h2 className="text-3xl font-bold text-gray-800">Why Choose BrowseSafe</h2>
         </div>
         <div className="bg-white rounded-lg shadow-md p-8 border border-gray-100 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center">

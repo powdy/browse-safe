@@ -10,19 +10,19 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>TrustGuard - Website Security Scanner | Check If Websites Are Safe</title>
-        <meta name="description" content="Check if any website is safe or a potential scam with TrustGuard's free website security scanner. Analyze domain age, WHOIS data, SSL certificates, and blacklist status to protect yourself from online fraud." />
+        <title>BrowseSafe - Website Security Scanner | Check If Websites Are Safe</title>
+        <meta name="description" content="Check if any website is safe or a potential scam with BrowseSafe's free website security scanner. Analyze domain age, WHOIS data, SSL certificates, and blacklist status to protect yourself from online fraud." />
         <meta name="keywords" content="website security scanner, check if website is safe, website safety checker, phishing detector, scam website checker, domain age checker, website trust score, website blacklist checker, online fraud protection, is this website safe, safe website checker" />
-        <meta property="og:title" content="TrustGuard - Website Security Scanner | Check If Websites Are Safe" />
-        <meta property="og:description" content="Check if any website is safe or a potential scam with TrustGuard's free website security scanner. Analyze domain age, WHOIS data, SSL certificates, and blacklist status." />
+        <meta property="og:title" content="BrowseSafe - Website Security Scanner | Check If Websites Are Safe" />
+        <meta property="og:description" content="Check if any website is safe or a potential scam with BrowseSafe's free website security scanner. Analyze domain age, WHOIS data, SSL certificates, and blacklist status." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://trustguard.com" />
-        <meta property="og:image" content="https://trustguard.com/og-image.jpg" />
+        <meta property="og:url" content="https://browse-safe.com" />
+        <meta property="og:image" content="https://browse-safe.com/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="TrustGuard - Check If Websites Are Safe or Scams" />
+        <meta name="twitter:title" content="BrowseSafe - Check If Websites Are Safe or Scams" />
         <meta name="twitter:description" content="Free website security scanner to analyze domain age, SSL certificates, blacklist status and detect online scams before they can harm you." />
-        <meta name="twitter:image" content="https://trustguard.com/twitter-image.jpg" />
-        <link rel="canonical" href="https://trustguard.com" />
+        <meta name="twitter:image" content="https://browse-safe.com/twitter-image.jpg" />
+        <link rel="canonical" href="https://browse-safe.com" />
       </Helmet>
       
       {/* Hero Section with Gradient Background */}
