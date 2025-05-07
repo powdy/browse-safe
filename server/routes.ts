@@ -90,16 +90,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Clean the URL for scanning
       const cleanUrl = url.replace(/^(https?:\/\/)?(www\.)?/, '').trim();
       
-      // Check if we already have a scan for this URL
+      // Check if we already have a scan for this URL and whether to force a new scan
       const existingScan = await storage.getScanByUrl(cleanUrl);
+      const forceNewScan = req.query.force === 'true';
       
-      if (existingScan) {
-        // If scan is less than 24 hours old, return it
+      if (existingScan && !forceNewScan) {
+        // If scan is less than 1 hour old, return it (reduced from 24 hours for more frequent updates)
         const lastScanned = new Date(existingScan.lastScanned);
         const now = new Date();
         const hoursSinceLastScan = (now.getTime() - lastScanned.getTime()) / (1000 * 60 * 60);
         
-        if (hoursSinceLastScan < 24) {
+        if (hoursSinceLastScan < 1) {
           return res.json(existingScan);
         }
       }

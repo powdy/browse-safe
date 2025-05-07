@@ -16,9 +16,11 @@ export default function ScanResults() {
   // Fix URL parameter extraction with a more robust approach
   const urlSearchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams("");
   const url = urlSearchParams.get("url");
+  const force = urlSearchParams.get("force") === "true";
   
   console.log("Current location:", location);
   console.log("URL parameter:", url);
+  console.log("Force refresh:", force);
   const [showSharePopup, setShowSharePopup] = useState(false);
   
   useEffect(() => {
@@ -32,9 +34,9 @@ export default function ScanResults() {
   // Clean URL for display (remove protocol)
   const displayUrl = url ? url.replace(/^https?:\/\//, "") : "";
   
-  // Query for scan results
+  // Query for scan results, including force parameter if present
   const { data: scanResult, isLoading, isError } = useQuery({
-    queryKey: [`/api/scans?url=${encodeURIComponent(url || "")}`],
+    queryKey: [`/api/scans?url=${encodeURIComponent(url || "")}&force=${force}`],
     enabled: !!url, // Only run if we have a URL
   });
   
@@ -127,6 +129,13 @@ export default function ScanResults() {
                 <p className="text-primary-500">Scanned on {formatDate(new Date(scan.lastScanned))}</p>
               </div>
               <div className="mt-4 md:mt-0 flex">
+                <Button 
+                  variant="outline" 
+                  className="mr-2"
+                  onClick={() => setLocation(`/scan?url=${encodeURIComponent(url || "")}&force=true`)}
+                >
+                  <Shield className="mr-1 h-4 w-4" /> Rescan
+                </Button>
                 <Button 
                   variant="outline" 
                   className="mr-2"

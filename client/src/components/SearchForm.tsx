@@ -28,12 +28,12 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
     
     console.log("Searching for URL:", url);
     
-    // Encode the URL and navigate to scan page
+    // Encode the URL and navigate to scan page with force=true to ensure fresh data
     const encodedUrl = encodeURIComponent(url);
     console.log("Encoded URL:", encodedUrl);
-    console.log("Navigating to:", `/scan?url=${encodedUrl}`);
+    console.log("Navigating to:", `/scan?url=${encodedUrl}&force=true`);
     
-    setLocation(`/scan?url=${encodedUrl}`);
+    setLocation(`/scan?url=${encodedUrl}&force=true`);
   };
 
   const popularSearches = [
@@ -57,12 +57,12 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
     
     console.log("Popular search for URL:", searchUrl);
     
-    // Encode the URL and navigate to scan page
+    // Encode the URL and navigate to scan page with force=true to ensure fresh data
     const encodedUrl = encodeURIComponent(searchUrl);
     console.log("Encoded URL:", encodedUrl);
-    console.log("Navigating to:", `/scan?url=${encodedUrl}`);
+    console.log("Navigating to:", `/scan?url=${encodedUrl}&force=true`);
     
-    setLocation(`/scan?url=${encodedUrl}`);
+    setLocation(`/scan?url=${encodedUrl}&force=true`);
   };
 
   // Set very clear background and text colors for all modes
