@@ -87,8 +87,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid URL format" });
       }
       
+      // Clean the URL for scanning
+      const cleanUrl = url.replace(/^(https?:\/\/)?(www\.)?/, '').trim();
+      
       // Check if we already have a scan for this URL
-      const existingScan = await storage.getScanByUrl(url);
+      const existingScan = await storage.getScanByUrl(cleanUrl);
       
       if (existingScan) {
         // If scan is less than 24 hours old, return it
@@ -101,94 +104,136 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
       
-      // We need to create a new scan or update an existing one
-      const cleanUrl = url.replace(/^(https?:\/\/)?(www\.)?/, '');
-      
-      // 1. Get WHOIS data
-      const whoisData = await getWhoisData(cleanUrl);
-      const whoisScore = calculateWhoisReputation(whoisData);
-      
-      // 2. Get domain info
-      const domainInfo = await getDomainInfo(cleanUrl);
-      const domainScore = estimateDomainReputation(domainInfo);
-      const suspiciousPatterns = checkSuspiciousPatterns(cleanUrl);
-      const hasValidSSL = await estimateSSLSecurity(cleanUrl);
-      
-      // 3. Get IP info
-      const ip = await getIpFromDomain(cleanUrl);
-      let ipInfo = null;
-      let ipScore = 50; // Default score if IP can't be resolved
-      
-      if (ip) {
-        ipInfo = await getIpInfo(ip);
-        ipScore = calculateIpReputation(ipInfo);
+      try {
+        // 1. Get domain info - checking if domain exists
+        const domainInfo = await getDomainInfo(cleanUrl);
+        const domainScore = estimateDomainReputation(domainInfo);
+        const suspiciousPatterns = checkSuspiciousPatterns(cleanUrl);
+        
+        // 2. Get WHOIS data
+        let whoisData;
+        try {
+          whoisData = await getWhoisData(cleanUrl);
+        } catch (whoisError) {
+          console.error(`WHOIS error: ${whoisError}`);
+          whoisData = { domainName: cleanUrl, error: "Could not retrieve WHOIS data" };
+        }
+        const whoisScore = calculateWhoisReputation(whoisData);
+        
+        // 3. Check SSL
+        let hasValidSSL = false;
+        try {
+          hasValidSSL = await estimateSSLSecurity(cleanUrl);
+        } catch (sslError) {
+          console.error(`SSL verification error: ${sslError}`);
+        }
+        
+        // 4. Get IP info
+        const ip = await getIpFromDomain(cleanUrl);
+        let ipInfo = null;
+        let ipScore = 50; // Default score if IP can't be resolved
+        
+        if (ip) {
+          try {
+            ipInfo = await getIpInfo(ip);
+            ipScore = calculateIpReputation(ipInfo);
+          } catch (ipError) {
+            console.error(`IP info error: ${ipError}`);
+          }
+        }
+        
+        // 5. Check blacklists using VirusTotal API if available
+        let blacklistResult;
+        try {
+          blacklistResult = await checkBlacklist(cleanUrl);
+        } catch (blacklistError) {
+          console.error(`Blacklist check error: ${blacklistError}`);
+          blacklistResult = {
+            isBlacklisted: false,
+            blacklistedOn: [],
+            hasMalware: false,
+            hasPhishing: false,
+            suspiciousContent: false,
+            score: 50
+          };
+        }
+        
+        // 6. Check security headers
+        let hasSecurityHeaders = false;
+        try {
+          hasSecurityHeaders = await checkSecurityHeaders(cleanUrl);
+        } catch (headersError) {
+          console.error(`Security headers check error: ${headersError}`);
+        }
+        
+        // 7. Calculate overall trust score
+        // Weight each component based on importance
+        const trustScore = Math.round(
+          whoisScore * 0.3 +
+          domainScore * 0.2 +
+          ipScore * 0.2 +
+          blacklistResult.score * 0.3
+        );
+        
+        // Determine status based on trust score
+        let status = "suspicious";
+        if (trustScore >= 80) {
+          status = "safe";
+        } else if (trustScore < 40) {
+          status = "dangerous";
+        }
+        
+        // Create scan object  
+        const scanData = {
+          url: cleanUrl,
+          trustScore,
+          domainAge: whoisData.domainAge || "Unknown",
+          registrationDate: whoisData.creationDate || "Unknown",
+          expirationDate: whoisData.expirationDate || "Unknown",
+          registrar: whoisData.registrar || "Unknown",
+          registrantCountry: whoisData.registrantCountry || "Unknown",
+          ipAddress: ip || "Unknown",
+          ipLocation: ipInfo?.country || "Unknown",
+          nameServers: whoisData.nameServers?.join(", ") || domainInfo.nameservers.join(", ") || "Unknown",
+          hasValidSSL,
+          hasDNSSEC: domainInfo.hasDNSSEC,
+          hasSecurityHeaders,
+          hasMalware: blacklistResult.hasMalware,
+          hasPhishing: blacklistResult.hasPhishing,
+          blacklistStatus: blacklistResult.isBlacklisted 
+            ? `Listed on ${blacklistResult.blacklistedOn.length} blacklist${blacklistResult.blacklistedOn.length !== 1 ? 's' : ''}` 
+            : "Not blacklisted",
+          suspiciousPatterns: suspiciousPatterns.length > 0 ? suspiciousPatterns.join(", ") : "None",
+          userReports: 0, // Will be populated from actual reports
+          relatedSites: 0, // Will be populated from actual related sites
+          status,
+          lastScanned: new Date(),
+          details: JSON.stringify({
+            whoisData,
+            domainInfo: {
+              ...domainInfo,
+              nameservers: domainInfo.nameservers
+            },
+            ipInfo,
+            blacklistResult
+          })
+        };
+        
+        // Save or update the scan
+        let scan;
+        if (existingScan) {
+          scan = await storage.updateScan(existingScan.id, scanData);
+        } else {
+          scan = await storage.createScan(scanData);
+        }
+        
+        res.json(scan);
+      } catch (processingError) {
+        console.error(`Error processing website scan for ${cleanUrl}:`, processingError);
+        res.status(500).json({ 
+          message: "Failed to analyze website. This may be due to the domain not being accessible or valid." 
+        });
       }
-      
-      // 4. Check blacklists using VirusTotal API if available
-      const blacklistResult = await checkBlacklist(cleanUrl);
-      
-      // 5. Calculate overall trust score
-      // Weight each component based on importance
-      const trustScore = Math.round(
-        whoisScore * 0.3 +
-        domainScore * 0.2 +
-        ipScore * 0.2 +
-        blacklistResult.score * 0.3
-      );
-      
-      // Determine status based on trust score
-      let status = "suspicious";
-      if (trustScore >= 80) {
-        status = "safe";
-      } else if (trustScore < 40) {
-        status = "dangerous";
-      }
-      
-      // Create scan object  
-      const scanData = {
-        url: cleanUrl,
-        trustScore,
-        domainAge: whoisData.domainAge || "Unknown",
-        registrationDate: whoisData.creationDate || "Unknown",
-        expirationDate: whoisData.expirationDate || "Unknown",
-        registrar: whoisData.registrar || "Unknown",
-        registrantCountry: whoisData.registrantCountry || "Unknown",
-        ipAddress: ip || "Unknown",
-        ipLocation: ipInfo?.country || "Unknown",
-        nameServers: whoisData.nameServers?.join(", ") || domainInfo.nameservers.join(", ") || "Unknown",
-        hasValidSSL,
-        hasDNSSEC: domainInfo.hasDNSSEC,
-        hasSecurityHeaders: await checkSecurityHeaders(cleanUrl),
-        hasMalware: blacklistResult.hasMalware,
-        hasPhishing: blacklistResult.hasPhishing,
-        blacklistStatus: blacklistResult.isBlacklisted 
-          ? `Listed on ${blacklistResult.blacklistedOn.length} blacklist${blacklistResult.blacklistedOn.length !== 1 ? 's' : ''}` 
-          : "Not blacklisted",
-        suspiciousPatterns: suspiciousPatterns.length > 0 ? suspiciousPatterns.join(", ") : "None",
-        userReports: 0, // Will be populated from actual reports
-        relatedSites: 0, // Will be populated from actual related sites
-        status,
-        lastScanned: new Date(),
-        details: JSON.stringify({
-          whoisData,
-          domainInfo: {
-            ...domainInfo,
-            nameservers: domainInfo.nameservers
-          },
-          ipInfo,
-          blacklistResult
-        })
-      };
-      
-      // Save or update the scan
-      let scan;
-      if (existingScan) {
-        scan = await storage.updateScan(existingScan.id, scanData);
-      } else {
-        scan = await storage.createScan(scanData);
-      }
-      
-      res.json(scan);
     } catch (error) {
       console.error("Error scanning website:", error);
       res.status(500).json({ message: "Failed to scan website" });

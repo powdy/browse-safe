@@ -19,20 +19,42 @@ interface DomainInfo {
 
 export async function getDomainInfo(domain: string): Promise<DomainInfo> {
   // Remove protocol and www if present
-  const cleanDomain = domain.replace(/^(https?:\/\/)?(www\.)?/, '');
+  const cleanDomain = domain.replace(/^(https?:\/\/)?(www\.)?/, '').trim();
   
   try {
-    // Get IP addresses
-    const ipAddresses = await resolve4(cleanDomain).catch(() => []);
+    // First check if domain exists by trying to resolve IP addresses
+    let ipAddresses: string[] = [];
+    try {
+      ipAddresses = await resolve4(cleanDomain);
+    } catch (error) {
+      console.log(`Could not resolve IP for domain ${cleanDomain}: ${error}`);
+      ipAddresses = [];
+    }
+    
+    // If we can't resolve any IPs, the domain might not exist
+    if (ipAddresses.length === 0) {
+      console.log(`No IP addresses found for domain: ${cleanDomain}`);
+    }
+    
+    // Try to get other DNS records even if IP resolution failed
     
     // Get nameservers
-    const nameservers = await resolveNs(cleanDomain).catch(() => []);
+    const nameservers = await resolveNs(cleanDomain).catch((err) => {
+      console.log(`Could not resolve nameservers for ${cleanDomain}: ${err}`);
+      return [];
+    });
     
     // Get MX records
-    const mxRecords = await resolveMx(cleanDomain).catch(() => []);
+    const mxRecords = await resolveMx(cleanDomain).catch((err) => {
+      console.log(`Could not resolve MX records for ${cleanDomain}: ${err}`);
+      return [];
+    });
     
     // Get TXT records
-    const txtRecords = await resolveTxt(cleanDomain).catch(() => []);
+    const txtRecords = await resolveTxt(cleanDomain).catch((err) => {
+      console.log(`Could not resolve TXT records for ${cleanDomain}: ${err}`);
+      return [];
+    });
     
     // Get reverse DNS for each IP
     const reverseDns: Record<string, string[]> = {};
@@ -40,6 +62,7 @@ export async function getDomainInfo(domain: string): Promise<DomainInfo> {
       try {
         reverseDns[ip] = await reverse(ip);
       } catch (error) {
+        console.log(`Could not resolve reverse DNS for IP ${ip}: ${error}`);
         reverseDns[ip] = [];
       }
     }
@@ -60,7 +83,16 @@ export async function getDomainInfo(domain: string): Promise<DomainInfo> {
     };
   } catch (error) {
     console.error(`Error getting domain info for ${cleanDomain}:`, error);
-    throw new Error(`Failed to retrieve domain information: ${(error as Error).message}`);
+    
+    // Return empty data instead of throwing
+    return {
+      ipAddresses: [],
+      nameservers: [],
+      mxRecords: [],
+      txtRecords: [],
+      reverseDns: {},
+      hasDNSSEC: false
+    };
   }
 }
 

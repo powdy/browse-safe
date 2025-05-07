@@ -92,14 +92,14 @@ export default function ScanResults() {
     ipAddress: scan.ipAddress || "Unknown",
     ipLocation: scan.ipLocation || "Unknown",
     nameServers: scan.nameServers || "Unknown",
-    hasValidSSL: scan.hasValidSSL || false,
-    hasDNSSEC: scan.hasDNSSEC || false,
-    hasSecurityHeaders: scan.hasSecurityHeaders || false
+    hasValidSSL: scan.hasValidSSL === true,
+    hasDNSSEC: scan.hasDNSSEC === true,
+    hasSecurityHeaders: scan.hasSecurityHeaders === true
   };
   
   const contentAnalysis = {
-    hasMalware: scan.hasMalware || false,
-    hasPhishing: scan.hasPhishing || false,
+    hasMalware: scan.hasMalware === true,
+    hasPhishing: scan.hasPhishing === true,
     blacklistStatus: scan.blacklistStatus || "Unknown",
     suspiciousPatterns: scan.suspiciousPatterns || "None",
     userReports: scan.userReports || 0,
@@ -111,7 +111,7 @@ export default function ScanResults() {
     parseInt(scan.domainAge?.split(' ')[0] || '0') >= 2;
   
   // Check if has blacklist issues
-  const hasBlacklistIssues = !scan.blacklistStatus?.includes("Not");
+  const hasBlacklistIssues = !(scan.blacklistStatus || "").includes("Not");
 
   return (
     <>
@@ -152,12 +152,12 @@ export default function ScanResults() {
             <div className="lg:col-span-1">
               <TrustScoreCard
                 trustScore={scan.trustScore}
-                domainAge={scan.domainAge}
+                domainAge={scan.domainAge || undefined}
                 whoisStatus={scan.registrationDate !== "Unknown" ? "Verified" : "Partially Verified"}
-                sslStatus={scan.hasValidSSL}
-                malwareStatus={scan.hasMalware}
-                blacklistStatus={scan.blacklistStatus}
-                userReports={scan.userReports}
+                sslStatus={scan.hasValidSSL === true}
+                malwareStatus={scan.hasMalware === true}
+                blacklistStatus={scan.blacklistStatus || undefined}
+                userReports={scan.userReports || 0}
                 lastScanned={new Date(scan.lastScanned)}
                 status={scan.status as "safe" | "suspicious" | "dangerous"}
               />
@@ -179,9 +179,9 @@ export default function ScanResults() {
               domainName={scan.url}
               trustScore={scan.trustScore}
               status={scan.status as "safe" | "suspicious" | "dangerous"}
-              hasEstablishedDomain={hasEstablishedDomain}
-              hasValidSSL={scan.hasValidSSL || false}
-              hasMalware={scan.hasMalware || false}
+              hasEstablishedDomain={hasEstablishedDomain || false}
+              hasValidSSL={scan.hasValidSSL === true}
+              hasMalware={scan.hasMalware === true}
               hasBlacklistIssues={hasBlacklistIssues}
             />
           </div>
