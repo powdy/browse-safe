@@ -114,7 +114,7 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-transparent bg-clip-text">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-transparent bg-clip-text relative z-10 px-2">
               Protect Yourself From Online Scams and Fraud
             </h2>
             
@@ -183,7 +183,7 @@ export default function Home() {
                 </svg>
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-purple-700 to-violet-700 text-transparent bg-clip-text">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-purple-700 to-violet-700 text-transparent bg-clip-text relative z-10 px-2">
               Key Security Features
             </h2>
           </div>
@@ -257,7 +257,7 @@ export default function Home() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 relative z-10 px-2">
               Start Protecting Yourself Online Today
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
