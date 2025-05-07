@@ -204,25 +204,108 @@ export async function getWhoisData(domain: string): Promise<WhoisData> {
           whoisData.nameServers = record.nameServers.hostNames;
         }
         
-        // Calculate domain age if creation date is available
+        // Calculate domain age if creation date is available - with extra verification
         if (whoisData.creationDate) {
-          const creationDate = new Date(whoisData.creationDate);
-          const currentDate = new Date();
-          
-          // Check if the creation date is in the future
-          if (creationDate > currentDate) {
-            console.log(`Warning: Domain ${cleanDomain} has a future creation date from WHOIS XML API: ${whoisData.creationDate}`);
-            // Use current date instead
-            whoisData.creationDate = currentDate.toISOString();
-            whoisData.domainAge = "0 years, 0 months";
-          } else {
-            // Normal calculation for valid date
-            const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
-            const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
-            const years = Math.floor(ageInYears);
-            const months = Math.floor((ageInYears - years) * 12);
-            whoisData.domainAge = `${years} years, ${months} months`;
+          try {
+            const creationDate = new Date(whoisData.creationDate);
+            const currentDate = new Date();
+            
+            // Extensive validation of the date
+            // Check if date is valid and not in the future
+            if (isNaN(creationDate.getTime())) {
+              console.log(`Warning: Invalid date format for domain ${cleanDomain} creation date: ${whoisData.creationDate}`);
+              
+              // Try alternate date from registryData
+              if (record.registryData?.createdDate) {
+                const registryCreationDate = new Date(record.registryData.createdDate);
+                if (!isNaN(registryCreationDate.getTime()) && registryCreationDate <= currentDate) {
+                  console.log(`Using alternative creation date from registry data: ${record.registryData.createdDate}`);
+                  whoisData.creationDate = record.registryData.createdDate;
+                  
+                  // Calculate domain age
+                  const ageInMilliseconds = currentDate.getTime() - registryCreationDate.getTime();
+                  const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+                  const years = Math.floor(ageInYears);
+                  const months = Math.floor((ageInYears - years) * 12);
+                  whoisData.domainAge = `${years} years, ${months} months`;
+                  return whoisData;
+                }
+              }
+              
+              // If no valid date found, use estimatedDomainAge from the API if available
+              if (record.estimatedDomainAge) {
+                const daysOld = record.estimatedDomainAge;
+                const years = Math.floor(daysOld / 365.25);
+                const months = Math.floor((daysOld % 365.25) / 30);
+                whoisData.domainAge = `${years} years, ${months} months`;
+                
+                // Reconstruct an approximate creation date
+                const approximateCreationDate = new Date();
+                approximateCreationDate.setDate(approximateCreationDate.getDate() - daysOld);
+                whoisData.creationDate = approximateCreationDate.toISOString();
+                return whoisData;
+              }
+              
+              // Last resort
+              whoisData.creationDate = undefined;
+              whoisData.domainAge = "Unknown";
+            } else if (creationDate > currentDate) {
+              console.log(`Warning: Domain ${cleanDomain} has a future creation date from WHOIS XML API: ${whoisData.creationDate}`);
+              
+              // Look for creation date in raw text
+              if (record.strippedText && record.strippedText.includes("Creation Date:")) {
+                const textMatch = record.strippedText.match(/Creation Date:\s*([^\n]+)/);
+                if (textMatch && textMatch[1]) {
+                  const rawCreationDate = new Date(textMatch[1]);
+                  if (!isNaN(rawCreationDate.getTime()) && rawCreationDate <= currentDate) {
+                    console.log(`Using creation date from raw text: ${textMatch[1]}`);
+                    whoisData.creationDate = textMatch[1];
+                    
+                    // Calculate domain age
+                    const ageInMilliseconds = currentDate.getTime() - rawCreationDate.getTime();
+                    const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+                    const years = Math.floor(ageInYears);
+                    const months = Math.floor((ageInYears - years) * 12);
+                    whoisData.domainAge = `${years} years, ${months} months`;
+                    return whoisData;
+                  }
+                }
+              }
+              
+              // If still problematic, use estimated age
+              if (record.estimatedDomainAge) {
+                const daysOld = record.estimatedDomainAge;
+                const years = Math.floor(daysOld / 365.25);
+                const months = Math.floor((daysOld % 365.25) / 30);
+                whoisData.domainAge = `${years} years, ${months} months`;
+                
+                // Reconstruct a reasonable creation date
+                const approximateCreationDate = new Date();
+                approximateCreationDate.setDate(approximateCreationDate.getDate() - daysOld);
+                whoisData.creationDate = approximateCreationDate.toISOString();
+              } else {
+                // Last resort
+                whoisData.creationDate = undefined;
+                whoisData.domainAge = "Unknown";
+              }
+            } else {
+              // Normal calculation for valid date
+              const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
+              const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+              const years = Math.floor(ageInYears);
+              const months = Math.floor((ageInYears - years) * 12);
+              whoisData.domainAge = `${years} years, ${months} months`;
+            }
+          } catch (error) {
+            console.error(`Error calculating domain age for ${cleanDomain}:`, error);
+            whoisData.domainAge = "Unknown";
           }
+        } else if (record.estimatedDomainAge) {
+          // Use estimated domain age if available
+          const daysOld = record.estimatedDomainAge;
+          const years = Math.floor(daysOld / 365.25);
+          const months = Math.floor((daysOld % 365.25) / 30);
+          whoisData.domainAge = `${years} years, ${months} months`;
         }
         
         return whoisData;

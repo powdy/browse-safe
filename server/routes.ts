@@ -207,17 +207,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
           url: cleanUrl,
           trustScore,
           domainAge: whoisData.domainAge || "Unknown",
-          // Format dates nicely if available
-          registrationDate: whoisData.creationDate 
-            ? new Date(whoisData.creationDate).toLocaleDateString('en-US', {
-                year: 'numeric', month: 'long', day: 'numeric'
-              }) 
-            : "Unknown",
-          expirationDate: whoisData.expirationDate 
-            ? new Date(whoisData.expirationDate).toLocaleDateString('en-US', {
-                year: 'numeric', month: 'long', day: 'numeric'
-              }) 
-            : "Unknown",
+          // Use our helper function to safely format dates
+          registrationDate: formatDateSafely(whoisData.creationDate),
+          expirationDate: formatDateSafely(whoisData.expirationDate),
           registrar: whoisData.registrar || "Unknown",
           registrantCountry: whoisData.registrantCountry || "Unknown",
           ipAddress: ip || "Unknown",
