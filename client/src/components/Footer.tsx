@@ -5,7 +5,7 @@ import CookieConsent from "./CookieConsent";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-900 text-white py-12">
+    <footer className="bg-primary-900 text-white py-12" style={{ backgroundColor: '#0F172A' }}>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
