@@ -50,7 +50,7 @@ export default function ContactUs() {
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Report a Website</h3>
                 <p className="text-gray-500 mb-3">Help protect others from scams</p>
                 <a 
-                  href="/report-website" 
+                  href="/report" 
                   className="text-red-500 hover:text-red-700 font-medium"
                 >
                   Submit a Report
