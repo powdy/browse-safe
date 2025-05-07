@@ -9,8 +9,19 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>TrustGuard - Website Security Scanner</title>
-        <meta name="description" content="Check if a website is safe or a scam with our comprehensive website security analyzer. Protect yourself from online fraud with domain age, WHOIS data, and IP reputation analysis." />
+        <title>TrustGuard - Website Security Scanner | Check If Websites Are Safe</title>
+        <meta name="description" content="Check if any website is safe or a potential scam with TrustGuard's free website security scanner. Analyze domain age, WHOIS data, SSL certificates, and blacklist status to protect yourself from online fraud." />
+        <meta name="keywords" content="website security scanner, check if website is safe, website safety checker, phishing detector, scam website checker, domain age checker, website trust score, website blacklist checker, online fraud protection, is this website safe, safe website checker" />
+        <meta property="og:title" content="TrustGuard - Website Security Scanner | Check If Websites Are Safe" />
+        <meta property="og:description" content="Check if any website is safe or a potential scam with TrustGuard's free website security scanner. Analyze domain age, WHOIS data, SSL certificates, and blacklist status." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://trustguard.com" />
+        <meta property="og:image" content="https://trustguard.com/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="TrustGuard - Check If Websites Are Safe or Scams" />
+        <meta name="twitter:description" content="Free website security scanner to analyze domain age, SSL certificates, blacklist status and detect online scams before they can harm you." />
+        <meta name="twitter:image" content="https://trustguard.com/twitter-image.jpg" />
+        <link rel="canonical" href="https://trustguard.com" />
       </Helmet>
       
       {/* Hero Section with Gradient Background */}
@@ -98,31 +109,63 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Enhanced Features Section */}
+      {/* SEO Optimized Detailed Information Section */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-block p-2 bg-blue-50 rounded-full mb-4">
-              <div className="p-1 bg-blue-100 rounded-full">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-transparent bg-clip-text">
-              Why Choose TrustGuard?
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-transparent bg-clip-text">
+              Protect Yourself From Online Scams and Fraud
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive security analysis helps you make informed decisions 
-              before sharing personal information or making purchases online
-            </p>
+            
+            <div className="prose prose-lg max-w-none">
+              <p>
+                In today's digital world, <strong>website security scanners</strong> like TrustGuard are essential tools for protecting yourself from online fraud. With the increasing sophistication of phishing websites and scams, it's becoming harder to distinguish between legitimate and malicious websites at first glance.
+              </p>
+              
+              <p>
+                Our <strong>comprehensive website security analyzer</strong> examines multiple crucial factors to determine if a website is trustworthy or potentially dangerous. The TrustGuard scanner analyzes <strong>domain age, WHOIS data, SSL certificates, blacklist status, malware detection</strong>, and numerous other security indicators to generate an accurate trust score.
+              </p>
+              
+              <h3 className="text-xl font-bold mt-8 mb-4">How Our Website Safety Checker Works</h3>
+              
+              <p>
+                Unlike basic phishing detectors, TrustGuard performs a deep analysis of websites by checking:
+              </p>
+              
+              <ul className="list-disc pl-6 mb-6 space-y-2">
+                <li><strong>Domain Verification:</strong> We analyze when the website was registered, who owns it, and if the ownership information is hidden—newly registered domains with hidden ownership are often red flags for scams.</li>
+                <li><strong>SSL Certificate Analysis:</strong> Legitimate websites use proper SSL certificates to secure your data. We verify not just if an SSL certificate exists, but also its validity and issuer.</li>
+                <li><strong>Blacklist Checks:</strong> We scan multiple security databases to see if the website has been reported for malicious activity, phishing attempts, or scam operations.</li>
+                <li><strong>Technical Infrastructure:</strong> Our scanner examines the hosting provider, server location, and technical setup that can reveal suspicious patterns typical of fraudulent websites.</li>
+                <li><strong>Content Analysis:</strong> Advanced algorithms detect content patterns common in scam websites, including pressure tactics, suspicious offers, and other warning signs.</li>
+              </ul>
+              
+              <p>
+                After this comprehensive scan, TrustGuard generates a <strong>website trust score</strong> from 0-100, with detailed explanations of any security issues found. This helps you make informed decisions before sharing personal information, making purchases, or downloading content from websites.
+              </p>
+              
+              <h3 className="text-xl font-bold mt-8 mb-4">Why Website Security Scanning Is Essential</h3>
+              
+              <p>
+                Cybercriminals create increasingly convincing fake websites that mimic legitimate businesses. These can appear in search results, advertisements, or be sent directly through phishing emails. The consequences of interacting with these fraudulent sites include:
+              </p>
+              
+              <ul className="list-disc pl-6 mb-6 space-y-2">
+                <li><strong>Identity Theft:</strong> Your personal information can be stolen and used for fraudulent purposes.</li>
+                <li><strong>Financial Fraud:</strong> Credit card details and banking information can be compromised.</li>
+                <li><strong>Malware Infection:</strong> Malicious websites can install harmful software on your device.</li>
+                <li><strong>Data Breaches:</strong> Your login credentials for other services may be compromised.</li>
+              </ul>
+              
+              <p>
+                Using TrustGuard's <strong>website security scanner</strong> before engaging with unfamiliar websites provides an essential layer of protection against these threats. Our technology has already identified thousands of fraudulent websites, helping users avoid potential scams before they become victims.
+              </p>
+            </div>
           </div>
-          
-          <FeaturesSection />
         </div>
       </section>
       
-      {/* Trust Indicators Section with Improved Styling */}
+      {/* Security Features Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50 relative">
         <div className="absolute top-0 left-0 right-0">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full rotate-180">
@@ -135,19 +178,19 @@ export default function Home() {
             <div className="inline-block p-2 bg-indigo-50 rounded-full mb-4">
               <div className="p-1 bg-indigo-100 rounded-full">
                 <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-purple-700 to-violet-700 text-transparent bg-clip-text">
-              How to Identify Safe vs. Scam Websites
+              Advanced Website Security Features
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Learn to recognize the signs of legitimate websites and potential fraud attempts
+              Our comprehensive website scanner employs multiple technologies to detect online threats
             </p>
           </div>
           
-          <TrustIndicators />
+          <FeaturesSection />
         </div>
       </section>
       
