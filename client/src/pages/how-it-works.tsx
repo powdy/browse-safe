@@ -129,12 +129,12 @@ export default function HowItWorks() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Step 1 */}
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-blue-200">
-                <div className="flex justify-center -mt-6">
-                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                <div className="relative h-16 flex justify-center">
+                  <div className="absolute top-4 bg-gradient-to-br from-blue-500 to-blue-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
                     <Search className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <div className="p-6 pt-3">
+                <div className="p-6 pt-10">
                   <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
                     <h3 className="text-xl font-bold text-blue-700 mb-2 flex items-center">
                       <span className="bg-blue-100 text-blue-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">1</span>
@@ -168,12 +168,12 @@ export default function HowItWorks() {
               
               {/* Step 2 */}
               <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-indigo-200">
-                <div className="flex justify-center -mt-6">
-                  <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                <div className="relative h-16 flex justify-center">
+                  <div className="absolute top-4 bg-gradient-to-br from-indigo-500 to-indigo-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
                     <Server className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <div className="p-6 pt-3">
+                <div className="p-6 pt-10">
                   <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
                     <h3 className="text-xl font-bold text-indigo-700 mb-2 flex items-center">
                       <span className="bg-indigo-100 text-indigo-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">2</span>
@@ -207,12 +207,12 @@ export default function HowItWorks() {
               
               {/* Step 3 */}
               <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-purple-200">
-                <div className="flex justify-center -mt-6">
-                  <div className="bg-gradient-to-br from-purple-500 to-purple-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                <div className="relative h-16 flex justify-center">
+                  <div className="absolute top-4 bg-gradient-to-br from-purple-500 to-purple-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
                     <Globe className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <div className="p-6 pt-3">
+                <div className="p-6 pt-10">
                   <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
                     <h3 className="text-xl font-bold text-purple-700 mb-2 flex items-center">
                       <span className="bg-purple-100 text-purple-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">3</span>
@@ -246,12 +246,12 @@ export default function HowItWorks() {
               
               {/* Step 4 */}
               <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-green-200">
-                <div className="flex justify-center -mt-6">
-                  <div className="bg-gradient-to-br from-green-500 to-green-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                <div className="relative h-16 flex justify-center">
+                  <div className="absolute top-4 bg-gradient-to-br from-green-500 to-green-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
                     <Lock className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <div className="p-6 pt-3">
+                <div className="p-6 pt-10">
                   <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
                     <h3 className="text-xl font-bold text-green-700 mb-2 flex items-center">
                       <span className="bg-green-100 text-green-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">4</span>
@@ -285,12 +285,12 @@ export default function HowItWorks() {
               
               {/* Step 5 */}
               <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-red-200">
-                <div className="flex justify-center -mt-6">
-                  <div className="bg-gradient-to-br from-red-500 to-red-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                <div className="relative h-16 flex justify-center">
+                  <div className="absolute top-4 bg-gradient-to-br from-red-500 to-red-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
                     <Database className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <div className="p-6 pt-3">
+                <div className="p-6 pt-10">
                   <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
                     <h3 className="text-xl font-bold text-red-700 mb-2 flex items-center">
                       <span className="bg-red-100 text-red-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">5</span>
@@ -324,12 +324,12 @@ export default function HowItWorks() {
               
               {/* Step 6 */}
               <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl overflow-hidden shadow-md transform transition-transform hover:scale-[1.02] hover:shadow-lg border border-amber-200">
-                <div className="flex justify-center -mt-6">
-                  <div className="bg-gradient-to-br from-amber-500 to-amber-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
+                <div className="relative h-16 flex justify-center">
+                  <div className="absolute top-4 bg-gradient-to-br from-amber-500 to-amber-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white">
                     <ShieldCheck className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                <div className="p-6 pt-3">
+                <div className="p-6 pt-10">
                   <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 mb-4">
                     <h3 className="text-xl font-bold text-amber-700 mb-2 flex items-center">
                       <span className="bg-amber-100 text-amber-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold mr-2">6</span>
