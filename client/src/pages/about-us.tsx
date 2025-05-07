@@ -7,6 +7,16 @@ export default function AboutUs() {
       <Helmet>
         <title>About Us | BrowseSafe - Website Security Scanner</title>
         <meta name="description" content="Learn about BrowseSafe's mission to make the internet safer through our advanced website security scanning technology and expert team." />
+        <meta name="keywords" content="website security company, online safety experts, browse safe team, website safety technology, security scanning experts, cybersecurity team, domain verification experts" />
+        <meta property="og:title" content="About Us | BrowseSafe - Website Security Scanner" />
+        <meta property="og:description" content="Learn about BrowseSafe's mission to make the internet safer through our advanced website security scanning technology and expert team." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://browse-safe.com/about-us" />
+        <meta property="og:image" content="/favicon.svg" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="About Us | BrowseSafe - Website Security Scanner" />
+        <meta name="twitter:description" content="Meet the experts behind BrowseSafe's website security technology and learn about our mission to make the internet safer." />
+        <link rel="canonical" href="https://browse-safe.com/about-us" />
       </Helmet>
 
       {/* Hero Section */}
@@ -61,7 +71,7 @@ export default function AboutUs() {
         </div>
       </div>
 
-      {/* How TrustGuard Works */}
+      {/* How BrowseSafe Works */}
       <div className="mb-20">
         <div className="flex items-center mb-6">
           <div className="bg-blue-100 p-3 rounded-full mr-4">
@@ -159,7 +169,7 @@ export default function AboutUs() {
         </div>
       </div>
 
-      {/* Why Choose TrustGuard */}
+      {/* Why Choose BrowseSafe */}
       <div>
         <div className="flex items-center mb-6">
           <div className="bg-blue-100 p-3 rounded-full mr-4">

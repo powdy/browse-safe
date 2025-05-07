@@ -31,6 +31,15 @@ export default function HowItWorks() {
         <title>How BrowseSafe Works | Website Security Scanner</title>
         <meta name="description" content="Learn how BrowseSafe analyzes websites for security risks. Our comprehensive security scanner checks domain age, WHOIS data, IP reputation, and more to determine trustworthiness." />
         <meta name="keywords" content="website scanner, security analysis, domain verification, browsesafe technology, website safety, online security, SSL verification, domain age check" />
+        <meta property="og:title" content="How BrowseSafe Works | Website Security Scanner" />
+        <meta property="og:description" content="Learn how BrowseSafe analyzes websites for security risks using domain age, WHOIS data, IP reputation, and more to protect you from scams." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://browse-safe.com/how-it-works" />
+        <meta property="og:image" content="/favicon.svg" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="How BrowseSafe Works | Website Security Scanner" />
+        <meta name="twitter:description" content="Learn how BrowseSafe scans websites for security threats using multiple verification methods." />
+        <link rel="canonical" href="https://browse-safe.com/how-it-works" />
       </Helmet>
       
       <div className="container mx-auto px-4 py-12">

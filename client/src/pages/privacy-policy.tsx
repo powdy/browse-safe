@@ -10,6 +10,16 @@ export default function PrivacyPolicy() {
           name="description" 
           content="Read our Privacy Policy to understand how BrowseSafe collects, uses, and protects your personal information when you use our website security scanning service."
         />
+        <meta name="keywords" content="BrowseSafe privacy policy, website scanner privacy, data protection policy, security scanner data usage, personal information protection" />
+        <meta property="og:title" content="Privacy Policy | BrowseSafe Website Security Scanner" />
+        <meta property="og:description" content="Read our Privacy Policy to understand how BrowseSafe collects, uses, and protects your personal information." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://browse-safe.com/privacy-policy" />
+        <meta property="og:image" content="/favicon.svg" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Privacy Policy | BrowseSafe Website Security Scanner" />
+        <meta name="twitter:description" content="Learn how we protect your personal information when using our website security scanning service." />
+        <link rel="canonical" href="https://browse-safe.com/privacy-policy" />
       </Helmet>
       
       <div className="container mx-auto px-4 py-8 max-w-4xl">
