@@ -159,15 +159,20 @@ export async function getWhoisData(domain: string): Promise<WhoisData> {
       console.log("RDAP error:", rdapError);
     }
     
-    // Try WHOIS API as a fallback
+    // Try WHOIS API as a fallback (using proper API key)
     try {
-      const response = await axios.get(`https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_demo&domainName=${cleanDomain}&outputFormat=json`, {
+      const apiKey = process.env.WHOISXML_API_KEY || 'at_demo';
+      console.log(`Using WhoisXML API with key ${apiKey.substring(0, 5)}...`);
+      const response = await axios.get(`https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${cleanDomain}&outputFormat=json`, {
         timeout: 5000
       });
       
       if (response.data && response.data.WhoisRecord) {
-        console.log("Successfully retrieved WHOIS XML API data");
+        console.log("Successfully retrieved WHOIS XML API data for domain:", cleanDomain);
         const record = response.data.WhoisRecord;
+        
+        // Log the key data we've received
+        console.log(`WHOIS data: Domain: ${record.domainName}, Created: ${record.createdDate}, Expires: ${record.expiresDate}, Registrar: ${record.registrarName}`);
         
         const whoisData: WhoisData = {
           domainName: cleanDomain,
