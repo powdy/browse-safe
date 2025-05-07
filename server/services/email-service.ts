@@ -4,20 +4,31 @@ import sgMail from '@sendgrid/mail';
 export const DEFAULT_FROM_EMAIL = 'reports@browse-safe.com';
 export const DEFAULT_TO_EMAIL = 'webmaster@browse-safe.com';
 
+// Flag to track if email functionality is available
+let emailFunctionalityEnabled = false;
+
 /**
  * Initialize SendGrid with the API key
  */
 export function initializeSendGrid() {
   // Check if API key is available
   if (!process.env.SENDGRID_API_KEY) {
-    console.warn('SENDGRID_API_KEY is not set. Email functionality will be disabled.');
+    console.warn('SENDGRID_API_KEY is not set. Email notifications will be logged to console instead.');
+    emailFunctionalityEnabled = false;
     return false;
   }
   
-  // Set the API key
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  console.log('SendGrid initialized successfully');
-  return true;
+  try {
+    // Set the API key
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    emailFunctionalityEnabled = true;
+    console.log('SendGrid initialized successfully');
+    return true;
+  } catch (error) {
+    console.error('Failed to initialize SendGrid:', error);
+    emailFunctionalityEnabled = false;
+    return false;
+  }
 }
 
 /**
@@ -32,24 +43,43 @@ export interface EmailData {
 }
 
 /**
- * Send an email using SendGrid
+ * Send an email using SendGrid if available, otherwise log to console
  * @param emailData The email data to send
  * @returns Promise that resolves to true if successful, false otherwise
  */
 export async function sendEmail(emailData: EmailData): Promise<boolean> {
   try {
     // Check if SendGrid is available
-    if (!process.env.SENDGRID_API_KEY) {
-      console.warn('Attempted to send email but SENDGRID_API_KEY is not set');
-      return false;
+    if (!emailFunctionalityEnabled) {
+      // Log the email to console as a fallback
+      console.log('=========== EMAIL NOTIFICATION (CONSOLE FALLBACK) ===========');
+      console.log(`To: ${emailData.to}`);
+      console.log(`From: ${emailData.from}`);
+      console.log(`Subject: ${emailData.subject}`);
+      console.log('------- CONTENT -------');
+      console.log(emailData.text);
+      console.log('==========================================================');
+      
+      // Return true to indicate the email was "sent" (logged)
+      return true;
     }
     
-    // Send the email
+    // Send the email using SendGrid
     await sgMail.send(emailData);
     console.log(`Email sent successfully to ${emailData.to}`);
     return true;
   } catch (error) {
     console.error('Error sending email:', error);
+    
+    // Log the email to console as a fallback
+    console.log('=========== EMAIL NOTIFICATION (FAILED, CONSOLE FALLBACK) ===========');
+    console.log(`To: ${emailData.to}`);
+    console.log(`From: ${emailData.from}`);
+    console.log(`Subject: ${emailData.subject}`);
+    console.log('------- CONTENT -------');
+    console.log(emailData.text);
+    console.log('==========================================================');
+    
     return false;
   }
 }
