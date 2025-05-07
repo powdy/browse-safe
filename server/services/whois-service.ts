@@ -32,8 +32,11 @@ export async function getWhoisData(domain: string): Promise<WhoisData> {
   } catch (error) {
     console.error(`WHOIS error for ${cleanDomain}:`, error);
     
-    // Simulate WHOIS data since we can't actually run the whois command
-    return simulateWhoisData(cleanDomain);
+    // Return partial data with error message
+    return {
+      domainName: cleanDomain,
+      error: "Could not retrieve WHOIS data"
+    };
   }
 }
 

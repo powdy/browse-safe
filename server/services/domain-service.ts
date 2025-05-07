@@ -156,8 +156,43 @@ export function checkSuspiciousPatterns(domain: string): string[] {
   return patterns;
 }
 
-export function estimateSSLSecurity(domain: string): Promise<boolean> {
-  // In a real implementation, this would check the SSL certificate
-  // For now, we'll return a simple true for domains that likely have SSL
-  return Promise.resolve(true);
+export async function estimateSSLSecurity(domain: string): Promise<boolean> {
+  // This uses OpenSSL to check if the domain has a valid SSL certificate
+  try {
+    const { exec } = require('child_process');
+    const { promisify } = require('util');
+    const execAsync = promisify(exec);
+    
+    // Clean the domain
+    const cleanDomain = domain.replace(/^(https?:\/\/)?(www\.)?/, '');
+    
+    // Try to get certificate information using OpenSSL
+    const command = `echo | openssl s_client -connect ${cleanDomain}:443 -servername ${cleanDomain} 2>/dev/null | openssl x509 -noout -dates`;
+    
+    try {
+      const { stdout } = await execAsync(command, { timeout: 5000 });
+      
+      // If we get output, then the SSL certificate exists
+      if (stdout && stdout.includes('notBefore') && stdout.includes('notAfter')) {
+        // Get expiration date
+        const expiryMatch = stdout.match(/notAfter=(.+)/);
+        if (expiryMatch) {
+          const expiryDateStr = expiryMatch[1].trim();
+          const expiryDate = new Date(expiryDateStr);
+          
+          // Check if certificate is still valid (not expired)
+          const now = new Date();
+          return expiryDate > now;
+        }
+      }
+      
+      return false;
+    } catch (error) {
+      console.error(`SSL check error for ${cleanDomain}:`, error);
+      return false;
+    }
+  } catch (error) {
+    console.error(`Error in SSL security check:`, error);
+    return false;
+  }
 }
