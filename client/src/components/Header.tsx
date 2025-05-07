@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Check, Shield } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 
 export default function Header() {
   const [location] = useLocation();
@@ -18,9 +18,8 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 md:py-3 flex flex-col md:flex-row justify-between items-center gap-4">
         <Link href="/">
           <a className="flex items-center mb-4 md:mb-0 group">
-            <div className="flex items-center justify-center h-16 w-12 mr-3 transition-all duration-300 relative">
-              <div className="absolute inset-0 shield-shape bg-red-600 border-2 border-red-800"></div>
-              <Check className="h-6 w-6 text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 group-hover:scale-125 transition-all duration-300" strokeWidth={3} />
+            <div className="flex items-center justify-center h-16 w-14 mr-3 transition-all duration-300 relative">
+              <ShieldCheck className="h-14 w-14 text-red-600 fill-red-600 stroke-red-700 group-hover:scale-110 transition-all duration-300" strokeWidth={1.5} />
             </div>
             <div>
               <h1 className="text-3xl font-heading font-extrabold text-primary-700 group-hover:text-accent-600 transition-all duration-300">BrowseSafe</h1>
