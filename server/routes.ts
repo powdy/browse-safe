@@ -144,7 +144,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         status = "dangerous";
       }
       
-      // Create scan object
+      // Create scan object  
       const scanData = {
         url: cleanUrl,
         trustScore,
@@ -167,9 +167,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         suspiciousPatterns: suspiciousPatterns.length > 0 ? suspiciousPatterns.join(", ") : "None",
         userReports: 0, // Will be populated from actual reports
         relatedSites: 0, // Will be populated from actual related sites
-        lastScanned: new Date(),
         status,
-        details: {
+        lastScanned: new Date(),
+        details: JSON.stringify({
           whoisData,
           domainInfo: {
             ...domainInfo,
@@ -177,7 +177,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           },
           ipInfo,
           blacklistResult
-        }
+        })
       };
       
       // Save or update the scan
