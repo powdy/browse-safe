@@ -143,7 +143,7 @@ export default function CookiePolicy() {
             <section>
               <h2 className="text-xl font-semibold mb-3">9. Contact Us</h2>
               <p className="text-gray-700">
-                If you have any questions about our Cookie Policy, please contact us at cookies@browse-safe.com.
+                If you have any questions about our Cookie Policy, please contact us at webmaster@browse-safe.com.
               </p>
             </section>
           </div>

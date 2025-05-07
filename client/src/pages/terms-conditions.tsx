@@ -106,7 +106,7 @@ export default function TermsConditions() {
             <section>
               <h2 className="text-xl font-semibold mb-3">12. Contact Us</h2>
               <p className="text-gray-700">
-                If you have any questions about these Terms, please contact us at terms@trustguard.com.
+                If you have any questions about these Terms, please contact us at webmaster@browse-safe.com.
               </p>
             </section>
           </div>

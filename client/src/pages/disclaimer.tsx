@@ -91,7 +91,7 @@ export default function Disclaimer() {
             <section>
               <h2 className="text-xl font-semibold mb-3">9. Contact Us</h2>
               <p className="text-gray-700">
-                If you have any questions about this Disclaimer, please contact us at disclaimer@browse-safe.com.
+                If you have any questions about this Disclaimer, please contact us at webmaster@browse-safe.com.
               </p>
             </section>
           </div>
