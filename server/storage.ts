@@ -14,6 +14,7 @@ export interface IStorage {
   getScanByUrl(url: string): Promise<Scan | undefined>;
   createScan(scan: InsertScan): Promise<Scan>;
   updateScan(id: number, scan: Partial<InsertScan>): Promise<Scan | undefined>;
+  deleteScan(id: number): Promise<boolean>;
   getRecentScans(limit: number): Promise<Scan[]>;
   
   // Report methods
@@ -169,6 +170,11 @@ export class MemStorage implements IStorage {
     this.scansMap.set(id, updatedScan);
     return updatedScan;
   }
+  
+  async deleteScan(id: number): Promise<boolean> {
+    if (!this.scansMap.has(id)) return false;
+    return this.scansMap.delete(id);
+  }
 
   async getRecentScans(limit: number): Promise<Scan[]> {
     return Array.from(this.scansMap.values())
@@ -267,6 +273,18 @@ export class DatabaseStorage implements IStorage {
       .where(eq(scans.id, id))
       .returning();
     return updatedScan || undefined;
+  }
+  
+  async deleteScan(id: number): Promise<boolean> {
+    try {
+      await db
+        .delete(scans)
+        .where(eq(scans.id, id));
+      return true;
+    } catch (error) {
+      console.error(`Error deleting scan with ID ${id}:`, error);
+      return false;
+    }
   }
 
   async getRecentScans(limit: number): Promise<Scan[]> {

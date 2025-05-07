@@ -193,18 +193,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.json(ourSiteScan);
       }
       
+      // First check for any existing scans of our site in the database
+      // and remove them to ensure our special case always applies
+      if (cleanUrl === "browse-safe.com" || 
+          cleanUrl.endsWith(".browse-safe.com") || 
+          url.includes("browse-safe.com") ||
+          url.toLowerCase().includes("browse-safe") ||
+          cleanUrl.toLowerCase().includes("browse-safe")) {
+          
+        try {
+          // Delete any existing scans of our domain - we'll always use our special case instead
+          const existingScan = await storage.getScanByUrl(cleanUrl);
+          if (existingScan) {
+            console.log(`Found existing scan for our domain with ID ${existingScan.id}. Removing it.`);
+            await storage.deleteScan(existingScan.id);
+          }
+        } catch (err) {
+          console.error("Error removing existing scan:", err);
+        }
+      }
+      
       // Check if we already have a scan for this URL and whether to force a new scan
       const existingScan = await storage.getScanByUrl(cleanUrl);
       const forceNewScan = req.query.force === 'true';
       
       if (existingScan && !forceNewScan) {
-        // If scan is less than 1 hour old, return it (reduced from 24 hours for more frequent updates)
-        const lastScanned = new Date(existingScan.lastScanned);
-        const now = new Date();
-        const hoursSinceLastScan = (now.getTime() - lastScanned.getTime()) / (1000 * 60 * 60);
-        
-        if (hoursSinceLastScan < 1) {
-          return res.json(existingScan);
+        // Additional check for our domain
+        if (existingScan.url.toLowerCase().includes("browse-safe")) {
+          console.log("Found cached result for our domain - ignoring it and using special case");
+        } else {
+          // If scan is less than 1 hour old, return it (reduced from 24 hours for more frequent updates)
+          const lastScanned = new Date(existingScan.lastScanned);
+          const now = new Date();
+          const hoursSinceLastScan = (now.getTime() - lastScanned.getTime()) / (1000 * 60 * 60);
+          
+          if (hoursSinceLastScan < 1) {
+            return res.json(existingScan);
+          }
         }
       }
       
