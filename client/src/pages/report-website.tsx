@@ -137,21 +137,21 @@ export default function ReportWebsite() {
           {/* Feature cards with vibrant gradients and animations */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="bg-gradient-to-br from-white to-primary-50 p-6 rounded-xl border border-primary-100 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="bg-gradient-to-br from-primary-400 to-primary-600 p-4 rounded-full shadow-md text-white mb-5">
+              <div className="bg-primary-600 p-4 rounded-full shadow-md text-white mb-5">
                 <Search className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-medium mb-3 text-primary-800">Identify Threats</h3>
               <p className="text-primary-600">Your reports help identify new threats in the ever-changing online landscape</p>
             </div>
             <div className="bg-gradient-to-br from-white to-primary-50 p-6 rounded-xl border border-primary-100 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="bg-gradient-to-br from-primary-400 to-primary-600 p-4 rounded-full shadow-md text-white mb-5">
+              <div className="bg-primary-600 p-4 rounded-full shadow-md text-white mb-5">
                 <Shield className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-medium mb-3 text-primary-800">Protect Others</h3>
               <p className="text-primary-600">Help warn the community about suspicious websites and online scams</p>
             </div>
             <div className="bg-gradient-to-br from-white to-primary-50 p-6 rounded-xl border border-primary-100 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="bg-gradient-to-br from-primary-400 to-primary-600 p-4 rounded-full shadow-md text-white mb-5">
+              <div className="bg-primary-600 p-4 rounded-full shadow-md text-white mb-5">
                 <Lock className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-medium mb-3 text-primary-800">Take Action</h3>
@@ -219,7 +219,7 @@ export default function ReportWebsite() {
                 
                 <CardHeader className="bg-gradient-to-r from-primary-100 to-primary-50 border-b border-primary-200 relative z-10">
                   <div className="flex items-center gap-4">
-                    <div className="bg-gradient-to-br from-primary-500 to-primary-700 p-4 rounded-full shadow-md">
+                    <div className="bg-primary-600 p-4 rounded-full shadow-md">
                       <FileWarning className="h-7 w-7 text-white" />
                     </div>
                     <div>
@@ -334,7 +334,7 @@ export default function ReportWebsite() {
                       
                       <Button 
                         type="submit" 
-                        className="w-full bg-gradient-to-r from-primary-600 to-primary-800 hover:from-primary-500 hover:to-primary-700 transition-all text-lg py-6" 
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all text-lg py-6" 
                         disabled={isSubmitting}
                         size="lg"
                       >
