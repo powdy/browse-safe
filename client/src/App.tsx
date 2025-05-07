@@ -80,6 +80,7 @@ function Router() {
           <Route path="/cookie-policy" component={CookiePolicy} />
           <Route path="/online-safety-guide" component={OnlineSafetyGuide} />
           <Route path="/install-logo" component={InstallLogo} />
+          <Route path="/contact-us" component={ContactUs} />
           <Route component={NotFound} />
         </Switch>
       </div>
