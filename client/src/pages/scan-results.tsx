@@ -1,18 +1,15 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation, useRoute } from "wouter";
+import { useLocation } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Share2, Flag, Shield, AlertCircle, Server } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Share2, Flag, Shield } from "lucide-react";
 import LoadingState from "@/components/LoadingState";
 import TrustScoreCard from "@/components/TrustScoreCard";
 import DetailedAnalysis from "@/components/DetailedAnalysis";
 import SecurityRecommendations from "@/components/SecurityRecommendations";
-import ThreatLevelPage from "@/components/ThreatLevelPage";
 import { formatDate } from "@/lib/scan-utils";
 import type { Scan } from "@shared/schema";
-import { Helmet } from "react-helmet";
 
 export default function ScanResults() {
   const [location, setLocation] = useLocation();
@@ -111,17 +108,14 @@ export default function ScanResults() {
   
   // Determine if domain is established (over 2 years)
   const hasEstablishedDomain = scan.domainAge?.includes("years") && 
-    parseInt(scan.domainAge) >= 2;
+    parseInt(scan.domainAge?.split(' ')[0] || '0') >= 2;
   
   // Check if has blacklist issues
   const hasBlacklistIssues = !scan.blacklistStatus?.includes("Not");
 
   return (
     <>
-      <Helmet>
-        <title>Scan Results for {displayUrl} | TrustGuard</title>
-        <meta name="description" content={`Security analysis for ${displayUrl}. Trust score: ${scan.trustScore}/100. Domain age: ${scan.domainAge}. Check if this website is safe or potentially fraudulent.`} />
-      </Helmet>
+      <title>Scan Results for {displayUrl} | TrustGuard</title>
       
       <section className="py-10">
         <div className="container mx-auto px-4">
@@ -140,7 +134,7 @@ export default function ScanResults() {
                 >
                   <Share2 className="mr-1 h-4 w-4" /> Share
                 </Button>
-                <Button variant="outline" onClick={() => setLocation("/report")}>
+                <Button variant="outline" onClick={() => setLocation("/report-website")}>
                   <Flag className="mr-1 h-4 w-4" /> Report
                 </Button>
                 
@@ -153,87 +147,44 @@ export default function ScanResults() {
             </div>
           </div>
 
-          <Tabs defaultValue="overview" className="mb-8">
-            <TabsList className="mb-4">
-              <TabsTrigger value="overview" className="flex items-center gap-1">
-                <Shield className="h-4 w-4" /> Overview
-              </TabsTrigger>
-              <TabsTrigger value="threat" className="flex items-center gap-1">
-                <AlertCircle className="h-4 w-4" /> Threat Analysis
-              </TabsTrigger>
-              <TabsTrigger value="technical" className="flex items-center gap-1">
-                <Server className="h-4 w-4" /> Technical Details
-              </TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="overview" className="mt-0">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Trust Score Card */}
-                <div className="lg:col-span-1">
-                  <TrustScoreCard
-                    trustScore={scan.trustScore}
-                    domainAge={scan.domainAge}
-                    whoisStatus={scan.registrationDate !== "Unknown" ? "Verified" : "Partially Verified"}
-                    sslStatus={scan.hasValidSSL}
-                    malwareStatus={scan.hasMalware}
-                    blacklistStatus={scan.blacklistStatus}
-                    userReports={scan.userReports}
-                    lastScanned={new Date(scan.lastScanned)}
-                    status={scan.status as "safe" | "suspicious" | "dangerous"}
-                  />
-                </div>
-                
-                {/* Detailed Analysis */}
-                <div className="lg:col-span-2">
-                  <DetailedAnalysis
-                    domainInfo={domainInfo}
-                    technicalInfo={technicalInfo}
-                    contentAnalysis={contentAnalysis}
-                  />
-                </div>
-              </div>
-              
-              {/* Security Recommendations */}
-              <div className="mt-6">
-                <SecurityRecommendations
-                  domainName={scan.url}
-                  trustScore={scan.trustScore}
-                  status={scan.status as "safe" | "suspicious" | "dangerous"}
-                  hasEstablishedDomain={hasEstablishedDomain}
-                  hasValidSSL={scan.hasValidSSL || false}
-                  hasMalware={scan.hasMalware || false}
-                  hasBlacklistIssues={hasBlacklistIssues}
-                />
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="threat" className="mt-0">
-              <ThreatLevelPage 
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Trust Score Card */}
+            <div className="lg:col-span-1">
+              <TrustScoreCard
                 trustScore={scan.trustScore}
+                domainAge={scan.domainAge}
+                whoisStatus={scan.registrationDate !== "Unknown" ? "Verified" : "Partially Verified"}
+                sslStatus={scan.hasValidSSL}
+                malwareStatus={scan.hasMalware}
+                blacklistStatus={scan.blacklistStatus}
+                userReports={scan.userReports}
+                lastScanned={new Date(scan.lastScanned)}
                 status={scan.status as "safe" | "suspicious" | "dangerous"}
-                domainInfo={{
-                  domainAge: scan.domainAge,
-                  hasValidSSL: scan.hasValidSSL,
-                  hasMalware: scan.hasMalware,
-                  hasPhishing: scan.hasPhishing,
-                  blacklistStatus: scan.blacklistStatus,
-                  suspiciousPatterns: scan.suspiciousPatterns
-                }}
               />
-            </TabsContent>
+            </div>
             
-            <TabsContent value="technical" className="mt-0">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="lg:col-span-3">
-                  <DetailedAnalysis
-                    domainInfo={domainInfo}
-                    technicalInfo={technicalInfo}
-                    contentAnalysis={contentAnalysis}
-                  />
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
+            {/* Detailed Analysis */}
+            <div className="lg:col-span-2">
+              <DetailedAnalysis
+                domainInfo={domainInfo}
+                technicalInfo={technicalInfo}
+                contentAnalysis={contentAnalysis}
+              />
+            </div>
+          </div>
+          
+          {/* Security Recommendations */}
+          <div className="mt-6">
+            <SecurityRecommendations
+              domainName={scan.url}
+              trustScore={scan.trustScore}
+              status={scan.status as "safe" | "suspicious" | "dangerous"}
+              hasEstablishedDomain={hasEstablishedDomain}
+              hasValidSSL={scan.hasValidSSL || false}
+              hasMalware={scan.hasMalware || false}
+              hasBlacklistIssues={hasBlacklistIssues}
+            />
+          </div>
         </div>
       </section>
     </>
