@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-interface SafeBrowsingResult {
+export interface SafeBrowsingResult {
   isUrlMalicious: boolean;
   threats: string[];
   threatTypes: string[];
@@ -34,56 +34,72 @@ export async function checkSafeBrowsing(url: string): Promise<SafeBrowsingResult
       cleanUrl = 'http://' + cleanUrl;
     }
     
-    const response = await axios.post(
-      `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`,
-      {
-        client: {
-          clientId: "website-trust-analyzer",
-          clientVersion: "1.0.0"
+    // Log the API key's first few characters to help with debugging
+    // (without revealing the entire key)
+    const keyPreview = apiKey.substring(0, 6) + '...' + apiKey.substring(apiKey.length - 4);
+    console.log(`Using Google Safe Browsing API key: ${keyPreview}`);
+    
+    try {
+      const response = await axios.post(
+        `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`,
+        {
+          client: {
+            clientId: "website-trust-analyzer",
+            clientVersion: "1.0.0"
+          },
+          threatInfo: {
+            threatTypes: [
+              "MALWARE", 
+              "SOCIAL_ENGINEERING", 
+              "UNWANTED_SOFTWARE", 
+              "POTENTIALLY_HARMFUL_APPLICATION"
+            ],
+            platformTypes: ["ANY_PLATFORM"],
+            threatEntryTypes: ["URL"],
+            threatEntries: [{ url: cleanUrl }]
+          }
         },
-        threatInfo: {
-          threatTypes: [
-            "MALWARE", 
-            "SOCIAL_ENGINEERING", 
-            "UNWANTED_SOFTWARE", 
-            "POTENTIALLY_HARMFUL_APPLICATION"
-          ],
-          platformTypes: ["ANY_PLATFORM"],
-          threatEntryTypes: ["URL"],
-          threatEntries: [{ url: cleanUrl }]
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          timeout: 5000
         }
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        timeout: 5000
-      }
-    );
+      );
 
-    console.log('Google Safe Browsing API response:', JSON.stringify(response.data, null, 2));
-    
-    // If matches are found, the URL is unsafe
-    if (response.data && response.data.matches && response.data.matches.length > 0) {
-      const threats = response.data.matches.map((match: any) => match.threat.url);
-      const threatTypes = response.data.matches.map((match: any) => match.threatType);
-      const cacheDuration = response.data.matches[0].cacheDuration || "300s";
+      console.log('Google Safe Browsing API response:', JSON.stringify(response.data, null, 2));
       
+      // If matches are found, the URL is unsafe
+      if (response.data && response.data.matches && response.data.matches.length > 0) {
+        const threats = response.data.matches.map((match: any) => match.threat.url);
+        const threatTypes = response.data.matches.map((match: any) => match.threatType);
+        const cacheDuration = response.data.matches[0].cacheDuration || "300s";
+        
+        return {
+          isUrlMalicious: true,
+          threats,
+          threatTypes,
+          cacheDuration
+        };
+      }
+      
+      // No matches found, URL is safe
       return {
-        isUrlMalicious: true,
-        threats,
-        threatTypes,
-        cacheDuration
+        isUrlMalicious: false,
+        threats: [],
+        threatTypes: [],
+        cacheDuration: "300s"
       };
+    } catch (innerError: any) {
+      console.error('Error in Google Safe Browsing API request:', innerError);
+      
+      if (innerError.response && innerError.response.status === 403) {
+        console.error('Google Safe Browsing API key may not have proper permissions or the API is not enabled');
+      }
+      
+      // Continue with outer error handling
+      throw innerError;
     }
-    
-    // No matches found, URL is safe
-    return {
-      isUrlMalicious: false,
-      threats: [],
-      threatTypes: [],
-      cacheDuration: "300s"
-    };
   } catch (error) {
     console.error('Error querying Google Safe Browsing API:', error);
     
