@@ -59,6 +59,22 @@ const reportSchema = z.object({
 
 export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
+  
+  // Helper function to safely format a date string
+  function formatDateSafely(dateString: string | undefined) {
+    if (!dateString) return "Unknown";
+    try {
+      const date = new Date(dateString);
+      // Check if date is valid
+      if (isNaN(date.getTime())) return "Unknown";
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric'
+      });
+    } catch (e) {
+      console.error("Date formatting error:", e);
+      return "Unknown";
+    }
+  }
 
   // Endpoint to get recent scans
   app.get("/api/scans/recent", async (_req: Request, res: Response) => {
@@ -191,8 +207,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
           url: cleanUrl,
           trustScore,
           domainAge: whoisData.domainAge || "Unknown",
-          registrationDate: whoisData.creationDate || "Unknown",
-          expirationDate: whoisData.expirationDate || "Unknown",
+          // Format dates nicely if available
+          registrationDate: whoisData.creationDate 
+            ? new Date(whoisData.creationDate).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+              }) 
+            : "Unknown",
+          expirationDate: whoisData.expirationDate 
+            ? new Date(whoisData.expirationDate).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+              }) 
+            : "Unknown",
           registrar: whoisData.registrar || "Unknown",
           registrantCountry: whoisData.registrantCountry || "Unknown",
           ipAddress: ip || "Unknown",

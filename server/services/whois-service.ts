@@ -187,14 +187,17 @@ export async function getWhoisData(domain: string): Promise<WhoisData> {
         
         const whoisData: WhoisData = {
           domainName: cleanDomain,
-          registrar: record.registrarName || undefined,
-          registrarUrl: record.registrarUrl || undefined,
-          creationDate: record.createdDate || undefined,
-          expirationDate: record.expiresDate || undefined,
-          updatedDate: record.updatedDate || undefined,
-          registrantOrganization: record.registrant?.organization || undefined,
-          registrantCountry: record.registrant?.country || undefined
+          registrar: record.registrarName || record.registryData?.registrarName || undefined,
+          registrarUrl: record.registrarUrl || record.registryData?.registrarUrl || undefined,
+          creationDate: record.createdDate || record.registryData?.createdDate || undefined,
+          expirationDate: record.expiresDate || record.registryData?.expiresDate || undefined,
+          updatedDate: record.updatedDate || record.registryData?.updatedDate || undefined,
+          registrantOrganization: record.registrant?.organization || record.registryData?.registrant?.organization || undefined,
+          registrantCountry: record.registrant?.country || record.registryData?.registrant?.country || undefined
         };
+        
+        // Additional logging to debug
+        console.log("Parsed WHOIS data:", JSON.stringify(whoisData, null, 2));
         
         // Extract name servers
         if (record.nameServers && record.nameServers.hostNames) {
