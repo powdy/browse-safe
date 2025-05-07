@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "wouter";
+import { useLocation, useRoute } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Share2, Flag } from "lucide-react";
@@ -13,7 +13,7 @@ import type { Scan } from "@shared/schema";
 import { Helmet } from "react-helmet";
 
 export default function ScanResults() {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const urlParams = new URLSearchParams(location.split("?")[1]);
   const url = urlParams.get("url");
   const [showSharePopup, setShowSharePopup] = useState(false);
@@ -47,7 +47,7 @@ export default function ScanResults() {
         <Card className="p-6 text-center">
           <h2 className="text-xl font-bold mb-2">No Website Provided</h2>
           <p className="mb-4">Please provide a website URL to scan.</p>
-          <Button onClick={() => window.location.href = "/"}>
+          <Button onClick={() => setLocation("/")}>
             Go Home
           </Button>
         </Card>
@@ -65,7 +65,7 @@ export default function ScanResults() {
         <Card className="p-6 text-center">
           <h2 className="text-xl font-bold text-danger mb-2">Error Scanning Website</h2>
           <p className="mb-4">We encountered an error while scanning {displayUrl}. Please try again later.</p>
-          <Button onClick={() => window.location.href = "/"}>
+          <Button onClick={() => setLocation("/")}>
             Try Another Website
           </Button>
         </Card>
@@ -134,7 +134,7 @@ export default function ScanResults() {
                 >
                   <Share2 className="mr-1 h-4 w-4" /> Share
                 </Button>
-                <Button variant="outline" onClick={() => window.location.href = "/report"}>
+                <Button variant="outline" onClick={() => setLocation("/report")}>
                   <Flag className="mr-1 h-4 w-4" /> Report
                 </Button>
                 

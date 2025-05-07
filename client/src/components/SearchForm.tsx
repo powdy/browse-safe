@@ -42,8 +42,8 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
   };
 
   const inputBgColor = darkMode ? "bg-primary-800/60 border-primary-700" : "bg-white border-gray-300";
-  const textColor = darkMode ? "text-white" : "text-primary-900";
-  const placeholderColor = darkMode ? "placeholder:text-primary-400" : "placeholder:text-primary-500";
+  const textColor = "text-primary-900"; // Always use dark text for better visibility
+  const placeholderColor = "placeholder:text-primary-500"; // Consistent placeholder color
   const linkColor = darkMode ? "text-primary-300 hover:text-white" : "text-primary-600 hover:text-accent-600";
 
   return (
