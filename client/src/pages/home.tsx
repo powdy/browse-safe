@@ -220,13 +220,13 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Title with gradient text */}
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text">
+            {/* Title with gradient text - improved z-index and position for VPS compatibility */}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text relative z-10 px-2">
               Real-Time Website Security Scans
             </h2>
             
-            {/* Decorative underline */}
-            <div className="w-24 h-1.5 bg-gradient-to-r from-purple-400 to-violet-500 rounded-full mx-auto mb-6"></div>
+            {/* Decorative underline - moved lower for VPS compatibility */}
+            <div className="w-24 h-1.5 bg-gradient-to-r from-purple-400 to-violet-500 rounded-full mx-auto mb-6 relative z-0"></div>
             
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore our latest website security checks and discover potential threats before visiting unfamiliar sites
