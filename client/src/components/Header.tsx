@@ -18,10 +18,9 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 md:py-3 flex flex-col md:flex-row justify-between items-center gap-4">
         <Link href="/">
           <a className="flex items-center mb-4 md:mb-0 group">
-            <div className="flex items-center justify-center h-12 w-12 rounded-full bg-red-600 mr-3 shadow-sm group-hover:shadow-md transition-all duration-300 relative overflow-hidden border border-red-400">
-              <div className="absolute inset-0 bg-gradient-to-tr from-red-500 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <Shield className="h-7 w-7 text-red-600 fill-red-600 group-hover:scale-110 transition-all duration-300" strokeWidth={2} />
-              <Check className="h-4 w-4 text-white absolute group-hover:scale-125 transition-all duration-300" strokeWidth={3} />
+            <div className="flex items-center justify-center h-16 w-14 mr-3 transition-all duration-300 relative drop-shadow-md">
+              <div className="absolute inset-0 shield-shape bg-red-600"></div>
+              <Check className="h-7 w-7 text-white absolute z-10 group-hover:scale-125 transition-all duration-300" strokeWidth={3} />
             </div>
             <div>
               <h1 className="text-3xl font-heading font-extrabold text-primary-700 group-hover:text-accent-600 transition-all duration-300">BrowseSafe</h1>

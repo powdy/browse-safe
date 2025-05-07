@@ -56,3 +56,9 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+/* Custom shield shape */
+.shield-shape {
+  clip-path: polygon(50% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%, 0% 0%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
