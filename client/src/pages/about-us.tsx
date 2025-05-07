@@ -5,14 +5,14 @@ export default function AboutUs() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-6xl">
       <Helmet>
-        <title>About Us | TrustGuard - Website Security Scanner</title>
-        <meta name="description" content="Learn about TrustGuard's mission to make the internet safer through our advanced website security scanning technology and expert team." />
+        <title>About Us | BrowseSafe - Website Security Scanner</title>
+        <meta name="description" content="Learn about BrowseSafe's mission to make the internet safer through our advanced website security scanning technology and expert team." />
       </Helmet>
 
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-teal-500 text-transparent bg-clip-text">
-          About TrustGuard
+          About BrowseSafe
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Making the internet safer through advanced website security analysis and threat detection
@@ -29,7 +29,7 @@ export default function AboutUs() {
         </div>
         <div className="bg-white rounded-lg shadow-md p-8 border border-gray-100">
           <p className="text-lg text-gray-600 mb-4">
-            At TrustGuard, our mission is to create a safer online environment by providing users with reliable, accurate, and comprehensive website security assessments.
+            At BrowseSafe, our mission is to create a safer online environment by providing users with reliable, accurate, and comprehensive website security assessments.
           </p>
           <p className="text-lg text-gray-600 mb-4">
             In today's digital landscape, online scams and fraudulent websites are becoming increasingly sophisticated, making it difficult for the average user to distinguish between legitimate and malicious sites.
@@ -50,7 +50,7 @@ export default function AboutUs() {
         </div>
         <div className="bg-white rounded-lg shadow-md p-8 border border-gray-100">
           <p className="text-lg text-gray-600 mb-4">
-            TrustGuard was founded by a team of cybersecurity experts, data scientists, and web developers with a shared passion for online safety and security.
+            BrowseSafe was founded by a team of cybersecurity experts, data scientists, and web developers with a shared passion for online safety and security.
           </p>
           <p className="text-lg text-gray-600 mb-4">
             Our diverse team brings together decades of combined experience in threat intelligence, malware analysis, domain verification, and user experience design. This multidisciplinary approach allows us to deliver a comprehensive security assessment service that considers all aspects of website trustworthiness.

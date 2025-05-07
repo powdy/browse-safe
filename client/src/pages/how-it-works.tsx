@@ -53,7 +53,7 @@ export default function HowItWorks() {
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-transparent bg-clip-text">
-              How TrustGuard Works
+              How BrowseSafe Works
             </h1>
             
             <div className="w-24 h-1.5 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mx-auto mb-6"></div>
@@ -65,10 +65,10 @@ export default function HowItWorks() {
           
           {/* Introduction Section */}
           <div className="mb-16 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 shadow-sm border border-blue-100">
-            <h2 className="text-2xl font-bold mb-6 text-blue-800">The TrustGuard Technology</h2>
+            <h2 className="text-2xl font-bold mb-6 text-blue-800">The BrowseSafe Technology</h2>
             
             <p className="text-gray-700 mb-6">
-              When you enter a website URL for analysis, TrustGuard initiates a comprehensive security assessment using multiple specialized modules that work in parallel to evaluate different aspects of the site's safety and legitimacy. Our technology combines:
+              When you enter a website URL for analysis, BrowseSafe initiates a comprehensive security assessment using multiple specialized modules that work in parallel to evaluate different aspects of the site's safety and legitimacy. Our technology combines:
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -80,7 +80,7 @@ export default function HowItWorks() {
                   <h3 className="font-medium text-blue-800">API Integrations</h3>
                 </div>
                 <p className="text-sm text-gray-600">
-                  TrustGuard connects to multiple external security databases and services including VirusTotal, AbuseIPDB, and Google Safe Browsing to check for known malicious domains.
+                  BrowseSafe connects to multiple external security databases and services including VirusTotal, AbuseIPDB, and Google Safe Browsing to check for known malicious domains.
                 </p>
               </div>
               
@@ -116,7 +116,7 @@ export default function HowItWorks() {
                   <h3 className="font-medium text-blue-800">Real-Time Analysis</h3>
                 </div>
                 <p className="text-sm text-gray-600">
-                  TrustGuard performs all security checks in real-time, giving you immediate insight into a website's current security status rather than relying solely on cached or outdated information.
+                  BrowseSafe performs all security checks in real-time, giving you immediate insight into a website's current security status rather than relying solely on cached or outdated information.
                 </p>
               </div>
             </div>
