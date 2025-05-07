@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { ShieldCheck } from "lucide-react";
 import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
+import CookieConsent from "./CookieConsent";
 
 export default function Footer() {
   return (
@@ -58,12 +59,13 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-primary-100 font-medium mb-4">Company</h3>
+            <h3 className="text-primary-100 font-medium mb-4">Legal</h3>
             <ul className="space-y-2 text-sm text-primary-300">
-              <li><a href="#" className="hover:text-white">About Us</a></li>
-              <li><a href="#" className="hover:text-white">Contact</a></li>
-              <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white">Terms of Service</a></li>
+              <li><Link href="/privacy-policy"><a className="hover:text-white">Privacy Policy</a></Link></li>
+              <li><Link href="/terms-conditions"><a className="hover:text-white">Terms & Conditions</a></Link></li>
+              <li><Link href="/disclaimer"><a className="hover:text-white">Disclaimer</a></Link></li>
+              <li><Link href="/cookie-policy"><a className="hover:text-white">Cookie Policy</a></Link></li>
+              <li><a href="#" className="hover:text-white">Contact Us</a></li>
             </ul>
           </div>
         </div>
@@ -72,10 +74,11 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-primary-400 mb-4 md:mb-0">&copy; {new Date().getFullYear()} TrustGuard. All rights reserved.</p>
             
-            <div className="flex space-x-6 text-sm text-primary-400">
-              <a href="#" className="hover:text-white">Privacy Policy</a>
-              <a href="#" className="hover:text-white">Terms of Service</a>
-              <a href="#" className="hover:text-white">Cookie Policy</a>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-primary-400">
+              <Link href="/privacy-policy"><a className="hover:text-white">Privacy Policy</a></Link>
+              <Link href="/terms-conditions"><a className="hover:text-white">Terms & Conditions</a></Link>
+              <Link href="/cookie-policy"><a className="hover:text-white">Cookie Policy</a></Link>
+              <CookieConsent />
             </div>
           </div>
         </div>
