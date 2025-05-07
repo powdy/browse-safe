@@ -1,12 +1,14 @@
 import dns from 'dns';
 import { promisify } from 'util';
+import { exec } from 'child_process';
 
-// Promisify DNS functions
+// Promisify functions
 const resolveMx = promisify(dns.resolveMx);
 const resolveTxt = promisify(dns.resolveTxt);
 const resolveNs = promisify(dns.resolveNs);
 const resolve4 = promisify(dns.resolve4);
 const reverse = promisify(dns.reverse);
+const execAsync = promisify(exec);
 
 interface DomainInfo {
   ipAddresses: string[];
@@ -105,10 +107,12 @@ export function estimateDomainReputation(domainInfo: DomainInfo): number {
     score += 5;
     
     // Check if nameservers match the domain
-    const domainParts = domainInfo.nameservers[0].split('.');
-    const rootDomain = domainParts.slice(-2).join('.');
-    if (domainInfo.nameservers.some(ns => ns.includes(rootDomain))) {
-      score += 5; // Custom nameservers matching the domain is a good sign
+    if (domainInfo.nameservers.length > 0) {
+      const domainParts = domainInfo.nameservers[0].split('.');
+      const rootDomain = domainParts.slice(-2).join('.');
+      if (domainInfo.nameservers.some(ns => ns.includes(rootDomain))) {
+        score += 5; // Custom nameservers matching the domain is a good sign
+      }
     }
   }
   
@@ -191,10 +195,6 @@ export function checkSuspiciousPatterns(domain: string): string[] {
 export async function estimateSSLSecurity(domain: string): Promise<boolean> {
   // This uses OpenSSL to check if the domain has a valid SSL certificate
   try {
-    const { exec } = require('child_process');
-    const { promisify } = require('util');
-    const execAsync = promisify(exec);
-    
     // Clean the domain
     const cleanDomain = domain.replace(/^(https?:\/\/)?(www\.)?/, '');
     
