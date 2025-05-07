@@ -105,16 +105,27 @@ export async function getWhoisData(domain: string): Promise<WhoisData> {
             event.eventAction === 'registration');
             
           if (registrationEvent) {
-            whoisData.creationDate = registrationEvent.eventDate;
-            
-            // Calculate domain age
+            // Get the creation date and validate it's not in the future
             const creationDate = new Date(registrationEvent.eventDate);
             const currentDate = new Date();
-            const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
-            const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
-            const years = Math.floor(ageInYears);
-            const months = Math.floor((ageInYears - years) * 12);
-            whoisData.domainAge = `${years} years, ${months} months`;
+            
+            // Check if the creation date is in the future
+            if (creationDate > currentDate) {
+              console.log(`Warning: Domain ${cleanDomain} has a future creation date: ${registrationEvent.eventDate}`);
+              // Skip this as it's clearly incorrect data
+              // Use a reasonable date instead
+              whoisData.creationDate = currentDate.toISOString();
+              whoisData.domainAge = "0 years, 0 months";
+            } else {
+              whoisData.creationDate = registrationEvent.eventDate;
+              
+              // Calculate domain age
+              const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
+              const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+              const years = Math.floor(ageInYears);
+              const months = Math.floor((ageInYears - years) * 12);
+              whoisData.domainAge = `${years} years, ${months} months`;
+            }
           }
           
           // Extract expiration date
@@ -194,11 +205,21 @@ export async function getWhoisData(domain: string): Promise<WhoisData> {
         if (whoisData.creationDate) {
           const creationDate = new Date(whoisData.creationDate);
           const currentDate = new Date();
-          const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
-          const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
-          const years = Math.floor(ageInYears);
-          const months = Math.floor((ageInYears - years) * 12);
-          whoisData.domainAge = `${years} years, ${months} months`;
+          
+          // Check if the creation date is in the future
+          if (creationDate > currentDate) {
+            console.log(`Warning: Domain ${cleanDomain} has a future creation date from WHOIS XML API: ${whoisData.creationDate}`);
+            // Use current date instead
+            whoisData.creationDate = currentDate.toISOString();
+            whoisData.domainAge = "0 years, 0 months";
+          } else {
+            // Normal calculation for valid date
+            const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
+            const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+            const years = Math.floor(ageInYears);
+            const months = Math.floor((ageInYears - years) * 12);
+            whoisData.domainAge = `${years} years, ${months} months`;
+          }
         }
         
         return whoisData;
@@ -312,11 +333,19 @@ function parseWhoisData(whoisText: string): WhoisData {
     try {
       const creationDate = new Date(whoisData.creationDate);
       const currentDate = new Date();
-      const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
-      const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
-      const years = Math.floor(ageInYears);
-      const months = Math.floor((ageInYears - years) * 12);
-      whoisData.domainAge = `${years} years, ${months} months`;
+      
+      // Sanity check for future dates 
+      if (creationDate > currentDate) {
+        console.log(`Warning: Domain ${whoisData.domainName} has future creation date in WHOIS: ${whoisData.creationDate}`);
+        whoisData.creationDate = currentDate.toISOString();
+        whoisData.domainAge = "0 years, 0 months";
+      } else {
+        const ageInMilliseconds = currentDate.getTime() - creationDate.getTime();
+        const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+        const years = Math.floor(ageInYears);
+        const months = Math.floor((ageInYears - years) * 12);
+        whoisData.domainAge = `${years} years, ${months} months`;
+      }
     } catch (error) {
       console.error("Error calculating domain age:", error);
     }
