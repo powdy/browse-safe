@@ -11,6 +11,10 @@ import RecentScans from "@/pages/recent-scans";
 import ReportWebsite from "@/pages/report-website";
 import HowItWorks from "@/pages/how-it-works";
 import NotFound from "@/pages/not-found";
+import PrivacyPolicy from "@/pages/privacy-policy";
+import TermsConditions from "@/pages/terms-conditions";
+import Disclaimer from "@/pages/disclaimer";
+import CookiePolicy from "@/pages/cookie-policy";
 
 function Router() {
   return (
@@ -23,6 +27,10 @@ function Router() {
           <Route path="/recent-scans" component={RecentScans} />
           <Route path="/report" component={ReportWebsite} />
           <Route path="/how-it-works" component={HowItWorks} />
+          <Route path="/privacy-policy" component={PrivacyPolicy} />
+          <Route path="/terms-conditions" component={TermsConditions} />
+          <Route path="/disclaimer" component={Disclaimer} />
+          <Route path="/cookie-policy" component={CookiePolicy} />
           <Route component={NotFound} />
         </Switch>
       </div>
