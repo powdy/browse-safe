@@ -50,7 +50,7 @@ export default function Footer() {
               <li><Link href="/how-it-works"><span className="hover:text-white cursor-pointer">How It Works</span></Link></li>
               <li><Link href="/about-us"><span className="hover:text-white cursor-pointer">About Us</span></Link></li>
               <li><Link href="/online-safety-guide"><span className="hover:text-white cursor-pointer">Online Safety Guide</span></Link></li>
-              <li><span className="hover:text-white cursor-pointer">Security Blog</span></li>
+              <li><a href="https://blog.browse-safe.com" target="_blank" rel="noopener noreferrer" className="hover:text-white cursor-pointer">Security Blog</a></li>
             </ul>
           </div>
           
@@ -61,7 +61,7 @@ export default function Footer() {
               <li><Link href="/terms-conditions"><span className="hover:text-white cursor-pointer">Terms & Conditions</span></Link></li>
               <li><Link href="/disclaimer"><span className="hover:text-white cursor-pointer">Disclaimer</span></Link></li>
               <li><Link href="/cookie-policy"><span className="hover:text-white cursor-pointer">Cookie Policy</span></Link></li>
-              <li><span className="hover:text-white cursor-pointer">Contact Us</span></li>
+              <li><Link href="/contact-us"><span className="hover:text-white cursor-pointer">Contact Us</span></Link></li>
             </ul>
           </div>
         </div>

@@ -21,6 +21,7 @@ import Disclaimer from "@/pages/disclaimer";
 import CookiePolicy from "@/pages/cookie-policy";
 import OnlineSafetyGuide from "@/pages/online-safety-guide";
 import InstallLogo from "@/pages/install-logo";
+import ContactUs from "@/pages/contact-us";
 
 function Router() {
   // State to manage cookie consent banner visibility
