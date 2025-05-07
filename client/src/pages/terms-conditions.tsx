@@ -28,7 +28,7 @@ export default function TermsConditions() {
             <section>
               <h2 className="text-xl font-semibold mb-3">2. Description of Service</h2>
               <p className="text-gray-700">
-                TrustGuard provides a website security scanning service that helps users assess the trustworthiness and security of websites by analyzing various factors including domain age, security features, and presence on blacklists. The service is provided on an "as is" and "as available" basis.
+                BrowseSafe provides a website security scanning service that helps users assess the trustworthiness and security of websites by analyzing various factors including domain age, security features, and presence on blacklists. The service is provided on an "as is" and "as available" basis.
               </p>
             </section>
             
