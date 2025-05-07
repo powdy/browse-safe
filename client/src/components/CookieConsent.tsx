@@ -110,13 +110,25 @@ const CookieConsent = () => {
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <Button variant="outline" onClick={() => setOpenDialog(true)}>
+                <Button 
+                  variant="outline" 
+                  onClick={() => setOpenDialog(true)}
+                  className="border-gray-400 bg-white text-gray-800 hover:bg-gray-100"
+                >
                   Customize
                 </Button>
-                <Button variant="outline" onClick={acceptEssentialCookies}>
+                <Button 
+                  variant="outline" 
+                  onClick={acceptEssentialCookies}
+                  className="border-gray-400 bg-white text-gray-800 hover:bg-gray-100"
+                >
                   Essential Only
                 </Button>
-                <Button variant="default" onClick={acceptAllCookies}>
+                <Button 
+                  variant="default" 
+                  onClick={acceptAllCookies}
+                  className="bg-primary-600 hover:bg-primary-700 text-white"
+                >
                   Accept All
                 </Button>
               </div>
@@ -244,15 +256,26 @@ const CookieConsent = () => {
           
           <DialogFooter className="flex flex-col sm:flex-row sm:justify-between gap-2">
             <div className="flex gap-2">
-              <Button variant="outline" onClick={acceptEssentialCookies}>
+              <Button 
+                variant="outline" 
+                onClick={acceptEssentialCookies}
+                className="border-gray-400 bg-white text-gray-800 hover:bg-gray-100"
+              >
                 Essential Only
               </Button>
-              <Button variant="default" onClick={acceptAllCookies}>
+              <Button 
+                variant="default" 
+                onClick={acceptAllCookies}
+                className="bg-primary-600 hover:bg-primary-700 text-white"
+              >
                 Accept All
               </Button>
             </div>
             <DialogClose asChild>
-              <Button onClick={saveCookiePreferences}>
+              <Button 
+                onClick={saveCookiePreferences}
+                className="bg-blue-600 hover:bg-blue-700 text-white"
+              >
                 Save Preferences
               </Button>
             </DialogClose>
