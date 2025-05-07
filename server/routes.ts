@@ -124,6 +124,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       try {
         // 1. Get domain info - checking if domain exists
         const domainInfo = await getDomainInfo(cleanUrl);
+        
+        // If we couldn't resolve any IPs, the domain likely doesn't exist
+        // We'll still proceed with analysis but with a lower score
+        const domainExists = domainInfo.ipAddresses.length > 0;
+        if (!domainExists) {
+          console.log(`Domain likely doesn't exist: ${cleanUrl} (no IP addresses found)`);
+        }
+        
         const domainScore = estimateDomainReputation(domainInfo);
         const suspiciousPatterns = checkSuspiciousPatterns(cleanUrl);
         

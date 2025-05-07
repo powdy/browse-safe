@@ -41,22 +41,40 @@ export async function getDomainInfo(domain: string): Promise<DomainInfo> {
     // Try to get other DNS records even if IP resolution failed
     
     // Get nameservers
-    const nameservers = await resolveNs(cleanDomain).catch((err) => {
-      console.log(`Could not resolve nameservers for ${cleanDomain}: ${err}`);
-      return [];
-    });
+    let nameservers = [];
+    try {
+      nameservers = await resolveNs(cleanDomain);
+    } catch (err) {
+      if (err.code === 'ENOTFOUND' || err.code === 'ENODATA') {
+        console.log(`Domain likely doesn't exist (${err.code}): ${cleanDomain}`);
+      } else {
+        console.log(`Could not resolve nameservers for ${cleanDomain}: ${err}`);
+      }
+    }
     
     // Get MX records
-    const mxRecords = await resolveMx(cleanDomain).catch((err) => {
-      console.log(`Could not resolve MX records for ${cleanDomain}: ${err}`);
-      return [];
-    });
+    let mxRecords = [];
+    try {
+      mxRecords = await resolveMx(cleanDomain);
+    } catch (err) {
+      if (err.code === 'ENOTFOUND' || err.code === 'ENODATA') {
+        console.log(`Domain likely doesn't exist (${err.code}) - MX check: ${cleanDomain}`);
+      } else {
+        console.log(`Could not resolve MX records for ${cleanDomain}: ${err}`);
+      }
+    }
     
     // Get TXT records
-    const txtRecords = await resolveTxt(cleanDomain).catch((err) => {
-      console.log(`Could not resolve TXT records for ${cleanDomain}: ${err}`);
-      return [];
-    });
+    let txtRecords = [];
+    try {
+      txtRecords = await resolveTxt(cleanDomain);
+    } catch (err) {
+      if (err.code === 'ENOTFOUND' || err.code === 'ENODATA') {
+        console.log(`Domain likely doesn't exist (${err.code}) - TXT check: ${cleanDomain}`);
+      } else {
+        console.log(`Could not resolve TXT records for ${cleanDomain}: ${err}`);
+      }
+    }
     
     // Get reverse DNS for each IP
     const reverseDns: Record<string, string[]> = {};
