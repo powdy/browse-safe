@@ -4,6 +4,7 @@ import TrustIndicators from "@/components/TrustIndicators";
 import RecentScansList from "@/components/RecentScansList";
 import { SecurityIcon } from "@/components/icons";
 import { Helmet } from "react-helmet";
+import { Link } from "wouter";
 
 export default function Home() {
   return (
@@ -193,24 +194,57 @@ export default function Home() {
       
       {/* Recent Scans Section with Enhanced Design */}
       <section className="py-20 bg-white relative">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-block p-2 bg-purple-50 rounded-full mb-4">
-              <div className="p-1 bg-purple-100 rounded-full">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                </svg>
+        {/* Top wave decoration */}
+        <div className="absolute top-0 left-0 right-0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
+            <path fill="#f9fafb" fillOpacity="1" d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,186.7C672,213,768,235,864,224C960,213,1056,171,1152,149.3C1248,128,1344,128,1392,128L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+          </svg>
+        </div>
+        
+        <div className="container mx-auto px-4 pt-10">
+          <div className="text-center mb-10">
+            {/* Icon with particle effects */}
+            <div className="inline-block relative mb-6">
+              <div className="absolute -inset-6 bg-violet-500/5 rounded-full blur-xl"></div>
+              <div className="relative">
+                <div className="p-3 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                {/* Small decorative dots */}
+                <span className="absolute -top-1 -right-1 h-3 w-3 bg-purple-400 rounded-full"></span>
+                <span className="absolute -bottom-1 -left-1 h-2 w-2 bg-violet-300 rounded-full"></span>
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-700 via-violet-700 to-indigo-700 text-transparent bg-clip-text">
-              Recently Analyzed Websites
+            
+            {/* Title with gradient text */}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 inline-block bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text">
+              Real-Time Website Security Scans
             </h2>
+            
+            {/* Decorative underline */}
+            <div className="w-24 h-1.5 bg-gradient-to-r from-purple-400 to-violet-500 rounded-full mx-auto mb-6"></div>
+            
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Browse our latest website security checks and view comprehensive analysis reports
+              Explore our latest website security checks and discover potential threats before visiting unfamiliar sites
             </p>
           </div>
           
+          {/* Recent scans will be displayed here */}
           <RecentScansList />
+          
+          {/* View all button */}
+          <div className="text-center mt-10">
+            <Link href="/recent-scans">
+              <a className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                View All Recent Scans
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </Link>
+          </div>
         </div>
       </section>
       
