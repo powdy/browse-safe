@@ -24,44 +24,44 @@ export default function Footer() {
             </p>
             
             <div className="flex space-x-4">
-              <a href="#" className="text-primary-300 hover:text-white">
+              <span className="text-primary-300 hover:text-white cursor-pointer">
                 <FaTwitter />
-              </a>
-              <a href="#" className="text-primary-300 hover:text-white">
+              </span>
+              <span className="text-primary-300 hover:text-white cursor-pointer">
                 <FaFacebook />
-              </a>
-              <a href="#" className="text-primary-300 hover:text-white">
+              </span>
+              <span className="text-primary-300 hover:text-white cursor-pointer">
                 <FaLinkedin />
-              </a>
+              </span>
             </div>
           </div>
           
           <div>
             <h3 className="text-primary-100 font-medium mb-4">Features</h3>
             <ul className="space-y-2 text-sm text-primary-300">
-              <li><Link href="/"><a className="hover:text-white">Website Scanner</a></Link></li>
-              <li><Link href="/install-logo"><a className="hover:text-white">Install Our Logo</a></Link></li>
+              <li><Link href="/"><span className="hover:text-white cursor-pointer">Website Scanner</span></Link></li>
+              <li><Link href="/install-logo"><span className="hover:text-white cursor-pointer">Install Our Logo</span></Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-primary-100 font-medium mb-4">Resources</h3>
             <ul className="space-y-2 text-sm text-primary-300">
-              <li><Link href="/how-it-works"><a className="hover:text-white">How It Works</a></Link></li>
-              <li><Link href="/about-us"><a className="hover:text-white">About Us</a></Link></li>
-              <li><Link href="/online-safety-guide"><a className="hover:text-white">Online Safety Guide</a></Link></li>
-              <li><a href="#" className="hover:text-white">Security Blog</a></li>
+              <li><Link href="/how-it-works"><span className="hover:text-white cursor-pointer">How It Works</span></Link></li>
+              <li><Link href="/about-us"><span className="hover:text-white cursor-pointer">About Us</span></Link></li>
+              <li><Link href="/online-safety-guide"><span className="hover:text-white cursor-pointer">Online Safety Guide</span></Link></li>
+              <li><span className="hover:text-white cursor-pointer">Security Blog</span></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-primary-100 font-medium mb-4">Legal</h3>
             <ul className="space-y-2 text-sm text-primary-300">
-              <li><Link href="/privacy-policy"><a className="hover:text-white">Privacy Policy</a></Link></li>
-              <li><Link href="/terms-conditions"><a className="hover:text-white">Terms & Conditions</a></Link></li>
-              <li><Link href="/disclaimer"><a className="hover:text-white">Disclaimer</a></Link></li>
-              <li><Link href="/cookie-policy"><a className="hover:text-white">Cookie Policy</a></Link></li>
-              <li><a href="#" className="hover:text-white">Contact Us</a></li>
+              <li><Link href="/privacy-policy"><span className="hover:text-white cursor-pointer">Privacy Policy</span></Link></li>
+              <li><Link href="/terms-conditions"><span className="hover:text-white cursor-pointer">Terms & Conditions</span></Link></li>
+              <li><Link href="/disclaimer"><span className="hover:text-white cursor-pointer">Disclaimer</span></Link></li>
+              <li><Link href="/cookie-policy"><span className="hover:text-white cursor-pointer">Cookie Policy</span></Link></li>
+              <li><span className="hover:text-white cursor-pointer">Contact Us</span></li>
             </ul>
           </div>
         </div>
