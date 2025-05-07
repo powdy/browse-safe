@@ -133,9 +133,9 @@ function ScanCard({ scan }: ScanCardProps) {
         
         {/* Action Button */}
         <Link href={`/scan?url=${encodeURIComponent(scan.url)}`}>
-          <a className={`block text-center py-2 rounded-lg text-white font-medium text-sm mt-4 bg-gradient-to-r ${getGradientColors()} hover:opacity-90 transition-opacity`}>
+          <div className={`block text-center py-2 rounded-lg text-white font-medium text-sm mt-4 bg-gradient-to-r ${getGradientColors()} hover:opacity-90 transition-opacity cursor-pointer`}>
             View Detailed Report
-          </a>
+          </div>
         </Link>
       </CardContent>
     </Card>
@@ -182,7 +182,7 @@ export default function RecentScansList({ noContainer = false }: { noContainer?:
         <div className="flex justify-between items-center mb-10">
           <h2 className="text-2xl font-heading font-bold">Recently Scanned Websites</h2>
           <Link href="/recent-scans">
-            <a className="text-accent-600 hover:text-accent-700 font-medium text-sm">View All</a>
+            <span className="text-accent-600 hover:text-accent-700 font-medium text-sm cursor-pointer">View All</span>
           </Link>
         </div>
         
