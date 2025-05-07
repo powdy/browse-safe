@@ -43,7 +43,6 @@ export default function Footer() {
               <li><Link href="/how-it-works"><a className="hover:text-white">Domain Analysis</a></Link></li>
               <li><Link href="/how-it-works"><a className="hover:text-white">Blacklist Checker</a></Link></li>
               <li><Link href="/how-it-works"><a className="hover:text-white">SSL Verification</a></Link></li>
-              <li><Link href="/how-it-works"><a className="hover:text-white">Phishing Detection</a></Link></li>
             </ul>
           </div>
           
@@ -53,9 +52,7 @@ export default function Footer() {
               <li><Link href="/how-it-works"><a className="hover:text-white">How It Works</a></Link></li>
               <li><Link href="/about-us"><a className="hover:text-white">About Us</a></Link></li>
               <li><Link href="/how-it-works"><a className="hover:text-white">Online Safety Guide</a></Link></li>
-              <li><Link href="/recent-scans"><a className="hover:text-white">Latest Scams</a></Link></li>
               <li><a href="#" className="hover:text-white">Security Blog</a></li>
-              <li><a href="#" className="hover:text-white">Developer API</a></li>
             </ul>
           </div>
           
