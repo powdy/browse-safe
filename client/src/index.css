@@ -59,6 +59,17 @@
 
 /* Custom shield shape */
 .shield-shape {
-  clip-path: polygon(50% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%, 0% 0%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  clip-path: polygon(
+    50% 0%,     /* top center */
+    80% 5%,     /* top right curved start */
+    100% 30%,   /* top right corner */
+    100% 55%,   /* mid right */
+    70% 85%,    /* bottom right curve */
+    50% 100%,   /* bottom point */
+    30% 85%,    /* bottom left curve */
+    0% 55%,     /* mid left */
+    0% 30%,     /* top left corner */
+    20% 5%      /* top left curved start */
+  );
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
