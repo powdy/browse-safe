@@ -120,7 +120,7 @@ export default function Home() {
             
             <div className="prose prose-lg max-w-none">
               <p>
-                In today's digital world, <strong>website security scanners</strong> like BrowseSafe are essential tools for protecting yourself from online fraud. With the increasing sophistication of phishing websites and scams, it's becoming harder to distinguish between legitimate and malicious websites at first glance.
+                Now a days, <strong>website security scanners</strong> like BrowseSafe are essential tools for protecting yourself from online fraud. With the increasing sophistication of phishing websites and scams, it's becoming harder to distinguish between legitimate and malicious websites at first glance.
               </p>
               
               <p>
