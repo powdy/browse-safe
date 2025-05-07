@@ -1,4 +1,4 @@
-import type { Express, Request, Response } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
@@ -7,6 +7,7 @@ import { getDomainInfo, estimateDomainReputation, checkSuspiciousPatterns, estim
 import axios from "axios";
 import { getIpFromDomain, getIpInfo, calculateIpReputation } from "./services/ip-service";
 import { checkBlacklist } from "./services/blacklist-service";
+import { initializeSendGrid, sendReportEmail } from "./services/email-service";
 
 // URL validation schema
 const urlSchema = z.object({
@@ -59,6 +60,9 @@ const reportSchema = z.object({
 
 export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
+  
+  // Initialize SendGrid for email functionality
+  initializeSendGrid();
   
   // Helper function to safely format a date string
   function formatDateSafely(dateString: string | undefined) {
@@ -289,6 +293,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         reportedAt: new Date(),
         status: "pending"
       });
+      
+      // Send email notification
+      try {
+        await sendReportEmail(reportData);
+        console.log(`Email notification sent for reported website: ${reportData.url}`);
+      } catch (emailError) {
+        // Don't fail the API response if sending email fails
+        console.error("Failed to send email notification:", emailError);
+      }
       
       res.status(201).json(report);
     } catch (error) {
