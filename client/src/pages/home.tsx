@@ -183,11 +183,8 @@ export default function Home() {
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-purple-700 to-violet-700 text-transparent bg-clip-text">
-              Advanced Website Security Features
+              Key Security Features
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive website scanner employs multiple technologies to detect online threats
-            </p>
           </div>
           
           <FeaturesSection />
