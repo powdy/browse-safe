@@ -14,8 +14,9 @@ import { Helmet } from "react-helmet";
 
 export default function ScanResults() {
   const [location, setLocation] = useLocation();
-  const urlParams = new URLSearchParams(location.split("?")[1] || "");
-  const url = urlParams.get("url");
+  // Fix URL parameter extraction with a more robust approach
+  const urlSearchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams("");
+  const url = urlSearchParams.get("url");
   
   console.log("Current location:", location);
   console.log("URL parameter:", url);

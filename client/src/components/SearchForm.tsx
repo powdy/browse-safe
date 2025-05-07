@@ -83,9 +83,9 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
         />
         <Button 
           type="submit" 
-          className="bg-accent-600 hover:bg-accent-700 text-white font-medium px-6 py-3"
+          className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-8 py-3 shadow-lg"
         >
-          <Search className="mr-2 h-4 w-4" />
+          <Search className="mr-2 h-5 w-5" />
           Scan Website
         </Button>
       </form>
