@@ -61,25 +61,6 @@ const reportSchema = z.object({
 export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
   
-  // Temporary route for database backup (REMOVE AFTER USE - SECURITY RISK)
-  app.get("/api/admin/db-backup", async (_req: Request, res: Response) => {
-    try {
-      const { execSync } = require("child_process");
-      // Create a database backup
-      const dbBackup = execSync(`pg_dump ${process.env.DATABASE_URL}`).toString();
-      
-      // Set headers for file download
-      res.setHeader('Content-Type', 'application/sql');
-      res.setHeader('Content-Disposition', 'attachment; filename=browse-safe-db-backup.sql');
-      
-      // Send the backup data
-      return res.send(dbBackup);
-    } catch (error) {
-      console.error("Database backup error:", error);
-      return res.status(500).json({ error: "Failed to create database backup" });
-    }
-  });
-  
   // Email service is initialized in server/index.ts
   
   // Helper function to safely format a date string
