@@ -1,7 +1,8 @@
-import { CheckCircle, AlertTriangle, XCircle } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle, AlertTriangle, XCircle, Shield, ShieldAlert, ShieldX } from "lucide-react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { StatusBadge } from "@/components/icons";
 import { formatDate } from "@/lib/scan-utils";
+import ThreatLevelIndicator from "./ThreatLevelIndicator";
 
 interface TrustScoreCardProps {
   trustScore: number;
@@ -99,6 +100,21 @@ export default function TrustScoreCard({
               style={{ width: `${trustScore}%`, transition: "width 0.5s ease-in-out" }}
             ></div>
           </div>
+        </div>
+        
+        {/* New Threat Level Indicator */}
+        <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+          <div className="flex gap-3 items-center mb-3">
+            {status === "safe" ? (
+              <Shield className="h-5 w-5 text-green-600" />
+            ) : status === "suspicious" ? (
+              <ShieldAlert className="h-5 w-5 text-yellow-600" />
+            ) : (
+              <ShieldX className="h-5 w-5 text-red-600" />
+            )}
+            <h4 className="font-semibold">Threat Analysis</h4>
+          </div>
+          <ThreatLevelIndicator trustScore={trustScore} />
         </div>
         
         <div className="space-y-4">
