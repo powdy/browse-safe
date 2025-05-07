@@ -7,7 +7,7 @@ import { getDomainInfo, estimateDomainReputation, checkSuspiciousPatterns, estim
 import axios from "axios";
 import { getIpFromDomain, getIpInfo, calculateIpReputation } from "./services/ip-service";
 import { checkBlacklist } from "./services/blacklist-service";
-import { initializeSendGrid, sendReportEmail } from "./services/email-service";
+import { sendReportEmail } from "./services/email-service";
 
 // URL validation schema
 const urlSchema = z.object({
@@ -61,8 +61,7 @@ const reportSchema = z.object({
 export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
   
-  // Initialize SendGrid for email functionality
-  initializeSendGrid();
+  // Email service is initialized in server/index.ts
   
   // Helper function to safely format a date string
   function formatDateSafely(dateString: string | undefined) {

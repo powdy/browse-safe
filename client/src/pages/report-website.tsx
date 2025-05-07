@@ -297,7 +297,7 @@ export default function ReportWebsite() {
                         name="reportedBy"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-base font-medium text-primary-700">Your Email (Optional)</FormLabel>
+                            <FormLabel className="text-base font-medium text-primary-700">Your Email</FormLabel>
                             <FormControl>
                               <Input 
                                 type="email"

@@ -1,4 +1,4 @@
-import sgMail from '@sendgrid/mail';
+import nodemailer from 'nodemailer';
 
 // Constants
 export const DEFAULT_FROM_EMAIL = 'reports@browse-safe.com';
@@ -6,26 +6,94 @@ export const DEFAULT_TO_EMAIL = 'webmaster@browse-safe.com';
 
 // Flag to track if email functionality is available
 let emailFunctionalityEnabled = false;
+let transporter: nodemailer.Transporter | null = null;
 
 /**
- * Initialize SendGrid with the API key
+ * Initialize the email service
+ * This function checks for various email configuration options
+ * and sets up the appropriate email transporter
  */
-export function initializeSendGrid() {
-  // Check if API key is available
-  if (!process.env.SENDGRID_API_KEY) {
-    console.warn('SENDGRID_API_KEY is not set. Email notifications will be logged to console instead.');
+export function initializeEmailService() {
+  try {
+    // First, check if we have a SMTP configuration
+    if (process.env.SMTP_HOST && process.env.SMTP_PORT) {
+      // Create a transporter using SMTP configuration
+      transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: parseInt(process.env.SMTP_PORT),
+        secure: process.env.SMTP_SECURE === 'true',
+        auth: process.env.SMTP_USER && process.env.SMTP_PASS ? {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS
+        } : undefined
+      });
+      
+      emailFunctionalityEnabled = true;
+      console.log('Email service initialized with SMTP configuration');
+      return true;
+    } 
+    // Next, check if SendGrid is configured
+    else if (process.env.SENDGRID_API_KEY) {
+      // Create a transporter using SendGrid
+      transporter = nodemailer.createTransport({
+        service: 'SendGrid',
+        auth: {
+          user: 'apikey',
+          pass: process.env.SENDGRID_API_KEY
+        }
+      });
+      
+      emailFunctionalityEnabled = true;
+      console.log('Email service initialized with SendGrid');
+      return true;
+    }
+    // Check if we have Gmail configuration
+    else if (process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD) {
+      // Create a transporter using Gmail
+      transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.GMAIL_USER,
+          pass: process.env.GMAIL_APP_PASSWORD
+        }
+      });
+      
+      emailFunctionalityEnabled = true;
+      console.log('Email service initialized with Gmail');
+      return true;
+    }
+    // If none of the above, create an ethereal test account for development
+    else if (process.env.NODE_ENV === 'development') {
+      // For development, we'll create a test account
+      nodemailer.createTestAccount().then(testAccount => {
+        transporter = nodemailer.createTransport({
+          host: 'smtp.ethereal.email',
+          port: 587,
+          secure: false,
+          auth: {
+            user: testAccount.user,
+            pass: testAccount.pass
+          }
+        });
+        
+        emailFunctionalityEnabled = true;
+        console.log('Created an Ethereal email test account for development');
+        console.log(`User: ${testAccount.user}, Pass: ${testAccount.pass}`);
+        console.log('Preview emails at: https://ethereal.email');
+      }).catch(err => {
+        console.error('Failed to create test account', err);
+      });
+      
+      // Return false for now, but it might be set to true asynchronously
+      return false;
+    }
+    
+    // No email configuration found
+    console.warn('No email configuration found. Email notifications will be logged to console instead.');
     emailFunctionalityEnabled = false;
     return false;
-  }
-  
-  try {
-    // Set the API key
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    emailFunctionalityEnabled = true;
-    console.log('SendGrid initialized successfully');
-    return true;
   } catch (error) {
-    console.error('Failed to initialize SendGrid:', error);
+    console.error('Failed to initialize email service:', error);
     emailFunctionalityEnabled = false;
     return false;
   }
@@ -43,14 +111,14 @@ export interface EmailData {
 }
 
 /**
- * Send an email using SendGrid if available, otherwise log to console
+ * Send an email using the configured email service, or log to console as fallback
  * @param emailData The email data to send
  * @returns Promise that resolves to true if successful, false otherwise
  */
 export async function sendEmail(emailData: EmailData): Promise<boolean> {
   try {
-    // Check if SendGrid is available
-    if (!emailFunctionalityEnabled) {
+    // Check if email functionality is enabled and we have a transporter
+    if (!emailFunctionalityEnabled || !transporter) {
       // Log the email to console as a fallback
       console.log('=========== EMAIL NOTIFICATION (CONSOLE FALLBACK) ===========');
       console.log(`To: ${emailData.to}`);
@@ -60,13 +128,28 @@ export async function sendEmail(emailData: EmailData): Promise<boolean> {
       console.log(emailData.text);
       console.log('==========================================================');
       
+      console.log(`Email notification sent for reported website: ${emailData.subject.replace('Website Report: ', '')}`);
+      
       // Return true to indicate the email was "sent" (logged)
       return true;
     }
     
-    // Send the email using SendGrid
-    await sgMail.send(emailData);
+    // Send the email using the configured transporter
+    const info = await transporter.sendMail({
+      from: emailData.from,
+      to: emailData.to,
+      subject: emailData.subject,
+      text: emailData.text,
+      html: emailData.html
+    });
+    
     console.log(`Email sent successfully to ${emailData.to}`);
+    
+    // If we're using the ethereal test account, provide a preview URL
+    if (info.messageId && info.previewURL) {
+      console.log(`Preview URL: ${info.previewURL}`);
+    }
+    
     return true;
   } catch (error) {
     console.error('Error sending email:', error);
