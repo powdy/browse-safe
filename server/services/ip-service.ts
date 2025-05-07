@@ -1,5 +1,6 @@
 import dns from 'dns';
 import { promisify } from 'util';
+import axios from 'axios';
 
 const resolve4 = promisify(dns.resolve4);
 const reverse = promisify(dns.reverse);
@@ -123,14 +124,76 @@ function isHostingProvider(isp: string): boolean {
   return hostingProviders.some(provider => isp.toLowerCase().includes(provider));
 }
 
-// Generate simulated abuse reports based on IP
-function getAbuseReports(ip: string): number {
-  // In a real implementation, this would query an abuse database
-  // For this demo, we'll base it on whether the IP is in a suspicious range
-  if (isInSuspiciousRange(ip)) {
-    return Math.floor(Math.random() * 30) + 5; // 5-35 reports
+// Get abuse reports from AbuseIPDB
+async function getAbuseReports(ip: string): Promise<{
+  reports: number;
+  country: string | null;
+  isp: string | null;
+  isProxy: boolean;
+  isTor: boolean;
+  isHosting: boolean;
+}> {
+  const apiKey = process.env.ABUSEIPDB_API_KEY;
+  if (!apiKey) {
+    console.warn("AbuseIPDB API key not found, using simulated data");
+    // Return simulated data if no API key
+    return {
+      reports: isInSuspiciousRange(ip) ? Math.floor(Math.random() * 30) + 5 : Math.floor(Math.random() * 3),
+      country: null,
+      isp: null,
+      isProxy: isInSuspiciousRange(ip),
+      isTor: isInSuspiciousRange(ip),
+      isHosting: false
+    };
   }
-  return Math.floor(Math.random() * 3); // 0-2 reports
+
+  try {
+    console.log(`Checking IP ${ip} with AbuseIPDB...`);
+    const response = await axios.get('https://api.abuseipdb.com/api/v2/check', {
+      params: {
+        ipAddress: ip,
+        maxAgeInDays: 90,
+        verbose: true
+      },
+      headers: {
+        'Key': apiKey,
+        'Accept': 'application/json'
+      },
+      timeout: 5000
+    });
+
+    if (response.data && response.data.data) {
+      const data = response.data.data;
+      console.log('AbuseIPDB report for IP:', ip, JSON.stringify(data, null, 2));
+      
+      // Extract the relevant data
+      const reports = data.totalReports || 0;
+      const country = data.countryCode || null;
+      const isp = data.isp || null;
+      const isProxy = data.usageType?.toLowerCase().includes('proxy') || 
+                     data.usageType?.toLowerCase().includes('vpn') || 
+                     false;
+      const isTor = data.usageType?.toLowerCase().includes('tor') || false;
+      const isHosting = data.usageType?.toLowerCase().includes('hosting') || 
+                       data.usageType?.toLowerCase().includes('data center') || 
+                       data.usageType?.toLowerCase().includes('server') || 
+                       false;
+      
+      return { reports, country, isp, isProxy, isTor, isHosting };
+    }
+  } catch (error) {
+    console.error('Error querying AbuseIPDB:', error);
+  }
+  
+  // Fallback to simulated data on error
+  return {
+    reports: isInSuspiciousRange(ip) ? Math.floor(Math.random() * 30) + 5 : Math.floor(Math.random() * 3),
+    country: null,
+    isp: null,
+    isProxy: isInSuspiciousRange(ip),
+    isTor: isInSuspiciousRange(ip),
+    isHosting: false
+  };
 }
 
 export async function getIpInfo(ip: string): Promise<IpInfo> {
