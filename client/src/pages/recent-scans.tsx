@@ -1,95 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, XCircle, Clock, Search } from "lucide-react";
 import { Link } from "wouter";
-import { StatusBadge } from "@/components/icons";
 import { formatTimeAgo } from "@/lib/scan-utils";
 import type { Scan } from "@shared/schema";
 import { Helmet } from "react-helmet";
-
-interface ScanCardProps {
-  scan: Scan;
-}
-
-function ScanCard({ scan }: ScanCardProps) {
-  return (
-    <Card className="bg-white rounded-xl shadow-md">
-      <CardContent className="p-5">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="font-medium truncate max-w-[250px]">{scan.url}</h3>
-          <StatusBadge status={scan.status as "safe" | "suspicious" | "dangerous"} size="sm" />
-        </div>
-        
-        <div className="mb-3">
-          <div className="flex justify-between text-sm mb-1">
-            <span>Trust Score</span>
-            <span className="font-medium">{scan.trustScore}/100</span>
-          </div>
-          <div className="trust-score-indicator h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div 
-              className={`trust-score-fill h-full ${
-                scan.trustScore >= 80 ? "bg-success" : 
-                scan.trustScore >= 40 ? "bg-warning" : "bg-danger"
-              }`} 
-              style={{ width: `${scan.trustScore}%` }}
-            ></div>
-          </div>
-        </div>
-        
-        <div className="text-xs text-primary-500 mb-4">
-          Scanned {formatTimeAgo(new Date(scan.lastScanned))}
-        </div>
-        
-        <div className="grid grid-cols-2 gap-2 text-xs">
-          <div className="flex items-center">
-            {scan.hasValidSSL ? (
-              <CheckCircle className="text-success mr-1 h-3 w-3" />
-            ) : (
-              <XCircle className="text-danger mr-1 h-3 w-3" />
-            )}
-            <span>SSL {scan.hasValidSSL ? "Secure" : "Invalid"}</span>
-          </div>
-          
-          <div className="flex items-center">
-            {scan.registrationDate !== "Unknown" ? (
-              <CheckCircle className="text-success mr-1 h-3 w-3" />
-            ) : (
-              <XCircle className="text-danger mr-1 h-3 w-3" />
-            )}
-            <span>WHOIS {scan.registrationDate !== "Unknown" ? "Valid" : "Hidden"}</span>
-          </div>
-          
-          <div className="flex items-center">
-            {!scan.hasMalware ? (
-              <CheckCircle className="text-success mr-1 h-3 w-3" />
-            ) : (
-              <XCircle className="text-danger mr-1 h-3 w-3" />
-            )}
-            <span>{scan.hasMalware ? "Malware" : "No Malware"}</span>
-          </div>
-          
-          <div className="flex items-center">
-            {scan.blacklistStatus.includes("Not") ? (
-              <CheckCircle className="text-success mr-1 h-3 w-3" />
-            ) : (
-              <XCircle className="text-danger mr-1 h-3 w-3" />
-            )}
-            <span>{scan.blacklistStatus.includes("Not") ? "Not Blacklisted" : "Blacklisted"}</span>
-          </div>
-        </div>
-        
-        <Link href={`/scan?url=${encodeURIComponent(scan.url)}`}>
-          <a className="block text-center text-accent-600 hover:text-accent-700 text-sm font-medium mt-4">
-            View Detailed Report
-          </a>
-        </Link>
-      </CardContent>
-    </Card>
-  );
-}
+import RecentScansList from "@/components/RecentScansList";
 
 export default function RecentScans() {
-  const { data: recentScans, isLoading, error } = useQuery({
+  // We don't actually need recentScans since RecentScansList component handles the data fetching
+  const { isLoading, error } = useQuery({
     queryKey: ['/api/scans/recent'],
   });
 
@@ -100,37 +20,63 @@ export default function RecentScans() {
         <meta name="description" content="View recently scanned websites and their security analysis. See which websites are safe and which ones might be potential scams." />
       </Helmet>
       
-      <div className="bg-gray-50 py-12">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/20 relative">
         <div className="container mx-auto px-4">
-          <div className="mb-8">
-            <h2 className="text-3xl font-heading font-bold mb-4">Recently Scanned Websites</h2>
-            <p className="text-primary-600 max-w-3xl">
+          <div className="text-center mb-12">
+            {/* Icon with particle effects */}
+            <div className="inline-block relative mb-6">
+              <div className="absolute -inset-6 bg-violet-500/10 rounded-full blur-xl"></div>
+              <div className="relative">
+                <div className="p-3 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                {/* Small decorative dots */}
+                <span className="absolute -top-1 -right-1 h-3 w-3 bg-purple-400 rounded-full animate-pulse"></span>
+                <span className="absolute -bottom-1 -left-1 h-2 w-2 bg-violet-300 rounded-full animate-ping"></span>
+              </div>
+            </div>
+            
+            {/* Title with gradient text */}
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text">
+              Recently Analyzed Websites
+            </h1>
+            
+            {/* Decorative underline */}
+            <div className="w-32 h-1.5 bg-gradient-to-r from-purple-400 to-violet-500 rounded-full mx-auto mb-6"></div>
+            
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Browse the latest websites analyzed by our security scanner. See trust scores, domain details, and potential security threats.
             </p>
           </div>
           
           {isLoading ? (
             <div className="py-8 text-center">
-              <p className="text-lg">Loading recent scans...</p>
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-violet-100 text-violet-700">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-violet-700" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Loading recent scans...
+              </div>
             </div>
           ) : error ? (
-            <div className="py-8 text-center text-danger">
-              <p className="text-lg">Failed to load recent scans. Please try again later.</p>
+            <div className="py-8 text-center">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-rose-100 text-rose-700">
+                <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                Failed to load recent scans. Please try again later.
+              </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {recentScans?.map((scan: Scan) => (
-                <ScanCard key={scan.id} scan={scan} />
-              ))}
-              {(!recentScans || recentScans.length === 0) && (
-                <div className="col-span-3 py-8 text-center">
-                  <p className="text-lg">No recent scans found.</p>
-                </div>
-              )}
+            <div>
+              <RecentScansList noContainer={true} />
             </div>
           )}
         </div>
-      </div>
+      </section>
     </>
   );
 }
