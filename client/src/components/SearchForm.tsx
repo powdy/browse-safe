@@ -65,10 +65,10 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
     setLocation(`/scan?url=${encodedUrl}`);
   };
 
-  const inputBgColor = darkMode ? "bg-primary-800/60 border-primary-700" : "bg-white border-gray-300";
-  // Use different text colors based on dark/light mode for better contrast
-  const textColor = darkMode ? "text-white" : "text-primary-900";
-  const placeholderColor = darkMode ? "placeholder:text-primary-300" : "placeholder:text-primary-500";
+  // Set very clear background and text colors for all modes
+  const inputBgColor = darkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-300";
+  const textColor = darkMode ? "text-white" : "text-black"; // Ensures maximum contrast in both modes
+  const placeholderColor = darkMode ? "placeholder:text-gray-400" : "placeholder:text-gray-500";
   const linkColor = darkMode ? "text-primary-300 hover:text-white" : "text-primary-600 hover:text-accent-600";
 
   return (
@@ -79,7 +79,7 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
           placeholder="Enter website URL (e.g., example.com)"
           value={websiteUrl}
           onChange={(e) => setWebsiteUrl(e.target.value)}
-          className={`flex-grow ${inputBgColor} ${textColor} ${placeholderColor} px-4 py-3`}
+          className={`flex-grow ${inputBgColor} ${textColor} ${placeholderColor} px-4 py-3 focus:ring-2 focus:ring-accent focus:border-accent`}
         />
         <Button 
           type="submit" 
