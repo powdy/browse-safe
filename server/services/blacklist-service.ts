@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as dns from 'dns';
 import { promisify } from 'util';
+import { checkSafeBrowsing, calculateSafeBrowsingScore } from './safe-browsing-service';
 
 // List of legitimate trusted domains
 const trustedDomains = [
@@ -178,14 +179,65 @@ export async function checkBlacklist(domain: string): Promise<BlacklistCheckResu
     };
   }
   
-  // Try VirusTotal first
+  // Try Google Safe Browsing API first
+  let safeBrowsingResult = null;
+  try {
+    safeBrowsingResult = await checkSafeBrowsing(normalizedDomain);
+    console.log(`Google Safe Browsing results for ${normalizedDomain}:`, safeBrowsingResult);
+  } catch (error) {
+    console.error(`Error checking Google Safe Browsing for ${normalizedDomain}:`, error);
+  }
+  
+  // Check VirusTotal API as well
   const vtResult = await checkVirusTotal(normalizedDomain);
   if (vtResult) {
     console.log(`VirusTotal results for ${normalizedDomain}:`, vtResult);
+    
+    // If Google Safe Browsing detected issues, update the VirusTotal result
+    if (safeBrowsingResult && safeBrowsingResult.isUrlMalicious) {
+      // Add Google Safe Browsing to blacklist sources
+      vtResult.blacklistedOn.push('Google Safe Browsing');
+      
+      // Identify specific threat types
+      if (safeBrowsingResult.threatTypes.includes('MALWARE')) {
+        vtResult.hasMalware = true;
+      }
+      
+      if (safeBrowsingResult.threatTypes.includes('SOCIAL_ENGINEERING')) {
+        vtResult.hasPhishing = true;
+      }
+      
+      if (safeBrowsingResult.threatTypes.length > 0) {
+        vtResult.suspiciousContent = true;
+        vtResult.isBlacklisted = true;
+      }
+      
+      // Adjust the score based on Google Safe Browsing results
+      const safeBrowsingScore = calculateSafeBrowsingScore(safeBrowsingResult);
+      // Take the lower score between VirusTotal and Google Safe Browsing
+      vtResult.score = Math.min(vtResult.score, safeBrowsingScore);
+    }
+    
     return vtResult;
   }
   
-  // Fallback to pattern-based detection
+  // If Google Safe Browsing found issues, create a result based on that
+  if (safeBrowsingResult && safeBrowsingResult.isUrlMalicious) {
+    const hasMalware = safeBrowsingResult.threatTypes.includes('MALWARE') || 
+                      safeBrowsingResult.threatTypes.includes('UNWANTED_SOFTWARE');
+    const hasPhishing = safeBrowsingResult.threatTypes.includes('SOCIAL_ENGINEERING');
+    
+    return {
+      isBlacklisted: true,
+      blacklistedOn: ['Google Safe Browsing'],
+      hasMalware,
+      hasPhishing,
+      suspiciousContent: true,
+      score: calculateSafeBrowsingScore(safeBrowsingResult)
+    };
+  }
+  
+  // Fallback to pattern-based detection if neither API returned results
   console.log(`Using pattern-based detection for ${normalizedDomain}`);
   
   // Check for malicious patterns in the domain
