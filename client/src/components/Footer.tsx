@@ -75,9 +75,6 @@ export default function Footer() {
             <p className="text-sm text-primary-400 mb-4 md:mb-0">&copy; {new Date().getFullYear()} TrustGuard. All rights reserved.</p>
             
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-primary-400">
-              <Link href="/privacy-policy"><a className="hover:text-white">Privacy Policy</a></Link>
-              <Link href="/terms-conditions"><a className="hover:text-white">Terms & Conditions</a></Link>
-              <Link href="/cookie-policy"><a className="hover:text-white">Cookie Policy</a></Link>
               <CookieConsent />
             </div>
           </div>
