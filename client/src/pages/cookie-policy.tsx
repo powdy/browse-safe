@@ -5,10 +5,10 @@ export default function CookiePolicy() {
   return (
     <>
       <Helmet>
-        <title>Cookie Policy | TrustGuard Website Security Scanner</title>
+        <title>Cookie Policy | BrowseSafe Website Security Scanner</title>
         <meta 
           name="description" 
-          content="Learn about how TrustGuard uses cookies and similar technologies to enhance your experience with our website security scanning service." 
+          content="Learn about how BrowseSafe uses cookies and similar technologies to enhance your experience with our website security scanning service." 
         />
       </Helmet>
       
@@ -28,7 +28,7 @@ export default function CookiePolicy() {
             <section>
               <h2 className="text-xl font-semibold mb-3">2. How We Use Cookies</h2>
               <p className="text-gray-700 mb-3">
-                TrustGuard uses cookies for various purposes, including:
+                BrowseSafe uses cookies for various purposes, including:
               </p>
               <ul className="list-disc pl-6 text-gray-700 space-y-2">
                 <li><strong>Essential cookies:</strong> These cookies are necessary for the website to function properly. They enable core functionality such as security, network management, and account access. You may disable these by changing your browser settings, but this may affect how the website functions.</li>
@@ -143,7 +143,7 @@ export default function CookiePolicy() {
             <section>
               <h2 className="text-xl font-semibold mb-3">9. Contact Us</h2>
               <p className="text-gray-700">
-                If you have any questions about our Cookie Policy, please contact us at cookies@trustguard.com.
+                If you have any questions about our Cookie Policy, please contact us at cookies@browse-safe.com.
               </p>
             </section>
           </div>

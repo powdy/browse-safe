@@ -5,10 +5,10 @@ export default function TermsConditions() {
   return (
     <>
       <Helmet>
-        <title>Terms and Conditions | TrustGuard Website Security Scanner</title>
+        <title>Terms and Conditions | BrowseSafe Website Security Scanner</title>
         <meta 
           name="description" 
-          content="Read our Terms and Conditions to understand the rules and guidelines for using TrustGuard's Website Security Scanner service." 
+          content="Read our Terms and Conditions to understand the rules and guidelines for using BrowseSafe's Website Security Scanner service." 
         />
       </Helmet>
       
@@ -21,7 +21,7 @@ export default function TermsConditions() {
             <section>
               <h2 className="text-xl font-semibold mb-3">1. Agreement to Terms</h2>
               <p className="text-gray-700">
-                By accessing and using TrustGuard's website security scanning service, you agree to be bound by these Terms and Conditions and our Privacy Policy. If you disagree with any part of these terms, you may not access the service.
+                By accessing and using BrowseSafe's website security scanning service, you agree to be bound by these Terms and Conditions and our Privacy Policy. If you disagree with any part of these terms, you may not access the service.
               </p>
             </section>
             

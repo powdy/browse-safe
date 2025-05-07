@@ -56,7 +56,7 @@ export default function Disclaimer() {
             <section>
               <h2 className="text-xl font-semibold mb-3">5. Limitation of Liability</h2>
               <p className="text-gray-700">
-                In no event shall TrustGuard, its directors, employees, partners, agents, suppliers, or affiliates be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:
+                In no event shall BrowseSafe, its directors, employees, partners, agents, suppliers, or affiliates be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:
               </p>
               <ul className="list-disc pl-6 text-gray-700 space-y-2">
                 <li>Your access to or use of or inability to access or use the service</li>
@@ -91,7 +91,7 @@ export default function Disclaimer() {
             <section>
               <h2 className="text-xl font-semibold mb-3">9. Contact Us</h2>
               <p className="text-gray-700">
-                If you have any questions about this Disclaimer, please contact us at disclaimer@trustguard.com.
+                If you have any questions about this Disclaimer, please contact us at disclaimer@browse-safe.com.
               </p>
             </section>
           </div>

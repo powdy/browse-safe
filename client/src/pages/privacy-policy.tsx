@@ -5,10 +5,10 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Helmet>
-        <title>Privacy Policy | TrustGuard Website Security Scanner</title>
+        <title>Privacy Policy | BrowseSafe Website Security Scanner</title>
         <meta 
           name="description" 
-          content="Read our Privacy Policy to understand how TrustGuard collects, uses, and protects your personal information when you use our website security scanning service."
+          content="Read our Privacy Policy to understand how BrowseSafe collects, uses, and protects your personal information when you use our website security scanning service."
         />
       </Helmet>
       
@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
             <section>
               <h2 className="text-xl font-semibold mb-3">1. Introduction</h2>
               <p className="text-gray-700">
-                TrustGuard ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our website security scanning service. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
+                BrowseSafe ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our website security scanning service. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
               </p>
             </section>
             
@@ -117,7 +117,7 @@ export default function PrivacyPolicy() {
             <section>
               <h2 className="text-xl font-semibold mb-3">10. Contact Us</h2>
               <p className="text-gray-700">
-                If you have any questions about this Privacy Policy, please contact us at privacy@trustguard.com.
+                If you have any questions about this Privacy Policy, please contact us at privacy@browse-safe.com.
               </p>
             </section>
           </div>
