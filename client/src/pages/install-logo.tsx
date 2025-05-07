@@ -101,51 +101,7 @@ export default function InstallLogo() {
   // Append to your preferred container
   document.getElementById('browsesafe-badge') || document.body.appendChild(badgeContainer);
 })();`
-    },
-    {
-      name: "Trust Score Badge",
-      description: "Display your actual trust score",
-      htmlCode: `<a href="${baseUrl}/example.com" target="_blank" rel="noopener" title="This website has been verified by BrowseSafe">
-  <div style="display: flex; align-items: center; background-color: #f0fdf4; border: 1px solid #dcfce7; border-radius: 6px; padding: 8px 12px; max-width: 220px; font-family: Arial, sans-serif;">
-    <div style="position: relative; width: 30px; height: 30px; margin-right: 8px;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="#e11d48" stroke="#be123c" stroke-width="1">
-        <path d="M20.995 6.9a.998.998 0 0 0-.548-.795l-8-4a1 1 0 0 0-.895 0l-8 4a1.002 1.002 0 0 0-.547.795c-.011.107-.961 10.767 8.589 15.014a.987.987 0 0 0 .812 0c9.55-4.247 8.6-14.906 8.589-15.014zM12 19.95C5.258 16.84 4.524 9.35 4.525 7.15l7.475-3.737 7.475 3.737c0 2.218-.764 9.675-7.475 12.8z"></path>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="white" stroke-width="3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-    <div>
-      <div style="font-size: 13px; font-weight: 600; color: #166534;">Trust Score: 92/100</div>
-      <div style="font-size: 11px; color: #4d7c0f;">Verified by BrowseSafe</div>
-    </div>
-  </div>
-</a>`,
-      jsCode: `// Add BrowseSafe trust score badge to your website
-// Replace 'example.com' with your actual domain name in the URL
-(function() {
-  const badgeContainer = document.createElement('div');
-  badgeContainer.innerHTML = \`<a href="${baseUrl}/example.com" target="_blank" rel="noopener" title="This website has been verified by BrowseSafe">
-  <div style="display: flex; align-items: center; background-color: #f0fdf4; border: 1px solid #dcfce7; border-radius: 6px; padding: 8px 12px; max-width: 220px; font-family: Arial, sans-serif;">
-    <div style="position: relative; width: 30px; height: 30px; margin-right: 8px;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="#e11d48" stroke="#be123c" stroke-width="1">
-        <path d="M20.995 6.9a.998.998 0 0 0-.548-.795l-8-4a1 1 0 0 0-.895 0l-8 4a1.002 1.002 0 0 0-.547.795c-.011.107-.961 10.767 8.589 15.014a.987.987 0 0 0 .812 0c9.55-4.247 8.6-14.906 8.589-15.014zM12 19.95C5.258 16.84 4.524 9.35 4.525 7.15l7.475-3.737 7.475 3.737c0 2.218-.764 9.675-7.475 12.8z"></path>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="white" stroke-width="3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-    <div>
-      <div style="font-size: 13px; font-weight: 600; color: #166534;">Trust Score: 92/100</div>
-      <div style="font-size: 11px; color: #4d7c0f;">Verified by BrowseSafe</div>
-    </div>
-  </div>
-</a>\`;
-  
-  // Append to your preferred container
-  document.getElementById('browsesafe-badge') || document.body.appendChild(badgeContainer);
-})();`
-    },
+    }
   ];
 
   // Preview function
@@ -250,7 +206,6 @@ export default function InstallLogo() {
           <ol className="list-decimal pl-5 space-y-3">
             <li>Copy the HTML code for your preferred badge style.</li>
             <li>Paste the code into your website's HTML where you want the badge to appear.</li>
-            <li>For the Trust Score badge, replace "example.com" in the URL with your actual domain name.</li>
           </ol>
           
           <h3 className="text-xl font-semibold mt-6 mb-3">Using JavaScript</h3>
