@@ -5,10 +5,10 @@ export default function Disclaimer() {
   return (
     <>
       <Helmet>
-        <title>Disclaimer | TrustGuard Website Security Scanner</title>
+        <title>Disclaimer | BrowseSafe Website Security Scanner</title>
         <meta 
           name="description" 
-          content="Important disclaimers regarding TrustGuard's Website Security Scanner service, including limitations and usage guidelines." 
+          content="Important disclaimers regarding BrowseSafe's Website Security Scanner service, including limitations and usage guidelines." 
         />
       </Helmet>
       
@@ -21,7 +21,7 @@ export default function Disclaimer() {
             <section>
               <h2 className="text-xl font-semibold mb-3">1. Website Information Disclaimer</h2>
               <p className="text-gray-700">
-                The information provided by TrustGuard's Website Security Scanner ("we," "us," or "our") is for general informational and educational purposes only. All information on the site is provided in good faith, however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.
+                The information provided by BrowseSafe's Website Security Scanner ("we," "us," or "our") is for general informational and educational purposes only. All information on the site is provided in good faith, however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.
               </p>
             </section>
             

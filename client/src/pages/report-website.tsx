@@ -114,7 +114,7 @@ export default function ReportWebsite() {
   return (
     <>
       <Helmet>
-        <title>Report a Suspicious Website | TrustGuard</title>
+        <title>Report a Suspicious Website | BrowseSafe</title>
         <meta name="description" content="Help protect others by reporting suspicious or fraudulent websites. Your reports help us identify and warn users about potential online scams." />
       </Helmet>
       

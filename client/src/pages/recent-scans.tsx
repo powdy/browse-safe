@@ -16,7 +16,7 @@ export default function RecentScans() {
   return (
     <>
       <Helmet>
-        <title>Recent Website Scans | TrustGuard</title>
+        <title>Recent Website Scans | BrowseSafe</title>
         <meta name="description" content="View recently scanned websites and their security analysis. See which websites are safe and which ones might be potential scams." />
       </Helmet>
       
