@@ -120,17 +120,17 @@ export default function Home() {
             
             <div className="prose prose-lg max-w-none">
               <p>
-                In today's digital world, <strong>website security scanners</strong> like TrustGuard are essential tools for protecting yourself from online fraud. With the increasing sophistication of phishing websites and scams, it's becoming harder to distinguish between legitimate and malicious websites at first glance.
+                In today's digital world, <strong>website security scanners</strong> like BrowseSafe are essential tools for protecting yourself from online fraud. With the increasing sophistication of phishing websites and scams, it's becoming harder to distinguish between legitimate and malicious websites at first glance.
               </p>
               
               <p>
-                Our <strong>comprehensive website security analyzer</strong> examines multiple crucial factors to determine if a website is trustworthy or potentially dangerous. The TrustGuard scanner analyzes <strong>domain age, WHOIS data, SSL certificates, blacklist status, malware detection</strong>, and numerous other security indicators to generate an accurate trust score.
+                Our <strong>comprehensive website security analyzer</strong> examines multiple crucial factors to determine if a website is trustworthy or potentially dangerous. The BrowseSafe scanner analyzes <strong>domain age, WHOIS data, SSL certificates, blacklist status, malware detection</strong>, and numerous other security indicators to generate an accurate trust score.
               </p>
               
               <h3 className="text-xl font-bold mt-8 mb-4">How Our Website Safety Checker Works</h3>
               
               <p>
-                Unlike basic phishing detectors, TrustGuard performs a deep analysis of websites by checking:
+                Unlike basic phishing detectors, BrowseSafe performs a deep analysis of websites by checking:
               </p>
               
               <ul className="list-disc pl-6 mb-6 space-y-2">
@@ -142,7 +142,7 @@ export default function Home() {
               </ul>
               
               <p>
-                After this comprehensive scan, TrustGuard generates a <strong>website trust score</strong> from 0-100, with detailed explanations of any security issues found. This helps you make informed decisions before sharing personal information, making purchases, or downloading content from websites.
+                After this comprehensive scan, BrowseSafe generates a <strong>website trust score</strong> from 0-100, with detailed explanations of any security issues found. This helps you make informed decisions before sharing personal information, making purchases, or downloading content from websites.
               </p>
               
               <h3 className="text-xl font-bold mt-8 mb-4">Why Website Security Scanning Is Essential</h3>
@@ -159,7 +159,7 @@ export default function Home() {
               </ul>
               
               <p>
-                Using TrustGuard's <strong>website security scanner</strong> before engaging with unfamiliar websites provides an essential layer of protection against these threats. Our technology has already identified thousands of fraudulent websites, helping users avoid potential scams before they become victims.
+                Using BrowseSafe's <strong>website security scanner</strong> before engaging with unfamiliar websites provides an essential layer of protection against these threats. Our technology has already identified thousands of fraudulent websites, helping users avoid potential scams before they become victims.
               </p>
             </div>
           </div>
@@ -261,7 +261,7 @@ export default function Home() {
               Start Protecting Yourself Online Today
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Don't become a victim of online scams and fraud. Use TrustGuard to check website 
+              Don't become a victim of online scams and fraud. Use BrowseSafe to check website 
               security before sharing your personal information.
             </p>
             <SearchForm className="max-w-lg mx-auto" darkMode={true} />

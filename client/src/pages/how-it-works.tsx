@@ -28,9 +28,9 @@ export default function HowItWorks() {
   return (
     <>
       <Helmet>
-        <title>How TrustGuard Works | Website Security Scanner</title>
-        <meta name="description" content="Learn how TrustGuard analyzes websites for security risks. Our comprehensive security scanner checks domain age, WHOIS data, IP reputation, and more to determine trustworthiness." />
-        <meta name="keywords" content="website scanner, security analysis, domain verification, trustguard technology, website safety, online security, SSL verification, domain age check" />
+        <title>How BrowseSafe Works | Website Security Scanner</title>
+        <meta name="description" content="Learn how BrowseSafe analyzes websites for security risks. Our comprehensive security scanner checks domain age, WHOIS data, IP reputation, and more to determine trustworthiness." />
+        <meta name="keywords" content="website scanner, security analysis, domain verification, browsesafe technology, website safety, online security, SSL verification, domain age check" />
       </Helmet>
       
       <div className="container mx-auto px-4 py-12">
