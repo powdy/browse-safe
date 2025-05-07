@@ -20,6 +20,7 @@ import TermsConditions from "@/pages/terms-conditions";
 import Disclaimer from "@/pages/disclaimer";
 import CookiePolicy from "@/pages/cookie-policy";
 import OnlineSafetyGuide from "@/pages/online-safety-guide";
+import InstallLogo from "@/pages/install-logo";
 
 function Router() {
   // State to manage cookie consent banner visibility
@@ -58,9 +59,9 @@ function Router() {
     <div className="min-h-screen flex flex-col">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>TrustGuard - Website Security Scanner</title>
-        <meta name="description" content="Scan and analyze websites for potential security threats with TrustGuard. Check domain age, SSL certificates, and blacklist status to ensure safe browsing." />
-        <link rel="canonical" href="https://trustguard.com" />
+        <title>BrowseSafe - Website Security Scanner</title>
+        <meta name="description" content="Scan and analyze websites for potential security threats with BrowseSafe. Check domain age, SSL certificates, and blacklist status to ensure safe browsing." />
+        <link rel="canonical" href="https://browse-safe.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
       <Header />
@@ -77,6 +78,7 @@ function Router() {
           <Route path="/disclaimer" component={Disclaimer} />
           <Route path="/cookie-policy" component={CookiePolicy} />
           <Route path="/online-safety-guide" component={OnlineSafetyGuide} />
+          <Route path="/install-logo" component={InstallLogo} />
           <Route component={NotFound} />
         </Switch>
       </div>

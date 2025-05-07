@@ -40,6 +40,7 @@ export default function Footer() {
             <h3 className="text-primary-100 font-medium mb-4">Features</h3>
             <ul className="space-y-2 text-sm text-primary-300">
               <li><Link href="/"><a className="hover:text-white">Website Scanner</a></Link></li>
+              <li><Link href="/install-logo"><a className="hover:text-white">Install Our Logo</a></Link></li>
             </ul>
           </div>
           
@@ -48,7 +49,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-primary-300">
               <li><Link href="/how-it-works"><a className="hover:text-white">How It Works</a></Link></li>
               <li><Link href="/about-us"><a className="hover:text-white">About Us</a></Link></li>
-              <li><Link href="/how-it-works"><a className="hover:text-white">Online Safety Guide</a></Link></li>
+              <li><Link href="/online-safety-guide"><a className="hover:text-white">Online Safety Guide</a></Link></li>
               <li><a href="#" className="hover:text-white">Security Blog</a></li>
             </ul>
           </div>
