@@ -5,7 +5,7 @@ export default function OnlineSafetyGuide() {
   return (
     <>
       <Helmet>
-        <title>Online Safety Guide | TrustGuard</title>
+        <title>Online Safety Guide | BrowseSafe</title>
         <meta 
           name="description" 
           content="Learn essential online safety tips, how to recognize scams, protect your personal information, and browse the web securely. Get practical advice on safe online shopping, password security, and more."
@@ -172,7 +172,7 @@ export default function OnlineSafetyGuide() {
                   Best Practice: Verify Before Trusting
                 </h3>
                 <p className="text-gray-700">
-                  Always independently verify any communication requesting personal information or money. Contact the organization directly using their official contact information—not the contact details provided in the suspicious message. Use TrustGuard's website scanner to check if an unfamiliar website is legitimate before sharing any information.
+                  Always independently verify any communication requesting personal information or money. Contact the organization directly using their official contact information—not the contact details provided in the suspicious message. Use BrowseSafe's website scanner to check if an unfamiliar website is legitimate before sharing any information.
                 </p>
               </div>
             </div>
@@ -273,7 +273,7 @@ export default function OnlineSafetyGuide() {
                   <div className="bg-white p-4 rounded-lg shadow-sm border border-blue-100">
                     <h4 className="font-bold mb-2 text-blue-700">Website Safety Checkers</h4>
                     <p className="text-gray-700">
-                      Use TrustGuard's website scanner before visiting unfamiliar websites to evaluate their security posture and reputation.
+                      Use BrowseSafe's website scanner before visiting unfamiliar websites to evaluate their security posture and reputation.
                     </p>
                   </div>
                   
@@ -437,7 +437,7 @@ export default function OnlineSafetyGuide() {
                         <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mt-0.5 mr-3">
                           <span className="font-semibold text-sm text-purple-600">2</span>
                         </div>
-                        <p className="text-gray-700">Verify website security using TrustGuard's scanner, checking for HTTPS and examining the site's registration age.</p>
+                        <p className="text-gray-700">Verify website security using BrowseSafe's scanner, checking for HTTPS and examining the site's registration age.</p>
                       </li>
                       <li className="flex items-start">
                         <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mt-0.5 mr-3">
@@ -523,7 +523,7 @@ export default function OnlineSafetyGuide() {
                       <li>Contact your payment provider to dispute the charge</li>
                       <li>Report the incident to your country's consumer protection agency</li>
                       <li>Leave reviews warning other shoppers about your experience</li>
-                      <li>Report the website through TrustGuard's reporting feature</li>
+                      <li>Report the website through BrowseSafe's reporting feature</li>
                     </ul>
                   </p>
                 </div>
