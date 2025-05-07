@@ -19,6 +19,7 @@ import PrivacyPolicy from "@/pages/privacy-policy";
 import TermsConditions from "@/pages/terms-conditions";
 import Disclaimer from "@/pages/disclaimer";
 import CookiePolicy from "@/pages/cookie-policy";
+import OnlineSafetyGuide from "@/pages/online-safety-guide";
 
 function Router() {
   // State to manage cookie consent banner visibility
@@ -75,6 +76,7 @@ function Router() {
           <Route path="/terms-conditions" component={TermsConditions} />
           <Route path="/disclaimer" component={Disclaimer} />
           <Route path="/cookie-policy" component={CookiePolicy} />
+          <Route path="/online-safety-guide" component={OnlineSafetyGuide} />
           <Route component={NotFound} />
         </Switch>
       </div>

@@ -8,6 +8,7 @@ export default function Header() {
     { href: "/", label: "Home" },
     { href: "/how-it-works", label: "How It Works" },
     { href: "/about-us", label: "About Us" },
+    { href: "/online-safety-guide", label: "Safety Guide" },
     { href: "/recent-scans", label: "Recent Scans" },
     { href: "/report", label: "Report Website" }
   ];
