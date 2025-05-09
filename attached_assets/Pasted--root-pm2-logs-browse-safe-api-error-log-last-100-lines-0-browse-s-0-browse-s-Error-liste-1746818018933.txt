@@ -1,0 +1,102 @@
+/root/.pm2/logs/browse-safe-api-error.log last 100 lines:
+0|browse-s | }
+0|browse-s | Error: listen EADDRINUSE: address already in use 0.0.0.0:5001
+0|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+0|browse-s |     at listenInCluster (node:net:1965:12)
+0|browse-s |     at doListen (node:net:2139:7)
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+0|browse-s |   code: 'EADDRINUSE',
+0|browse-s |   errno: -98,
+0|browse-s |   syscall: 'listen',
+0|browse-s |   address: '0.0.0.0',
+0|browse-s |   port: 5001
+0|browse-s | }
+0|browse-s | Error: listen EADDRINUSE: address already in use 0.0.0.0:5001
+0|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+0|browse-s |     at listenInCluster (node:net:1965:12)
+0|browse-s |     at doListen (node:net:2139:7)
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+0|browse-s |   code: 'EADDRINUSE',
+0|browse-s |   errno: -98,
+0|browse-s |   syscall: 'listen',
+0|browse-s |   address: '0.0.0.0',
+0|browse-s |   port: 5001
+0|browse-s | }
+0|browse-s | Error: listen EADDRINUSE: address already in use 0.0.0.0:5001
+0|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+0|browse-s |     at listenInCluster (node:net:1965:12)
+0|browse-s |     at doListen (node:net:2139:7)
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+0|browse-s |   code: 'EADDRINUSE',
+0|browse-s |   errno: -98,
+0|browse-s |   syscall: 'listen',
+0|browse-s |   address: '0.0.0.0',
+0|browse-s |   port: 5001
+0|browse-s | }
+0|browse-s | Error: listen EADDRINUSE: address already in use 0.0.0.0:5001
+0|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+0|browse-s |     at listenInCluster (node:net:1965:12)
+0|browse-s |     at doListen (node:net:2139:7)
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+0|browse-s |   code: 'EADDRINUSE',
+0|browse-s |   errno: -98,
+0|browse-s |   syscall: 'listen',
+0|browse-s |   address: '0.0.0.0',
+0|browse-s |   port: 5001
+0|browse-s | }
+0|browse-s | Error: listen EADDRINUSE: address already in use 0.0.0.0:5001
+0|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+0|browse-s |     at listenInCluster (node:net:1965:12)
+0|browse-s |     at doListen (node:net:2139:7)
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+0|browse-s |   code: 'EADDRINUSE',
+0|browse-s |   errno: -98,
+0|browse-s |   syscall: 'listen',
+0|browse-s |   address: '0.0.0.0',
+0|browse-s |   port: 5001
+0|browse-s | }
+0|browse-s | Error: listen EADDRINUSE: address already in use 0.0.0.0:5001
+0|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+0|browse-s |     at listenInCluster (node:net:1965:12)
+0|browse-s |     at doListen (node:net:2139:7)
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+0|browse-s |   code: 'EADDRINUSE',
+0|browse-s |   errno: -98,
+0|browse-s |   syscall: 'listen',
+0|browse-s |   address: '0.0.0.0',
+0|browse-s |   port: 5001
+0|browse-s | }
+0|browse-s | Error: listen EADDRINUSE: address already in use 0.0.0.0:5001
+0|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+0|browse-s |     at listenInCluster (node:net:1965:12)
+0|browse-s |     at doListen (node:net:2139:7)
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+0|browse-s |   code: 'EADDRINUSE',
+0|browse-s |   errno: -98,
+0|browse-s |   syscall: 'listen',
+0|browse-s |   address: '0.0.0.0',
+0|browse-s |   port: 5001
+0|browse-s | }
+0|browse-s | Error: listen EADDRINUSE: address already in use 0.0.0.0:5001
+0|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+0|browse-s |     at listenInCluster (node:net:1965:12)
+0|browse-s |     at doListen (node:net:2139:7)
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+0|browse-s |   code: 'EADDRINUSE',
+0|browse-s |   errno: -98,
+0|browse-s |   syscall: 'listen',
+0|browse-s |   address: '0.0.0.0',
+0|browse-s |   port: 5001
+0|browse-s | }
+0|browse-s | Error: listen EADDRINUSE: address already in use 0.0.0.0:5001
+0|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+0|browse-s |     at listenInCluster (node:net:1965:12)
+0|browse-s |     at doListen (node:net:2139:7)
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+0|browse-s |   code: 'EADDRINUSE',
+0|browse-s |   errno: -98,
+0|browse-s |   syscall: 'listen',
+0|browse-s |   address: '0.0.0.0',
+0|browse-s |   port: 5001
+0|browse-s | }
+

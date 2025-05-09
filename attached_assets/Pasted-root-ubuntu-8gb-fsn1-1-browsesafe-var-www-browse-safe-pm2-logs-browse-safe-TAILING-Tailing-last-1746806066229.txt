@@ -1,0 +1,626 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe
+[TAILING] Tailing last 15 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error.log last 15 lines:
+2|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-s |     at listenInCluster (node:net:1965:12)
+2|browse-s |     at doListen (node:net:2139:7)
+2|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-s | Emitted 'error' event on Server instance at:
+2|browse-s |     at emitErrorNT (node:net:1944:8)
+2|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-s |   code: 'EADDRINUSE',
+2|browse-s |   errno: -98,
+2|browse-s |   syscall: 'listen',
+2|browse-s |   address: '0.0.0.0',
+2|browse-s |   port: 5000
+2|browse-s | }
+2|browse-s |
+2|browse-s | Node.js v20.19.1
+
+/root/.pm2/logs/browse-safe-out.log last 15 lines:
+2|browse-s | > rest-express@1.0.0 dev
+2|browse-s | > NODE_ENV=development tsx server/index.ts
+2|browse-s |
+2|browse-s |
+2|browse-s | > rest-express@1.0.0 dev
+2|browse-s | > NODE_ENV=development tsx server/index.ts
+2|browse-s |
+2|browse-s |
+2|browse-s | > rest-express@1.0.0 dev
+2|browse-s | > NODE_ENV=development tsx server/index.ts
+2|browse-s |
+2|browse-s |
+2|browse-s | > rest-express@1.0.0 dev
+2|browse-s | > NODE_ENV=development tsx server/index.ts
+2|browse-s |
+
+2|browse-safe  | Error seeding database: ErrorEvent {
+2|browse-safe  |   [Symbol(kTarget)]: WebSocket {
+2|browse-safe  |     _events: [Object: null prototype] {
+2|browse-safe  |       error: [Function],
+2|browse-safe  |       message: [Function],
+2|browse-safe  |       close: [Function],
+2|browse-safe  |       open: [Function]
+2|browse-safe  |     },
+2|browse-safe  |     _eventsCount: 4,
+2|browse-safe  |     _maxListeners: undefined,
+2|browse-safe  |     _binaryType: 'arraybuffer',
+2|browse-safe  |     _closeCode: 1006,
+2|browse-safe  |     _closeFrameReceived: false,
+2|browse-safe  |     _closeFrameSent: false,
+2|browse-safe  |     _closeMessage: <Buffer >,
+2|browse-safe  |     _closeTimer: null,
+2|browse-safe  |     _errorEmitted: true,
+2|browse-safe  |     _extensions: {},
+2|browse-safe  |     _paused: false,
+2|browse-safe  |     _protocol: '',
+2|browse-safe  |     _readyState: 3,
+2|browse-safe  |     _receiver: null,
+2|browse-safe  |     _sender: null,
+2|browse-safe  |     _socket: null,
+2|browse-safe  |     _bufferedAmount: 0,
+2|browse-safe  |     _isServer: false,
+2|browse-safe  |     _redirects: 0,
+2|browse-safe  |     _autoPong: true,
+2|browse-safe  |     _url: 'wss://localhost/v2',
+2|browse-safe  |     _req: null,
+2|browse-safe  |     [Symbol(shapeMode)]: false,
+2|browse-safe  |     [Symbol(kCapture)]: false
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kType)]: 'error',
+2|browse-safe  |   [Symbol(kError)]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com
+2|browse-safe  |       at Object.checkServerIdentity (node:tls:316:12)
+2|browse-safe  |       at TLSSocket.onConnectSecure (node:_tls_wrap:1687:27)
+2|browse-safe  |       at TLSSocket.emit (node:events:524:28)
+2|browse-safe  |       at TLSSocket._finishInit (node:_tls_wrap:1076:8)
+2|browse-safe  |       at ssl.onhandshakedone (node:_tls_wrap:862:12) {
+2|browse-safe  |     code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+2|browse-safe  |     reason: "Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com",
+2|browse-safe  |     host: 'localhost',
+2|browse-safe  |     cert: {
+2|browse-safe  |       subject: [Object: null prototype],
+2|browse-safe  |       issuer: [Object: null prototype],
+2|browse-safe  |       subjectaltname: 'DNS:browse-safe.com, DNS:www.browse-safe.com',
+2|browse-safe  |       infoAccess: [Object: null prototype],
+2|browse-safe  |       ca: false,
+2|browse-safe  |       modulus: 'B8513291A14AA66BF856586ED7331D07447F74A77CFD665A505C8E3CB44CDFDF4AFB234B7B556B9687736EB3EC1CAB51782013F0FF01109F5020F12CBC62BA5ABD482CBFDADB2795DF56735428EF87C033FE35D4F326CF89B4973E4EEF5252BDA552FC9D22DA5E401C11C7986576B6D4B0E77799924F14B11A6649D012C9F82A44967F2BA750F65417E170CE4BD61394903BF834A9153CB9F9AE3578E7D25B94F224165C1BA68D95BD26A65D198EA2436E714BAAEDC76F885A35563C427A567F41525011DF69261D1478E21896DDF21C2DEFFB63FF43C72AD10D726DF2C1278DED27FAD9782D09304326331E1EAF12F718B7C3079D911D84FD256ADEADB903FB',
+2|browse-safe  |       bits: 2048,
+2|browse-safe  |       exponent: '0x10001',
+2|browse-safe  |       pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 b8 51 32 91 a1 4a a6 6b f8 56 58 6e d7 33 1d 07 44 ... 244 more bytes>,
+2|browse-safe  |       valid_from: 'May  9 13:33:31 2025 GMT',
+2|browse-safe  |       valid_to: 'Aug  7 13:33:30 2025 GMT',
+2|browse-safe  |       fingerprint: '69:29:60:11:73:A7:41:E6:25:77:15:E0:8E:61:4B:49:7C:E5:DF:8E',
+2|browse-safe  |       fingerprint256: '7C:73:17:D7:DD:5F:34:13:6E:66:F2:D8:73:A3:67:FE:CD:33:8A:AA:69:0D:99:5B:1F:A1:0A:F2:32:69:AC:3B',
+2|browse-safe  |       fingerprint512: '5A:16:4B:48:18:D1:CB:B9:1E:D8:FB:CE:47:8F:E8:61:47:85:6A:F9:C8:F5:3E:4F:0D:58:3F:AA:F0:E6:A9:28:8D:DA:D9:25:8C:74:3E:DB:5C:33:B4:68:09:DA:C6:14:F0:30:85:E7:F2:39:63:10:C5:D5:8C:D1:FD:BC:C6:00',
+2|browse-safe  |       ext_key_usage: [Array],
+2|browse-safe  |       serialNumber: '059782A2D719199ECDAEE3605E0670B45465',
+2|browse-safe  |       raw: <Buffer 30 82 05 11 30 82 03 f9 a0 03 02 01 02 02 12 05 97 82 a2 d7 19 19 9e cd ae e3 60 5e 06 70 b4 54 65 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 33 ... 1251 more bytes>,
+2|browse-safe  |       issuerCertificate: [Object]
+2|browse-safe  |     }
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kMessage)]: "Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com"
+2|browse-safe  | }
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+2|browse-safe  | Error seeding database: ErrorEvent {
+2|browse-safe  |   [Symbol(kTarget)]: WebSocket {
+2|browse-safe  |     _events: [Object: null prototype] {
+2|browse-safe  |       error: [Function],
+2|browse-safe  |       message: [Function],
+2|browse-safe  |       close: [Function],
+2|browse-safe  |       open: [Function]
+2|browse-safe  |     },
+2|browse-safe  |     _eventsCount: 4,
+2|browse-safe  |     _maxListeners: undefined,
+2|browse-safe  |     _binaryType: 'arraybuffer',
+2|browse-safe  |     _closeCode: 1006,
+2|browse-safe  |     _closeFrameReceived: false,
+2|browse-safe  |     _closeFrameSent: false,
+2|browse-safe  |     _closeMessage: <Buffer >,
+2|browse-safe  |     _closeTimer: null,
+2|browse-safe  |     _errorEmitted: true,
+2|browse-safe  |     _extensions: {},
+2|browse-safe  |     _paused: false,
+2|browse-safe  |     _protocol: '',
+2|browse-safe  |     _readyState: 3,
+2|browse-safe  |     _receiver: null,
+2|browse-safe  |     _sender: null,
+2|browse-safe  |     _socket: null,
+2|browse-safe  |     _bufferedAmount: 0,
+2|browse-safe  |     _isServer: false,
+2|browse-safe  |     _redirects: 0,
+2|browse-safe  |     _autoPong: true,
+2|browse-safe  |     _url: 'wss://localhost/v2',
+2|browse-safe  |     _req: null,
+2|browse-safe  |     [Symbol(shapeMode)]: false,
+2|browse-safe  |     [Symbol(kCapture)]: false
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kType)]: 'error',
+2|browse-safe  |   [Symbol(kError)]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com
+2|browse-safe  |       at Object.checkServerIdentity (node:tls:316:12)
+2|browse-safe  |       at TLSSocket.onConnectSecure (node:_tls_wrap:1687:27)
+2|browse-safe  |       at TLSSocket.emit (node:events:524:28)
+2|browse-safe  |       at TLSSocket._finishInit (node:_tls_wrap:1076:8)
+2|browse-safe  |       at ssl.onhandshakedone (node:_tls_wrap:862:12) {
+2|browse-safe  |     code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+2|browse-safe  |     reason: "Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com",
+2|browse-safe  |     host: 'localhost',
+2|browse-safe  |     cert: {
+2|browse-safe  |       subject: [Object: null prototype],
+2|browse-safe  |       issuer: [Object: null prototype],
+2|browse-safe  |       subjectaltname: 'DNS:browse-safe.com, DNS:www.browse-safe.com',
+2|browse-safe  |       infoAccess: [Object: null prototype],
+2|browse-safe  |       ca: false,
+2|browse-safe  |       modulus: 'B8513291A14AA66BF856586ED7331D07447F74A77CFD665A505C8E3CB44CDFDF4AFB234B7B556B9687736EB3EC1CAB51782013F0FF01109F5020F12CBC62BA5ABD482CBFDADB2795DF56735428EF87C033FE35D4F326CF89B4973E4EEF5252BDA552FC9D22DA5E401C11C7986576B6D4B0E77799924F14B11A6649D012C9F82A44967F2BA750F65417E170CE4BD61394903BF834A9153CB9F9AE3578E7D25B94F224165C1BA68D95BD26A65D198EA2436E714BAAEDC76F885A35563C427A567F41525011DF69261D1478E21896DDF21C2DEFFB63FF43C72AD10D726DF2C1278DED27FAD9782D09304326331E1EAF12F718B7C3079D911D84FD256ADEADB903FB',
+2|browse-safe  |       bits: 2048,
+2|browse-safe  |       exponent: '0x10001',
+2|browse-safe  |       pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 b8 51 32 91 a1 4a a6 6b f8 56 58 6e d7 33 1d 07 44 ... 244 more bytes>,
+2|browse-safe  |       valid_from: 'May  9 13:33:31 2025 GMT',
+2|browse-safe  |       valid_to: 'Aug  7 13:33:30 2025 GMT',
+2|browse-safe  |       fingerprint: '69:29:60:11:73:A7:41:E6:25:77:15:E0:8E:61:4B:49:7C:E5:DF:8E',
+2|browse-safe  |       fingerprint256: '7C:73:17:D7:DD:5F:34:13:6E:66:F2:D8:73:A3:67:FE:CD:33:8A:AA:69:0D:99:5B:1F:A1:0A:F2:32:69:AC:3B',
+2|browse-safe  |       fingerprint512: '5A:16:4B:48:18:D1:CB:B9:1E:D8:FB:CE:47:8F:E8:61:47:85:6A:F9:C8:F5:3E:4F:0D:58:3F:AA:F0:E6:A9:28:8D:DA:D9:25:8C:74:3E:DB:5C:33:B4:68:09:DA:C6:14:F0:30:85:E7:F2:39:63:10:C5:D5:8C:D1:FD:BC:C6:00',
+2|browse-safe  |       ext_key_usage: [Array],
+2|browse-safe  |       serialNumber: '059782A2D719199ECDAEE3605E0670B45465',
+2|browse-safe  |       raw: <Buffer 30 82 05 11 30 82 03 f9 a0 03 02 01 02 02 12 05 97 82 a2 d7 19 19 9e cd ae e3 60 5e 06 70 b4 54 65 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 33 ... 1251 more bytes>,
+2|browse-safe  |       issuerCertificate: [Object]
+2|browse-safe  |     }
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kMessage)]: "Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com"
+2|browse-safe  | }
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+^C
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Restart Nginx to ensure it's properly proxying to your application
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# systemctl restart nginx
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe
+[TAILING] Tailing last 15 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error.log last 15 lines:
+2|browse-s |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-s |     at listenInCluster (node:net:1965:12)
+2|browse-s |     at doListen (node:net:2139:7)
+2|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-s | Emitted 'error' event on Server instance at:
+2|browse-s |     at emitErrorNT (node:net:1944:8)
+2|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-s |   code: 'EADDRINUSE',
+2|browse-s |   errno: -98,
+2|browse-s |   syscall: 'listen',
+2|browse-s |   address: '0.0.0.0',
+2|browse-s |   port: 5000
+2|browse-s | }
+2|browse-s |
+2|browse-s | Node.js v20.19.1
+
+/root/.pm2/logs/browse-safe-out.log last 15 lines:
+2|browse-s | > rest-express@1.0.0 dev
+2|browse-s | > NODE_ENV=development tsx server/index.ts
+2|browse-s |
+2|browse-s |
+2|browse-s | > rest-express@1.0.0 dev
+2|browse-s | > NODE_ENV=development tsx server/index.ts
+2|browse-s |
+2|browse-s |
+2|browse-s | > rest-express@1.0.0 dev
+2|browse-s | > NODE_ENV=development tsx server/index.ts
+2|browse-s |
+2|browse-s |
+2|browse-s | > rest-express@1.0.0 dev
+2|browse-s | > NODE_ENV=development tsx server/index.ts
+2|browse-s |
+
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+2|browse-safe  | Error seeding database: ErrorEvent {
+2|browse-safe  |   [Symbol(kTarget)]: WebSocket {
+2|browse-safe  |     _events: [Object: null prototype] {
+2|browse-safe  |       error: [Function],
+2|browse-safe  |       message: [Function],
+2|browse-safe  |       close: [Function],
+2|browse-safe  |       open: [Function]
+2|browse-safe  |     },
+2|browse-safe  |     _eventsCount: 4,
+2|browse-safe  |     _maxListeners: undefined,
+2|browse-safe  |     _binaryType: 'arraybuffer',
+2|browse-safe  |     _closeCode: 1006,
+2|browse-safe  |     _closeFrameReceived: false,
+2|browse-safe  |     _closeFrameSent: false,
+2|browse-safe  |     _closeMessage: <Buffer >,
+2|browse-safe  |     _closeTimer: null,
+2|browse-safe  |     _errorEmitted: true,
+2|browse-safe  |     _extensions: {},
+2|browse-safe  |     _paused: false,
+2|browse-safe  |     _protocol: '',
+2|browse-safe  |     _readyState: 3,
+2|browse-safe  |     _receiver: null,
+2|browse-safe  |     _sender: null,
+2|browse-safe  |     _socket: null,
+2|browse-safe  |     _bufferedAmount: 0,
+2|browse-safe  |     _isServer: false,
+2|browse-safe  |     _redirects: 0,
+2|browse-safe  |     _autoPong: true,
+2|browse-safe  |     _url: 'wss://localhost/v2',
+2|browse-safe  |     _req: null,
+2|browse-safe  |     [Symbol(shapeMode)]: false,
+2|browse-safe  |     [Symbol(kCapture)]: false
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kType)]: 'error',
+2|browse-safe  |   [Symbol(kError)]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com
+2|browse-safe  |       at Object.checkServerIdentity (node:tls:316:12)
+2|browse-safe  |       at TLSSocket.onConnectSecure (node:_tls_wrap:1687:27)
+2|browse-safe  |       at TLSSocket.emit (node:events:524:28)
+2|browse-safe  |       at TLSSocket._finishInit (node:_tls_wrap:1076:8)
+2|browse-safe  |       at ssl.onhandshakedone (node:_tls_wrap:862:12) {
+2|browse-safe  |     code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+2|browse-safe  |     reason: "Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com",
+2|browse-safe  |     host: 'localhost',
+2|browse-safe  |     cert: {
+2|browse-safe  |       subject: [Object: null prototype],
+2|browse-safe  |       issuer: [Object: null prototype],
+2|browse-safe  |       subjectaltname: 'DNS:browse-safe.com, DNS:www.browse-safe.com',
+2|browse-safe  |       infoAccess: [Object: null prototype],
+2|browse-safe  |       ca: false,
+2|browse-safe  |       modulus: 'B8513291A14AA66BF856586ED7331D07447F74A77CFD665A505C8E3CB44CDFDF4AFB234B7B556B9687736EB3EC1CAB51782013F0FF01109F5020F12CBC62BA5ABD482CBFDADB2795DF56735428EF87C033FE35D4F326CF89B4973E4EEF5252BDA552FC9D22DA5E401C11C7986576B6D4B0E77799924F14B11A6649D012C9F82A44967F2BA750F65417E170CE4BD61394903BF834A9153CB9F9AE3578E7D25B94F224165C1BA68D95BD26A65D198EA2436E714BAAEDC76F885A35563C427A567F41525011DF69261D1478E21896DDF21C2DEFFB63FF43C72AD10D726DF2C1278DED27FAD9782D09304326331E1EAF12F718B7C3079D911D84FD256ADEADB903FB',
+2|browse-safe  |       bits: 2048,
+2|browse-safe  |       exponent: '0x10001',
+2|browse-safe  |       pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 b8 51 32 91 a1 4a a6 6b f8 56 58 6e d7 33 1d 07 44 ... 244 more bytes>,
+2|browse-safe  |       valid_from: 'May  9 13:33:31 2025 GMT',
+2|browse-safe  |       valid_to: 'Aug  7 13:33:30 2025 GMT',
+2|browse-safe  |       fingerprint: '69:29:60:11:73:A7:41:E6:25:77:15:E0:8E:61:4B:49:7C:E5:DF:8E',
+2|browse-safe  |       fingerprint256: '7C:73:17:D7:DD:5F:34:13:6E:66:F2:D8:73:A3:67:FE:CD:33:8A:AA:69:0D:99:5B:1F:A1:0A:F2:32:69:AC:3B',
+2|browse-safe  |       fingerprint512: '5A:16:4B:48:18:D1:CB:B9:1E:D8:FB:CE:47:8F:E8:61:47:85:6A:F9:C8:F5:3E:4F:0D:58:3F:AA:F0:E6:A9:28:8D:DA:D9:25:8C:74:3E:DB:5C:33:B4:68:09:DA:C6:14:F0:30:85:E7:F2:39:63:10:C5:D5:8C:D1:FD:BC:C6:00',
+2|browse-safe  |       ext_key_usage: [Array],
+2|browse-safe  |       serialNumber: '059782A2D719199ECDAEE3605E0670B45465',
+2|browse-safe  |       raw: <Buffer 30 82 05 11 30 82 03 f9 a0 03 02 01 02 02 12 05 97 82 a2 d7 19 19 9e cd ae e3 60 5e 06 70 b4 54 65 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 33 ... 1251 more bytes>,
+2|browse-safe  |       issuerCertificate: [Object]
+2|browse-safe  |     }
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kMessage)]: "Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com"
+2|browse-safe  | }
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+2|browse-safe  | Error seeding database: ErrorEvent {
+2|browse-safe  |   [Symbol(kTarget)]: WebSocket {
+2|browse-safe  |     _events: [Object: null prototype] {
+2|browse-safe  |       error: [Function],
+2|browse-safe  |       message: [Function],
+2|browse-safe  |       close: [Function],
+2|browse-safe  |       open: [Function]
+2|browse-safe  |     },
+2|browse-safe  |     _eventsCount: 4,
+2|browse-safe  |     _maxListeners: undefined,
+2|browse-safe  |     _binaryType: 'arraybuffer',
+2|browse-safe  |     _closeCode: 1006,
+2|browse-safe  |     _closeFrameReceived: false,
+2|browse-safe  |     _closeFrameSent: false,
+2|browse-safe  |     _closeMessage: <Buffer >,
+2|browse-safe  |     _closeTimer: null,
+2|browse-safe  |     _errorEmitted: true,
+2|browse-safe  |     _extensions: {},
+2|browse-safe  |     _paused: false,
+2|browse-safe  |     _protocol: '',
+2|browse-safe  |     _readyState: 3,
+2|browse-safe  |     _receiver: null,
+2|browse-safe  |     _sender: null,
+2|browse-safe  |     _socket: null,
+2|browse-safe  |     _bufferedAmount: 0,
+2|browse-safe  |     _isServer: false,
+2|browse-safe  |     _redirects: 0,
+2|browse-safe  |     _autoPong: true,
+2|browse-safe  |     _url: 'wss://localhost/v2',
+2|browse-safe  |     _req: null,
+2|browse-safe  |     [Symbol(shapeMode)]: false,
+2|browse-safe  |     [Symbol(kCapture)]: false
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kType)]: 'error',
+2|browse-safe  |   [Symbol(kError)]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com
+2|browse-safe  |       at Object.checkServerIdentity (node:tls:316:12)
+2|browse-safe  |       at TLSSocket.onConnectSecure (node:_tls_wrap:1687:27)
+2|browse-safe  |       at TLSSocket.emit (node:events:524:28)
+2|browse-safe  |       at TLSSocket._finishInit (node:_tls_wrap:1076:8)
+2|browse-safe  |       at ssl.onhandshakedone (node:_tls_wrap:862:12) {
+2|browse-safe  |     code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+2|browse-safe  |     reason: "Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com",
+2|browse-safe  |     host: 'localhost',
+2|browse-safe  |     cert: {
+2|browse-safe  |       subject: [Object: null prototype],
+2|browse-safe  |       issuer: [Object: null prototype],
+2|browse-safe  |       subjectaltname: 'DNS:browse-safe.com, DNS:www.browse-safe.com',
+2|browse-safe  |       infoAccess: [Object: null prototype],
+2|browse-safe  |       ca: false,
+2|browse-safe  |       modulus: 'B8513291A14AA66BF856586ED7331D07447F74A77CFD665A505C8E3CB44CDFDF4AFB234B7B556B9687736EB3EC1CAB51782013F0FF01109F5020F12CBC62BA5ABD482CBFDADB2795DF56735428EF87C033FE35D4F326CF89B4973E4EEF5252BDA552FC9D22DA5E401C11C7986576B6D4B0E77799924F14B11A6649D012C9F82A44967F2BA750F65417E170CE4BD61394903BF834A9153CB9F9AE3578E7D25B94F224165C1BA68D95BD26A65D198EA2436E714BAAEDC76F885A35563C427A567F41525011DF69261D1478E21896DDF21C2DEFFB63FF43C72AD10D726DF2C1278DED27FAD9782D09304326331E1EAF12F718B7C3079D911D84FD256ADEADB903FB',
+2|browse-safe  |       bits: 2048,
+2|browse-safe  |       exponent: '0x10001',
+2|browse-safe  |       pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 b8 51 32 91 a1 4a a6 6b f8 56 58 6e d7 33 1d 07 44 ... 244 more bytes>,
+2|browse-safe  |       valid_from: 'May  9 13:33:31 2025 GMT',
+2|browse-safe  |       valid_to: 'Aug  7 13:33:30 2025 GMT',
+2|browse-safe  |       fingerprint: '69:29:60:11:73:A7:41:E6:25:77:15:E0:8E:61:4B:49:7C:E5:DF:8E',
+2|browse-safe  |       fingerprint256: '7C:73:17:D7:DD:5F:34:13:6E:66:F2:D8:73:A3:67:FE:CD:33:8A:AA:69:0D:99:5B:1F:A1:0A:F2:32:69:AC:3B',
+2|browse-safe  |       fingerprint512: '5A:16:4B:48:18:D1:CB:B9:1E:D8:FB:CE:47:8F:E8:61:47:85:6A:F9:C8:F5:3E:4F:0D:58:3F:AA:F0:E6:A9:28:8D:DA:D9:25:8C:74:3E:DB:5C:33:B4:68:09:DA:C6:14:F0:30:85:E7:F2:39:63:10:C5:D5:8C:D1:FD:BC:C6:00',
+2|browse-safe  |       ext_key_usage: [Array],
+2|browse-safe  |       serialNumber: '059782A2D719199ECDAEE3605E0670B45465',
+2|browse-safe  |       raw: <Buffer 30 82 05 11 30 82 03 f9 a0 03 02 01 02 02 12 05 97 82 a2 d7 19 19 9e cd ae e3 60 5e 06 70 b4 54 65 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 33 ... 1251 more bytes>,
+2|browse-safe  |       issuerCertificate: [Object]
+2|browse-safe  |     }
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kMessage)]: "Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com"
+2|browse-safe  | }
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+2|browse-safe  | Error seeding database: ErrorEvent {
+2|browse-safe  |   [Symbol(kTarget)]: WebSocket {
+2|browse-safe  |     _events: [Object: null prototype] {
+2|browse-safe  |       error: [Function],
+2|browse-safe  |       message: [Function],
+2|browse-safe  |       close: [Function],
+2|browse-safe  |       open: [Function]
+2|browse-safe  |     },
+2|browse-safe  |     _eventsCount: 4,
+2|browse-safe  |     _maxListeners: undefined,
+2|browse-safe  |     _binaryType: 'arraybuffer',
+2|browse-safe  |     _closeCode: 1006,
+2|browse-safe  |     _closeFrameReceived: false,
+2|browse-safe  |     _closeFrameSent: false,
+2|browse-safe  |     _closeMessage: <Buffer >,
+2|browse-safe  |     _closeTimer: null,
+2|browse-safe  |     _errorEmitted: true,
+2|browse-safe  |     _extensions: {},
+2|browse-safe  |     _paused: false,
+2|browse-safe  |     _protocol: '',
+2|browse-safe  |     _readyState: 3,
+2|browse-safe  |     _receiver: null,
+2|browse-safe  |     _sender: null,
+2|browse-safe  |     _socket: null,
+2|browse-safe  |     _bufferedAmount: 0,
+2|browse-safe  |     _isServer: false,
+2|browse-safe  |     _redirects: 0,
+2|browse-safe  |     _autoPong: true,
+2|browse-safe  |     _url: 'wss://localhost/v2',
+2|browse-safe  |     _req: null,
+2|browse-safe  |     [Symbol(shapeMode)]: false,
+2|browse-safe  |     [Symbol(kCapture)]: false
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kType)]: 'error',
+2|browse-safe  |   [Symbol(kError)]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com
+2|browse-safe  |       at Object.checkServerIdentity (node:tls:316:12)
+2|browse-safe  |       at TLSSocket.onConnectSecure (node:_tls_wrap:1687:27)
+2|browse-safe  |       at TLSSocket.emit (node:events:524:28)
+2|browse-safe  |       at TLSSocket._finishInit (node:_tls_wrap:1076:8)
+2|browse-safe  |       at ssl.onhandshakedone (node:_tls_wrap:862:12) {
+2|browse-safe  |     code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+2|browse-safe  |     reason: "Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com",
+2|browse-safe  |     host: 'localhost',
+2|browse-safe  |     cert: {
+2|browse-safe  |       subject: [Object: null prototype],
+2|browse-safe  |       issuer: [Object: null prototype],
+2|browse-safe  |       subjectaltname: 'DNS:browse-safe.com, DNS:www.browse-safe.com',
+2|browse-safe  |       infoAccess: [Object: null prototype],
+2|browse-safe  |       ca: false,
+2|browse-safe  |       modulus: 'B8513291A14AA66BF856586ED7331D07447F74A77CFD665A505C8E3CB44CDFDF4AFB234B7B556B9687736EB3EC1CAB51782013F0FF01109F5020F12CBC62BA5ABD482CBFDADB2795DF56735428EF87C033FE35D4F326CF89B4973E4EEF5252BDA552FC9D22DA5E401C11C7986576B6D4B0E77799924F14B11A6649D012C9F82A44967F2BA750F65417E170CE4BD61394903BF834A9153CB9F9AE3578E7D25B94F224165C1BA68D95BD26A65D198EA2436E714BAAEDC76F885A35563C427A567F41525011DF69261D1478E21896DDF21C2DEFFB63FF43C72AD10D726DF2C1278DED27FAD9782D09304326331E1EAF12F718B7C3079D911D84FD256ADEADB903FB',
+2|browse-safe  |       bits: 2048,
+2|browse-safe  |       exponent: '0x10001',
+2|browse-safe  |       pubkey: <Buffer 30 82 01 22 30 0d 06 09 2a 86 48 86 f7 0d 01 01 01 05 00 03 82 01 0f 00 30 82 01 0a 02 82 01 01 00 b8 51 32 91 a1 4a a6 6b f8 56 58 6e d7 33 1d 07 44 ... 244 more bytes>,
+2|browse-safe  |       valid_from: 'May  9 13:33:31 2025 GMT',
+2|browse-safe  |       valid_to: 'Aug  7 13:33:30 2025 GMT',
+2|browse-safe  |       fingerprint: '69:29:60:11:73:A7:41:E6:25:77:15:E0:8E:61:4B:49:7C:E5:DF:8E',
+2|browse-safe  |       fingerprint256: '7C:73:17:D7:DD:5F:34:13:6E:66:F2:D8:73:A3:67:FE:CD:33:8A:AA:69:0D:99:5B:1F:A1:0A:F2:32:69:AC:3B',
+2|browse-safe  |       fingerprint512: '5A:16:4B:48:18:D1:CB:B9:1E:D8:FB:CE:47:8F:E8:61:47:85:6A:F9:C8:F5:3E:4F:0D:58:3F:AA:F0:E6:A9:28:8D:DA:D9:25:8C:74:3E:DB:5C:33:B4:68:09:DA:C6:14:F0:30:85:E7:F2:39:63:10:C5:D5:8C:D1:FD:BC:C6:00',
+2|browse-safe  |       ext_key_usage: [Array],
+2|browse-safe  |       serialNumber: '059782A2D719199ECDAEE3605E0670B45465',
+2|browse-safe  |       raw: <Buffer 30 82 05 11 30 82 03 f9 a0 03 02 01 02 02 12 05 97 82 a2 d7 19 19 9e cd ae e3 60 5e 06 70 b4 54 65 30 0d 06 09 2a 86 48 86 f7 0d 01 01 0b 05 00 30 33 ... 1251 more bytes>,
+2|browse-safe  |       issuerCertificate: [Object]
+2|browse-safe  |     }
+2|browse-safe  |   },
+2|browse-safe  |   [Symbol(kMessage)]: "Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com"
+2|browse-safe  | }
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+2|browse-safe  | node:events:502
+2|browse-safe  |       throw er; // Unhandled 'error' event
+2|browse-safe  |       ^
+2|browse-safe  | Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+2|browse-safe  |     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+2|browse-safe  |     at listenInCluster (node:net:1965:12)
+2|browse-safe  |     at doListen (node:net:2139:7)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+2|browse-safe  | Emitted 'error' event on Server instance at:
+2|browse-safe  |     at emitErrorNT (node:net:1944:8)
+2|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+2|browse-safe  |   code: 'EADDRINUSE',
+2|browse-safe  |   errno: -98,
+2|browse-safe  |   syscall: 'listen',
+2|browse-safe  |   address: '0.0.0.0',
+2|browse-safe  |   port: 5000
+2|browse-safe  | }
+2|browse-safe  | Node.js v20.19.1
+2|browse-safe  | > rest-express@1.0.0 dev
+2|browse-safe  | > NODE_ENV=development tsx server/index.ts
+

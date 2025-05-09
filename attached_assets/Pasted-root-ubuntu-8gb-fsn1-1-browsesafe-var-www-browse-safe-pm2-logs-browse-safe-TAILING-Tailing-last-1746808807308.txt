@@ -1,0 +1,630 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe
+[TAILING] Tailing last 15 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error.log last 15 lines:
+0|browse-s | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-s |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-s |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-s |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-s |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-s |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808583964:2:3212)
+0|browse-s |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808583964:2:3584)
+0|browse-s |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808583964:2:4073)
+0|browse-s |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808583964:2:4441)
+0|browse-s |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-s |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-s |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-s | }
+0|browse-s |
+0|browse-s | Node.js v20.19.1
+
+/root/.pm2/logs/browse-safe-out.log last 15 lines:
+0|browse-s | > rest-express@1.0.0 dev
+0|browse-s | > NODE_ENV=development tsx server/index.ts
+0|browse-s |
+0|browse-s |
+0|browse-s | > rest-express@1.0.0 dev
+0|browse-s | > NODE_ENV=development tsx server/index.ts
+0|browse-s |
+0|browse-s |
+0|browse-s | > rest-express@1.0.0 dev
+0|browse-s | > NODE_ENV=development tsx server/index.ts
+0|browse-s |
+0|browse-s |
+0|browse-s | > rest-express@1.0.0 dev
+0|browse-s | > NODE_ENV=development tsx server/index.ts
+0|browse-s |
+
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808585933:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808585933:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808585933:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808585933:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808587973:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808587973:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808587973:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808587973:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808590041:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808590041:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808590041:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808590041:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808592256:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808592256:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808592256:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808592256:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808594503:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808594503:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808594503:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808594503:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808596492:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808596492:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808596492:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808596492:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808598471:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808598471:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808598471:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808598471:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808600446:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808600446:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808600446:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808600446:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808602640:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808602640:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808602640:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808602640:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808604568:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808604568:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808604568:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808604568:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808606635:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808606635:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808606635:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808606635:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808608782:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808608782:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808608782:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808608782:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808610704:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808610704:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808610704:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808610704:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808612699:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808612699:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808612699:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808612699:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808614604:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808614604:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808614604:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808614604:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808616589:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808616589:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808616589:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808616589:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808618907:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808618907:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808618907:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808618907:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808621067:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808621067:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808621067:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808621067:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+^C
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Check if the firewall is allowing HTTP/HTTPS traffic
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# sudo ufw status
+Status: inactive
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe#
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Allow HTTP and HTTPS if not already allowed
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# sudo ufw allow 80/tcp
+Rules updated
+Rules updated (v6)
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# sudo ufw allow 443/tcp
+Rules updated
+Rules updated (v6)
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# npm update --legacy-peer-deps
+
+added 23 packages, removed 10 packages, changed 147 packages, and audited 520 packages in 1m
+
+69 packages are looking for funding
+  run `npm fund` for details
+
+5 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 monit
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# htop
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe
+[TAILING] Tailing last 15 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error.log last 15 lines:
+0|browse-s | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-s |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-s |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-s |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-s |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-s |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808771382:2:3212)
+0|browse-s |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808771382:2:3584)
+0|browse-s |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808771382:2:4073)
+0|browse-s |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808771382:2:4441)
+0|browse-s |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-s |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-s |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-s | }
+0|browse-s |
+0|browse-s | Node.js v20.19.1
+
+/root/.pm2/logs/browse-safe-out.log last 15 lines:
+0|browse-s | > rest-express@1.0.0 dev
+0|browse-s | > NODE_ENV=development tsx server/index.ts
+0|browse-s |
+0|browse-s |
+0|browse-s | > rest-express@1.0.0 dev
+0|browse-s | > NODE_ENV=development tsx server/index.ts
+0|browse-s |
+0|browse-s |
+0|browse-s | > rest-express@1.0.0 dev
+0|browse-s | > NODE_ENV=development tsx server/index.ts
+0|browse-s |
+0|browse-s |
+0|browse-s | > rest-express@1.0.0 dev
+0|browse-s | > NODE_ENV=development tsx server/index.ts
+0|browse-s |
+
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808773435:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808773435:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808773435:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808773435:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808775462:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808775462:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808775462:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808775462:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808777485:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808777485:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808777485:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808777485:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808779458:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808779458:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808779458:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808779458:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808781410:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808781410:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808781410:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808781410:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808783477:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808783477:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808783477:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808783477:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808785486:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808785486:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808785486:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808785486:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808787583:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808787583:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808787583:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808787583:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808789585:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808789585:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808789585:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808789585:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+0|browse-safe  | > rest-express@1.0.0 dev
+0|browse-safe  | > NODE_ENV=development tsx server/index.ts
+0|browse-safe  | node:internal/modules/run_main:123
+0|browse-safe  |     triggerUncaughtException(
+0|browse-safe  |     ^
+0|browse-safe  | Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'dotenv' imported from /var/www/browse-safe/server/.env.js
+0|browse-safe  |     at packageResolve (node:internal/modules/esm/resolve:873:9)
+0|browse-safe  |     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+0|browse-safe  |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|browse-safe  |     at nextResolve (node:internal/modules/esm/hooks:864:28)
+0|browse-safe  |     at resolveBase (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808791723:2:3212)
+0|browse-safe  |     at resolveDirectory (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808791723:2:3584)
+0|browse-safe  |     at resolveTsPaths (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808791723:2:4073)
+0|browse-safe  |     at async resolve (file:///var/www/browse-safe/node_modules/tsx/dist/esm/index.mjs?1746808791723:2:4441)
+0|browse-safe  |     at async nextResolve (node:internal/modules/esm/hooks:864:22)
+0|browse-safe  |     at async Hooks.resolve (node:internal/modules/esm/hooks:306:24) {
+0|browse-safe  |   code: 'ERR_MODULE_NOT_FOUND'
+0|browse-safe  | }
+0|browse-safe  | Node.js v20.19.1
+

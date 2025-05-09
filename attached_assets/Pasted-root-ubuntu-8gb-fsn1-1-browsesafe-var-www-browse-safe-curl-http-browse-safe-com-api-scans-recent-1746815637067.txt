@@ -1,0 +1,56 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# curl http://browse-safe.com/api/scans/recent
+{"message":"Failed to fetch recent scans"}root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe --lines 50
+[TAILING] Tailing last 50 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error-0.log last 50 lines:
+0|browse-s |   file: 'parse_relation.c',
+0|browse-s |   line: '3407',
+0|browse-s |   routine: 'errorMissingColumn'
+0|browse-s | }
+0|browse-s | Error fetching recent scans: error: column "has_valid_ssl" does not exist
+0|browse-s |     at /var/www/browse-safe/node_modules/pg-pool/index.js:45:11
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+0|browse-s |     at async <anonymous> (/var/www/browse-safe/node_modules/src/node-postgres/session.ts:104:19)
+0|browse-s |     at async <anonymous> (/var/www/browse-safe/server/routes.ts:85:27) {
+0|browse-s |   length: 114,
+0|browse-s |   severity: 'ERROR',
+0|browse-s |   code: '42703',
+0|browse-s |   detail: undefined,
+0|browse-s |   hint: undefined,
+0|browse-s |   position: '170',
+0|browse-s |   internalPosition: undefined,
+0|browse-s |   internalQuery: undefined,
+0|browse-s |   where: undefined,
+0|browse-s |   schema: undefined,
+0|browse-s |   table: undefined,
+0|browse-s |   column: undefined,
+0|browse-s |   dataType: undefined,
+0|browse-s |   constraint: undefined,
+0|browse-s |   file: 'parse_relation.c',
+0|browse-s |   line: '3407',
+0|browse-s |   routine: 'errorMissingColumn'
+0|browse-s | }
+0|browse-s | Error fetching recent scans: error: column "has_valid_ssl" does not exist
+0|browse-s |     at /var/www/browse-safe/node_modules/pg-pool/index.js:45:11
+0|browse-s |     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+0|browse-s |     at async <anonymous> (/var/www/browse-safe/node_modules/src/node-postgres/session.ts:104:19)
+0|browse-s |     at async <anonymous> (/var/www/browse-safe/server/routes.ts:85:27) {
+0|browse-s |   length: 114,
+0|browse-s |   severity: 'ERROR',
+0|browse-s |   code: '42703',
+0|browse-s |   detail: undefined,
+0|browse-s |   hint: undefined,
+0|browse-s |   position: '170',
+0|browse-s |   internalPosition: undefined,
+0|browse-s |   internalQuery: undefined,
+0|browse-s |   where: undefined,
+0|browse-s |   schema: undefined,
+0|browse-s |   table: undefined,
+0|browse-s |   column: undefined,
+0|browse-s |   dataType: undefined,
+0|browse-s |   constraint: undefined,
+0|browse-s |   file: 'parse_relation.c',
+0|browse-s |   line: '3407',
+0|browse-s |   routine: 'errorMissingColumn'
+0|browse-s | }
+
+/root/.pm2/logs/browse-safe-out-0.log last 50 lines:

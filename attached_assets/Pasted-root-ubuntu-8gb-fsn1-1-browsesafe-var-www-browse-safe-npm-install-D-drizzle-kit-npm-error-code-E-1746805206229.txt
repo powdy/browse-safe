@@ -1,0 +1,62 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# npm install -D drizzle-kit
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: framer-motion@11.13.1
+npm error Found: react@19.1.0
+npm error node_modules/react
+npm error   peer react@">=16.8.0" from @floating-ui/react-dom@2.1.2
+npm error   node_modules/@floating-ui/react-dom
+npm error     @floating-ui/react-dom@"^2.0.0" from @radix-ui/react-popper@1.2.3
+npm error     node_modules/@radix-ui/react-popper
+npm error       @radix-ui/react-popper@"1.2.3" from @radix-ui/react-hover-card@1.1.7
+npm error       node_modules/@radix-ui/react-hover-card
+npm error         @radix-ui/react-hover-card@"^1.1.7" from the root project
+npm error       4 more (@radix-ui/react-menu, @radix-ui/react-popover, ...)
+npm error   peer react@"^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc" from @radix-ui/react-accordion@1.2.4
+npm error   node_modules/@radix-ui/react-accordion
+npm error     @radix-ui/react-accordion@"^1.2.4" from the root project
+npm error   112 more (@radix-ui/react-collapsible, ...)
+npm error
+npm error Could not resolve dependency:
+npm error peerOptional react@"^18.0.0" from framer-motion@11.13.1
+npm error node_modules/framer-motion
+npm error   framer-motion@"^11.13.1" from the root project
+npm error
+npm error Conflicting peer dependency: react@18.3.1
+npm error node_modules/react
+npm error   peerOptional react@"^18.0.0" from framer-motion@11.13.1
+npm error   node_modules/framer-motion
+npm error     framer-motion@"^11.13.1" from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error /root/.npm/_logs/2025-05-09T15_37_14_891Z-eresolve-report.txt
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-05-09T15_37_14_891Z-debug-0.log
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Edit package.json
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# nano package.json
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Run the database migrations
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# npm run db:push
+npm error code EJSONPARSE
+npm error JSON.parse Invalid package.json: JSONParseError: Expected ',' or '}' after property value in JSON at position 399 while parsing near "...izzle-kit push\"\n    \"db:push\": \"drizzle-..."
+npm error JSON.parse Failed to parse JSON data.
+npm error JSON.parse Note: package.json must be actual JSON, not just JavaScript.
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-05-09T15_38_52_338Z-debug-0.log
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# npm run db:push
+npm error code EJSONPARSE
+npm error JSON.parse Invalid package.json: JSONParseError: Expected ',' or '}' after property value in JSON at position 399 while parsing near "...izzle-kit push\"\n    \"db:push\": \"drizzle-..."
+npm error JSON.parse Failed to parse JSON data.
+npm error JSON.parse Note: package.json must be actual JSON, not just JavaScript.
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-05-09T15_39_07_630Z-debug-0.log
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Edit package.json
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# nano package.json
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# npm run db:push
+npm error code EJSONPARSE
+npm error JSON.parse Invalid package.json: JSONParseError: Expected ',' or '}' after property value in JSON at position 399 while parsing near "...izzle-kit push\"\n    \"db:push\": \"drizzle-..."
+npm error JSON.parse Failed to parse JSON data.
+npm error JSON.parse Note: package.json must be actual JSON, not just JavaScript.
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-05-09T15_39_53_959Z-debug-0.log
