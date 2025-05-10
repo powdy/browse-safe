@@ -43,23 +43,20 @@ export default function Home() {
             </div>
             
             {/* Heading with Gradient Text */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white hero-title">
-              <span className="inline-block bg-indigo-900/80 backdrop-blur-md px-6 py-3 rounded-xl shadow-xl border border-indigo-700/50">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+              <span className="bg-gradient-to-r from-blue-200 via-indigo-100 to-white text-transparent bg-clip-text">
                 Is That Website Safe or a Scam?
               </span>
             </h1>
             
-            <div className="relative mb-10 mx-auto max-w-2xl">
-              <div className="absolute -inset-1 bg-blue-600/30 rounded-lg blur-md"></div>
-              <p className="text-white text-lg md:text-xl bg-gradient-to-r from-blue-900 to-indigo-900 backdrop-blur-md px-8 py-4 rounded-lg shadow-xl border border-blue-700/80 font-medium hero-subheading relative">
-                Protect yourself from online fraud with our advanced AI-powered website security analyzer
-              </p>
-            </div>
+            <p className="text-blue-100 mb-10 text-lg md:text-xl">
+              Protect yourself from online fraud with our advanced AI-powered website security analyzer
+            </p>
             
             {/* Search Form with Enhanced Styling */}
             <div className="backdrop-blur-sm bg-white/10 p-6 rounded-xl shadow-2xl mb-12 border border-white/20">
               <SearchForm className="mb-4" darkMode={true} />
-              <p className="text-white text-sm bg-indigo-800/80 backdrop-blur-md px-4 py-2 rounded-lg inline-block">
+              <p className="text-blue-200 text-sm">
                 Enter any website URL to get an instant security analysis and trust score
               </p>
             </div>
@@ -89,17 +86,17 @@ export default function Home() {
             
             {/* Stats */}
             <div className="flex flex-wrap justify-center mt-16 gap-8 md:gap-12">
-              <div className="text-center bg-indigo-800/90 backdrop-blur-md px-6 py-4 rounded-xl border border-indigo-600 shadow-lg min-w-[140px]">
-                <p className="text-3xl md:text-4xl font-bold text-white bg-blue-600 px-3 py-1 rounded-lg mb-2 shadow-md">3.5M+</p>
-                <p className="text-white text-sm font-semibold bg-indigo-700 px-3 py-1 rounded-md shadow-sm">Websites Analyzed</p>
+              <div className="text-center">
+                <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-indigo-300 text-transparent bg-clip-text">3.5M+</p>
+                <p className="text-blue-200 text-sm">Websites Analyzed</p>
               </div>
-              <div className="text-center bg-indigo-800/90 backdrop-blur-md px-6 py-4 rounded-xl border border-indigo-600 shadow-lg min-w-[140px]">
-                <p className="text-3xl md:text-4xl font-bold text-white bg-blue-600 px-3 py-1 rounded-lg mb-2 shadow-md">98.7%</p>
-                <p className="text-white text-sm font-semibold bg-indigo-700 px-3 py-1 rounded-md shadow-sm">Accuracy Rate</p>
+              <div className="text-center">
+                <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-300 text-transparent bg-clip-text">98.7%</p>
+                <p className="text-blue-200 text-sm">Accuracy Rate</p>
               </div>
-              <div className="text-center bg-indigo-800/90 backdrop-blur-md px-6 py-4 rounded-xl border border-indigo-600 shadow-lg min-w-[140px]">
-                <p className="text-3xl md:text-4xl font-bold text-white bg-blue-600 px-3 py-1 rounded-lg mb-2 shadow-md">247K+</p>
-                <p className="text-white text-sm font-semibold bg-indigo-700 px-3 py-1 rounded-md shadow-sm">Frauds Detected</p>
+              <div className="text-center">
+                <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-violet-300 text-transparent bg-clip-text">247K+</p>
+                <p className="text-blue-200 text-sm">Frauds Detected</p>
               </div>
             </div>
           </div>
@@ -170,14 +167,14 @@ export default function Home() {
       </section>
       
       {/* Security Features Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50 relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0" style={{ zIndex: 1, height: "100px", overflow: "hidden" }}>
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50 relative">
+        <div className="absolute top-0 left-0 right-0" style={{ zIndex: 1 }}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full rotate-180">
             <path fill="#fff" fillOpacity="1" d="M0,224L48,218.7C96,213,192,203,288,213.3C384,224,480,256,576,245.3C672,235,768,181,864,181.3C960,181,1056,235,1152,245.3C1248,256,1344,224,1392,208L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
           </svg>
         </div>
         
-        <div className="container mx-auto px-4 pt-24 relative z-10">
+        <div className="container mx-auto px-4 pt-10 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block p-2 bg-indigo-50 rounded-full mb-4">
               <div className="p-1 bg-indigo-100 rounded-full">
@@ -186,7 +183,7 @@ export default function Home() {
                 </svg>
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-purple-700 to-violet-700 text-transparent bg-clip-text security-section-title">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-purple-700 to-violet-700 text-transparent bg-clip-text">
               Key Security Features
             </h2>
           </div>
@@ -196,15 +193,15 @@ export default function Home() {
       </section>
       
       {/* Recent Scans Section with Enhanced Design */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section className="py-20 bg-white relative">
         {/* Top wave decoration */}
-        <div className="absolute top-0 left-0 right-0" style={{ zIndex: 1, height: "100px", overflow: "hidden" }}>
+        <div className="absolute top-0 left-0 right-0" style={{ zIndex: 1 }}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
             <path fill="#f9fafb" fillOpacity="1" d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,186.7C672,213,768,235,864,224C960,213,1056,171,1152,149.3C1248,128,1344,128,1392,128L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
           </svg>
         </div>
         
-        <div className="container mx-auto px-4 pt-24 relative z-10">
+        <div className="container mx-auto px-4 pt-10 relative z-10">
           <div className="text-center mb-10">
             <div className="mx-auto text-center mb-8">
               {/* Icon with particle effects */}
@@ -224,7 +221,7 @@ export default function Home() {
             </div>
             
             {/* Title with gradient text */}
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text security-section-title">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text">
               Real-Time Website Security Scans
             </h2>
             

@@ -90,20 +90,20 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
         </Button>
       </form>
       
-      <div className={`mt-4 ${darkMode ? "bg-indigo-800/90 backdrop-blur-md" : "bg-gray-100"} px-4 py-3 rounded-lg border ${darkMode ? "border-indigo-600" : "border-gray-300"} text-sm shadow-md text-center`}>
-        <p className={`font-semibold text-white bg-indigo-600 px-3 py-1 rounded-md shadow-sm mb-3 inline-block`}>Popular searches:</p>
-        <div className="flex items-center justify-center gap-3">
+      <div className={`flex flex-wrap justify-center mt-4 ${darkMode ? "text-primary-400" : "text-primary-600"} text-sm`}>
+        <p>Popular searches:</p>
+        <div className="flex flex-wrap gap-2 ml-2">
           {popularSearches.map((url, index) => (
             <div key={url} className="flex items-center">
               <button 
                 type="button"
                 onClick={() => handlePopularSearch(url)}
-                className={`font-medium ${darkMode ? "text-white bg-blue-600 hover:bg-blue-500 px-3 py-1 rounded shadow-sm" : "text-blue-600 hover:bg-blue-100 px-2 py-0.5 rounded"}`}
+                className={linkColor}
               >
                 {url}
               </button>
               {index < popularSearches.length - 1 && (
-                <span className={darkMode ? "text-blue-300 font-bold mx-1" : "text-blue-300 mx-1"}>•</span>
+                <span className={darkMode ? "text-primary-600 mx-1" : "text-primary-300 mx-1"}>•</span>
               )}
             </div>
           ))}
