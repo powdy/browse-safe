@@ -1,0 +1,172 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe
+[TAILING] Tailing last 15 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error-0.log last 15 lines:
+0|browse-s |       asn1Curve: 'prime256v1',
+0|browse-s |       nistCurve: 'P-256',
+0|browse-s |       valid_from: 'May 10 11:10:19 2025 GMT',
+0|browse-s |       valid_to: 'Aug  8 11:10:18 2025 GMT',
+0|browse-s |       fingerprint: 'C1:8C:51:63:F4:86:15:DD:08:8B:5F:6A:DB:E7:D5:9E:DE:A9:FA:08',
+0|browse-s |       fingerprint256: 'E0:1A:89:98:30:13:A3:94:35:12:8D:E9:B7:00:DE:8D:D7:8E:41:57:B7:4E:F5:CD:64:E1:F4:07:4B:3C:DA:D8',
+0|browse-s |       fingerprint512: '38:91:E6:63:73:D0:BC:82:98:66:37:76:4F:B4:82:11:92:3C:14:4F:C5:CC:22:04:C6:95:3A:42:B2:79:83:88:FC:A0:BB:98:43:D9:44:41:E2:8A:61:8A:69:18:BF:DF:01:4E:76:BD:B3:B0:14:32:D7:93:CC:A9:69:D2:8E:AA',
+0|browse-s |       ext_key_usage: [Array],
+0|browse-s |       serialNumber: '068F5BC091F59B8B0EBFD15DB488C179B9B8',
+0|browse-s |       raw: <Buffer 30 82 03 9f 30 82 03 25 a0 03 02 01 02 02 12 06 8f 5b c0 91 f5 9b 8b 0e bf d1 5d b4 88 c1 79 b9 b8 30 0a 06 08 2a 86 48 ce 3d 04 03 03 30 32 31 0b 30 ... 881 more bytes>,
+0|browse-s |       issuerCertificate: [Object]
+0|browse-s |     }
+0|browse-s |   },
+0|browse-s |   [Symbol(kMessage)]: "Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com"
+0|browse-s | }
+
+/root/.pm2/logs/browse-safe-out-0.log last 15 lines:
+0|browse-s | 1:41:11 PM [express] GET /api/scans/recent 304 in 5ms :: [{"id":5,"url":"cloudtoolz.com","trustScore…
+0|browse-s | 1:41:15 PM [express] GET /api/scans/recent 304 in 4ms :: [{"id":5,"url":"cloudtoolz.com","trustScore…
+0|browse-s | 1:41:32 PM [express] GET /api/scans/recent 200 in 7ms :: [{"id":5,"url":"cloudtoolz.com","trustScore…
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 1:43:02 PM [express] GET /api/scans/recent 304 in 22ms :: [{"id":5,"url":"cloudtoolz.com","trustScor…
+0|browse-s | 1:43:03 PM [express] GET /api/scans/recent 304 in 4ms :: [{"id":5,"url":"cloudtoolz.com","trustScore…
+0|browse-s | 1:43:32 PM [express] serving on port 5000
+0|browse-s | 1:43:39 PM [express] GET /api/scans/recent 500 in 18ms :: {"message":"Failed to fetch recent scans"}
+0|browse-s | Scanning URL: https://tiktok.com, cleaned to: tiktok.com
+0|browse-s | 1:44:10 PM [express] GET /api/scans 500 in 20ms :: {"message":"Failed to scan website"}
+0|browse-s | 1:46:31 PM [express] GET /api/scans/recent 500 in 25ms :: {"message":"Failed to fetch recent scans"}
+0|browse-s | Scanning URL: https://paypal-verify.net, cleaned to: paypal-verify.net
+0|browse-s | 1:46:34 PM [express] GET /api/scans 500 in 18ms :: {"message":"Failed to scan website"}
+0|browse-s | 1:46:36 PM [express] GET /api/scans/recent 500 in 15ms :: {"message":"Failed to fetch recent scans"}
+0|browse-s | 1:47:46 PM [express] serving on port 5000
+
+0|browse-safe  | Error fetching recent scans: ErrorEvent {
+0|browse-safe  |   [Symbol(kTarget)]: WebSocket {
+0|browse-safe  |     _events: [Object: null prototype] {
+0|browse-safe  |       error: [Function],
+0|browse-safe  |       message: [Function],
+0|browse-safe  |       close: [Function],
+0|browse-safe  |       open: [Function]
+0|browse-safe  |     },
+0|browse-safe  |     _eventsCount: 4,
+0|browse-safe  |     _maxListeners: undefined,
+0|browse-safe  |     _binaryType: 'arraybuffer',
+0|browse-safe  |     _closeCode: 1006,
+0|browse-safe  |     _closeFrameReceived: false,
+0|browse-safe  |     _closeFrameSent: false,
+0|browse-safe  |     _closeMessage: <Buffer >,
+0|browse-safe  |     _closeTimer: null,
+0|browse-safe  |     _errorEmitted: true,
+0|browse-safe  |     _extensions: {},
+0|browse-safe  |     _paused: false,
+0|browse-safe  |     _protocol: '',
+0|browse-safe  |     _readyState: 3,
+0|browse-safe  |     _receiver: null,
+0|browse-safe  |     _sender: null,
+0|browse-safe  |     _socket: null,
+0|browse-safe  |     _bufferedAmount: 0,
+0|browse-safe  |     _isServer: false,
+0|browse-safe  |     _redirects: 0,
+0|browse-safe  |     _autoPong: true,
+0|browse-safe  |     _url: 'wss://localhost/v2',
+0|browse-safe  |     _req: null,
+0|browse-safe  |     [Symbol(shapeMode)]: false,
+0|browse-safe  |     [Symbol(kCapture)]: false
+0|browse-safe  |   },
+0|browse-safe  |   [Symbol(kType)]: 'error',
+0|browse-safe  |   [Symbol(kError)]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com
+0|browse-safe  |       at Object.checkServerIdentity (node:tls:316:12)
+0|browse-safe  |       at TLSSocket.onConnectSecure (node:_tls_wrap:1687:27)
+0|browse-safe  |       at TLSSocket.emit (node:events:524:28)
+0|browse-safe  |       at TLSSocket._finishInit (node:_tls_wrap:1076:8)
+0|browse-safe  |       at ssl.onhandshakedone (node:_tls_wrap:862:12) {
+0|browse-safe  |     code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+0|browse-safe  |     reason: "Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com",
+0|browse-safe  |     host: 'localhost',
+0|browse-safe  |     cert: {
+0|browse-safe  |       subject: [Object: null prototype],
+0|browse-safe  |       issuer: [Object: null prototype],
+0|browse-safe  |       subjectaltname: 'DNS:browse-safe.com, DNS:www.browse-safe.com',
+0|browse-safe  |       infoAccess: [Object: null prototype],
+0|browse-safe  |       ca: false,
+0|browse-safe  |       bits: 256,
+0|browse-safe  |       pubkey: <Buffer 04 42 3c 34 e0 13 2d 1a f8 1a 2c 38 db 71 70 54 29 aa 41 37 bb 83 3c a8 7c 47 a2 99 39 21 0a 95 12 66 c4 23 1d 90 10 9d f6 1c 9e 61 77 76 ea 28 d2 8d ... 15 more bytes>,
+0|browse-safe  |       asn1Curve: 'prime256v1',
+0|browse-safe  |       nistCurve: 'P-256',
+0|browse-safe  |       valid_from: 'May 10 11:10:19 2025 GMT',
+0|browse-safe  |       valid_to: 'Aug  8 11:10:18 2025 GMT',
+0|browse-safe  |       fingerprint: 'C1:8C:51:63:F4:86:15:DD:08:8B:5F:6A:DB:E7:D5:9E:DE:A9:FA:08',
+0|browse-safe  |       fingerprint256: 'E0:1A:89:98:30:13:A3:94:35:12:8D:E9:B7:00:DE:8D:D7:8E:41:57:B7:4E:F5:CD:64:E1:F4:07:4B:3C:DA:D8',
+0|browse-safe  |       fingerprint512: '38:91:E6:63:73:D0:BC:82:98:66:37:76:4F:B4:82:11:92:3C:14:4F:C5:CC:22:04:C6:95:3A:42:B2:79:83:88:FC:A0:BB:98:43:D9:44:41:E2:8A:61:8A:69:18:BF:DF:01:4E:76:BD:B3:B0:14:32:D7:93:CC:A9:69:D2:8E:AA',
+0|browse-safe  |       ext_key_usage: [Array],
+0|browse-safe  |       serialNumber: '068F5BC091F59B8B0EBFD15DB488C179B9B8',
+0|browse-safe  |       raw: <Buffer 30 82 03 9f 30 82 03 25 a0 03 02 01 02 02 12 06 8f 5b c0 91 f5 9b 8b 0e bf d1 5d b4 88 c1 79 b9 b8 30 0a 06 08 2a 86 48 ce 3d 04 03 03 30 32 31 0b 30 ... 881 more bytes>,
+0|browse-safe  |       issuerCertificate: [Object]
+0|browse-safe  |     }
+0|browse-safe  |   },
+0|browse-safe  |   [Symbol(kMessage)]: "Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com"
+0|browse-safe  | }
+0|browse-safe  | 1:47:55 PM [express] GET /api/scans/recent 500 in 25ms :: {"message":"Failed to fetch recent scans"}
+0|browse-safe  | Scanning URL: https://paypal-verify.net, cleaned to: paypal-verify.net
+0|browse-safe  | Error scanning website: ErrorEvent {
+0|browse-safe  |   [Symbol(kTarget)]: WebSocket {
+0|browse-safe  |     _events: [Object: null prototype] {
+0|browse-safe  |       error: [Function],
+0|browse-safe  |       message: [Function],
+0|browse-safe  |       close: [Function],
+0|browse-safe  |       open: [Function]
+0|browse-safe  |     },
+0|browse-safe  |     _eventsCount: 4,
+0|browse-safe  |     _maxListeners: undefined,
+0|browse-safe  |     _binaryType: 'arraybuffer',
+0|browse-safe  |     _closeCode: 1006,
+0|browse-safe  |     _closeFrameReceived: false,
+0|browse-safe  |     _closeFrameSent: false,
+0|browse-safe  |     _closeMessage: <Buffer >,
+0|browse-safe  |     _closeTimer: null,
+0|browse-safe  |     _errorEmitted: true,
+0|browse-safe  |     _extensions: {},
+0|browse-safe  |     _paused: false,
+0|browse-safe  |     _protocol: '',
+0|browse-safe  |     _readyState: 3,
+0|browse-safe  |     _receiver: null,
+0|browse-safe  |     _sender: null,
+0|browse-safe  |     _socket: null,
+0|browse-safe  |     _bufferedAmount: 0,
+0|browse-safe  |     _isServer: false,
+0|browse-safe  |     _redirects: 0,
+0|browse-safe  |     _autoPong: true,
+0|browse-safe  |     _url: 'wss://localhost/v2',
+0|browse-safe  |     _req: null,
+0|browse-safe  |     [Symbol(shapeMode)]: false,
+0|browse-safe  |     [Symbol(kCapture)]: false
+0|browse-safe  |   },
+0|browse-safe  |   [Symbol(kType)]: 'error',
+0|browse-safe  |   [Symbol(kError)]: Error [ERR_TLS_CERT_ALTNAME_INVALID]: Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com
+0|browse-safe  |       at Object.checkServerIdentity (node:tls:316:12)
+0|browse-safe  |       at TLSSocket.onConnectSecure (node:_tls_wrap:1687:27)
+0|browse-safe  |       at TLSSocket.emit (node:events:524:28)
+0|browse-safe  |       at TLSSocket._finishInit (node:_tls_wrap:1076:8)
+0|browse-safe  |       at ssl.onhandshakedone (node:_tls_wrap:862:12) {
+0|browse-safe  |     code: 'ERR_TLS_CERT_ALTNAME_INVALID',
+0|browse-safe  |     reason: "Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com",
+0|browse-safe  |     host: 'localhost',
+0|browse-safe  |     cert: {
+0|browse-safe  |       subject: [Object: null prototype],
+0|browse-safe  |       issuer: [Object: null prototype],
+0|browse-safe  |       subjectaltname: 'DNS:browse-safe.com, DNS:www.browse-safe.com',
+0|browse-safe  |       infoAccess: [Object: null prototype],
+0|browse-safe  |       ca: false,
+0|browse-safe  |       bits: 256,
+0|browse-safe  |       pubkey: <Buffer 04 42 3c 34 e0 13 2d 1a f8 1a 2c 38 db 71 70 54 29 aa 41 37 bb 83 3c a8 7c 47 a2 99 39 21 0a 95 12 66 c4 23 1d 90 10 9d f6 1c 9e 61 77 76 ea 28 d2 8d ... 15 more bytes>,
+0|browse-safe  |       asn1Curve: 'prime256v1',
+0|browse-safe  |       nistCurve: 'P-256',
+0|browse-safe  |       valid_from: 'May 10 11:10:19 2025 GMT',
+0|browse-safe  |       valid_to: 'Aug  8 11:10:18 2025 GMT',
+0|browse-safe  |       fingerprint: 'C1:8C:51:63:F4:86:15:DD:08:8B:5F:6A:DB:E7:D5:9E:DE:A9:FA:08',
+0|browse-safe  |       fingerprint256: 'E0:1A:89:98:30:13:A3:94:35:12:8D:E9:B7:00:DE:8D:D7:8E:41:57:B7:4E:F5:CD:64:E1:F4:07:4B:3C:DA:D8',
+0|browse-safe  |       fingerprint512: '38:91:E6:63:73:D0:BC:82:98:66:37:76:4F:B4:82:11:92:3C:14:4F:C5:CC:22:04:C6:95:3A:42:B2:79:83:88:FC:A0:BB:98:43:D9:44:41:E2:8A:61:8A:69:18:BF:DF:01:4E:76:BD:B3:B0:14:32:D7:93:CC:A9:69:D2:8E:AA',
+0|browse-safe  |       ext_key_usage: [Array],
+0|browse-safe  |       serialNumber: '068F5BC091F59B8B0EBFD15DB488C179B9B8',
+0|browse-safe  |       raw: <Buffer 30 82 03 9f 30 82 03 25 a0 03 02 01 02 02 12 06 8f 5b c0 91 f5 9b 8b 0e bf d1 5d b4 88 c1 79 b9 b8 30 0a 06 08 2a 86 48 ce 3d 04 03 03 30 32 31 0b 30 ... 881 more bytes>,
+0|browse-safe  |       issuerCertificate: [Object]
+0|browse-safe  |     }
+0|browse-safe  |   },
+0|browse-safe  |   [Symbol(kMessage)]: "Hostname/IP does not match certificate's altnames: Host: localhost. is not in the cert's altnames: DNS:browse-safe.com, DNS:www.browse-safe.com"
+0|browse-safe  | }
+0|browse-safe  | 1:47:58 PM [express] GET /api/scans 500 in 20ms :: {"message":"Failed to scan website"}
+
