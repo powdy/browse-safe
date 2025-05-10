@@ -221,7 +221,7 @@ export default function Home() {
             </div>
             
             {/* Title with gradient text */}
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text security-section-title">
               Real-Time Website Security Scans
             </h2>
             

@@ -97,6 +97,18 @@ section p {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
+/* Special styling for section paragraphs */
+section div.text-center p.text-lg {
+  background-color: rgba(255, 255, 255, 0.98);
+  padding: 18px 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(229, 231, 235, 0.7);
+  max-width: 85%;
+  margin: 0 auto 20px;
+  display: block;
+}
+
 /* Fix specific issues with feature sections */
 section.py-20 h2, section.py-20 p {
   max-width: 80%;
@@ -116,4 +128,17 @@ h2.text-3xl.font-bold {
   z-index: 30;
   position: relative;
   margin-bottom: 25px;
+}
+
+/* Special styles for security section titles */
+.security-section-title {
+  background-color: rgba(255, 255, 255, 0.97) !important;
+  padding: 25px 35px !important;
+  margin: 15px auto 30px !important;
+  border-radius: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(229, 231, 235, 0.8) !important;
+  display: inline-block !important;
+  position: relative !important;
+  z-index: 50 !important;
 }
