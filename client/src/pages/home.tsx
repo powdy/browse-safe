@@ -43,20 +43,20 @@ export default function Home() {
             </div>
             
             {/* Heading with Gradient Text */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
-              <span className="bg-gradient-to-r from-blue-200 via-indigo-100 to-white text-transparent bg-clip-text">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white hero-title">
+              <span className="inline-block bg-indigo-900/80 backdrop-blur-md px-6 py-3 rounded-xl shadow-xl border border-indigo-700/50">
                 Is That Website Safe or a Scam?
               </span>
             </h1>
             
-            <p className="text-blue-100 mb-10 text-lg md:text-xl">
+            <p className="text-white mb-10 text-lg md:text-xl bg-indigo-900/80 backdrop-blur-md px-6 py-3 rounded-lg shadow-lg mx-auto max-w-2xl border border-indigo-700/50">
               Protect yourself from online fraud with our advanced AI-powered website security analyzer
             </p>
             
             {/* Search Form with Enhanced Styling */}
             <div className="backdrop-blur-sm bg-white/10 p-6 rounded-xl shadow-2xl mb-12 border border-white/20">
               <SearchForm className="mb-4" darkMode={true} />
-              <p className="text-blue-200 text-sm">
+              <p className="text-white text-sm bg-indigo-800/80 backdrop-blur-md px-4 py-2 rounded-lg inline-block">
                 Enter any website URL to get an instant security analysis and trust score
               </p>
             </div>
@@ -86,17 +86,17 @@ export default function Home() {
             
             {/* Stats */}
             <div className="flex flex-wrap justify-center mt-16 gap-8 md:gap-12">
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-indigo-300 text-transparent bg-clip-text">3.5M+</p>
-                <p className="text-blue-200 text-sm">Websites Analyzed</p>
+              <div className="text-center bg-indigo-900/80 backdrop-blur-md px-5 py-3 rounded-xl border border-indigo-700/50 shadow-lg">
+                <p className="text-3xl md:text-4xl font-bold text-white">3.5M+</p>
+                <p className="text-blue-100 text-sm">Websites Analyzed</p>
               </div>
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-300 text-transparent bg-clip-text">98.7%</p>
-                <p className="text-blue-200 text-sm">Accuracy Rate</p>
+              <div className="text-center bg-indigo-900/80 backdrop-blur-md px-5 py-3 rounded-xl border border-indigo-700/50 shadow-lg">
+                <p className="text-3xl md:text-4xl font-bold text-white">98.7%</p>
+                <p className="text-blue-100 text-sm">Accuracy Rate</p>
               </div>
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-violet-300 text-transparent bg-clip-text">247K+</p>
-                <p className="text-blue-200 text-sm">Frauds Detected</p>
+              <div className="text-center bg-indigo-900/80 backdrop-blur-md px-5 py-3 rounded-xl border border-indigo-700/50 shadow-lg">
+                <p className="text-3xl md:text-4xl font-bold text-white">247K+</p>
+                <p className="text-blue-100 text-sm">Frauds Detected</p>
               </div>
             </div>
           </div>
