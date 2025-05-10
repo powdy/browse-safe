@@ -49,9 +49,12 @@ export default function Home() {
               </span>
             </h1>
             
-            <p className="text-white mb-10 text-lg md:text-xl bg-indigo-900/80 backdrop-blur-md px-6 py-3 rounded-lg shadow-lg mx-auto max-w-2xl border border-indigo-700/50">
-              Protect yourself from online fraud with our advanced AI-powered website security analyzer
-            </p>
+            <div className="relative mb-10 mx-auto max-w-2xl">
+              <div className="absolute -inset-1 bg-blue-600/30 rounded-lg blur-md"></div>
+              <p className="text-white text-lg md:text-xl bg-gradient-to-r from-blue-900 to-indigo-900 backdrop-blur-md px-8 py-4 rounded-lg shadow-xl border border-blue-700/80 font-medium hero-subheading relative">
+                Protect yourself from online fraud with our advanced AI-powered website security analyzer
+              </p>
+            </div>
             
             {/* Search Form with Enhanced Styling */}
             <div className="backdrop-blur-sm bg-white/10 p-6 rounded-xl shadow-2xl mb-12 border border-white/20">

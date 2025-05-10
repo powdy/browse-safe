@@ -142,3 +142,10 @@ h2.text-3xl.font-bold {
   position: relative !important;
   z-index: 50 !important;
 }
+
+/* Special styling for the hero subheading */
+.hero-subheading {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
