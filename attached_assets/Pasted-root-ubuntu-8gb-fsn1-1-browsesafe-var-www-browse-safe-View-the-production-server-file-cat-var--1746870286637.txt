@@ -1,0 +1,352 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # View the production server file
+cat /var/www/browse-safe/production-server.js
+// Production server for Browse-Safe
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import pkg from 'pg';
+const { Pool } = pkg;
+// Get __dirname equivalent in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// Create Express app
+const app = express();
+const PORT = process.env.PORT || 5000;
+// Database connection
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || 'postgres://browsesafe_user:Vauxhall0102011982@localhost:5432/browsesafe'
+});
+// Test database connection
+pool.query('SELECT NOW()')
+  .then(result => {
+    console.log('Database connected successfully:', result.rows[0].now);
+  })
+  .catch(err => {
+    console.error('Database connection error:', err.message);
+    console.log('Continuing without database functionality');
+  });
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// Log requests
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
+});
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date() });
+});
+// API endpoint for recent scans
+app.get('/api/scans/recent', async (req, res) => {
+  try {
+    const result = await pool.query(
+      'SELECT id, url AS domain, trust_score AS "trustScore", status, created_at AS "createdAt" FROM scans ORDER BY created_at DESC LIMIT 10'
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error fetching recent scans:', error);
+    res.status(500).json({ error: 'Failed to fetch recent scans' });
+  }
+});
+// API endpoint for scanning a URL
+app.get('/api/scans', async (req, res) => {
+  const { url } = req.query;
+
+  if (!url) {
+    return res.status(400).json({ error: 'URL parameter is required' });
+  }
+
+  try {
+    // Check if we already have a scan for this URL
+    const existingResult = await pool.query(
+      'SELECT * FROM scans WHERE url = $1 ORDER BY created_at DESC LIMIT 1',
+      [url]
+    );
+
+    if (existingResult.rows.length > 0) {
+      return res.json(existingResult.rows[0]);
+    }
+
+    // Insert a new scan record (simplified version)
+    const newScanResult = await pool.query(
+      'INSERT INTO scans (url, domain, trust_score, status, created_at) VALUES ($1, $2, $3, $4, NOW()) RETURNING *',
+      [url, url.replace(/^https?:\/\//, '').split('/')[0], 85, 'safe']
+    );
+
+    res.json(newScanResult.rows[0]);
+  } catch (error) {
+    console.error('Error processing scan:', error);
+    res.status(500).json({ error: 'Failed to process scan' });
+  }
+});
+// Create client directory if it doesn't exist
+const clientSrcDir = path.join(__dirname, 'client', 'src');
+if (!fs.existsSync(clientSrcDir)) {
+  fs.mkdirSync(clientSrcDir, { recursive: true });
+}
+// Create a basic HTML file if it doesn't exist
+const indexHtmlPath = path.join(clientSrcDir, 'index.html');
+if (!fs.existsSync(indexHtmlPath)) {
+  fs.writeFileSync(indexHtmlPath, `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse-Safe - Website Security Scanner</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e9ecef;
+      margin-bottom: 2rem;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2563eb;
+      text-decoration: none;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      color: #4b5563;
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      padding: 3rem 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    .search-form {
+      display: flex;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .search-form input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: 2px solid white;
+      border-radius: 0.25rem 0 0 0.25rem;
+    }
+    .search-form button {
+      padding: 0.75rem 1.5rem;
+      background-color: #ef4444;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 0 0.25rem 0.25rem 0;
+      cursor: pointer;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .feature-card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .recent-scans {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      margin-bottom: 3rem;
+    }
+    .scan-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .scan-card {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      border-left: 4px solid #3b82f6;
+    }
+    .scan-card.safe { border-left-color: #10b981; }
+    .scan-card.suspicious { border-left-color: #f59e0b; }
+    .scan-card.dangerous { border-left-color: #ef4444; }
+    .status.safe { color: #10b981; }
+    .status.suspicious { color: #f59e0b; }
+    .status.dangerous { color: #ef4444; }
+    footer {
+      background-color: #f1f5f9;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid #e9ecef;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Browse-Safe</a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+    <div class="hero">
+      <h1>Is that website safe to visit?</h1>
+      <p>Scan any domain for security threats, malicious content, and suspicious activity before you visit.</p>
+
+      <div class="search-form">
+        <input type="text" id="url-input" placeholder="Enter a website URL (e.g., example.com)">
+        <button id="scan-button">Scan Now</button>
+      </div>
+    </div>
+    <div id="server-status" class="server-status">
+      Server Status: Checking...
+    </div>
+    <section id="features" class="features">
+      <div class="feature-card">
+        <h3>Domain Analysis</h3>
+        <p>We examine domain age, registration details, and WHOIS information to determine the legitimacy of a website.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Malware Detection</h3>
+        <p>Our system scans for malicious code, viruses, and other harmful software that could compromise your security.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Phishing Protection</h3>
+        <p>Identify potential phishing attempts designed to steal your personal or financial information.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Blacklist Checking</h3>
+        <p>We check if the domain appears on any security blacklists or has been reported for suspicious activity.</p>
+      </div>
+    </section>
+    <section class="recent-scans">
+      <h2>Recent Website Scans</h2>
+      <div id="scans-container" class="scan-list">
+        Loading recent scans...
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Browse-Safe. All rights reserved.</p>
+      <p>A website security and trust verification service.</p>
+    </div>
+  </footer>
+  <script>
+    // Check server health
+    fetch('/health')
+      .then(response => response.json())
+      .then(data => {
+        const statusElement = document.getElementById('server-status');
+        statusElement.textContent = 'Server Status: Online ✓';
+        statusElement.style.color = '#10b981';
+      })
+      .catch(error => {
+        const statusElement = document.getElementById('server-status');
+        statusElement.textContent = 'Server Status: Offline ✗';
+        statusElement.style.color = '#ef4444';
+      });
+
+    // Get recent scans
+    fetch('/api/scans/recent')
+      .then(response => response.json())
+      .then(scans => {
+        const container = document.getElementById('scans-container');
+
+        if (!Array.isArray(scans) || scans.length === 0) {
+          container.innerHTML = '<p>No recent scans found.</p>';
+          return;
+        }
+
+        container.innerHTML = '';
+        scans.forEach(scan => {
+          const scanCard = document.createElement('div');
+          scanCard.className = 'scan-card ' + (scan.status || 'safe');
+
+          scanCard.innerHTML = \`
+            <h3>\${scan.domain || scan.url}</h3>
+            <p>Trust Score: \${scan.trustScore || scan.trust_score || 0}/100</p>
+            <p>Status: <span class="status \${scan.status || 'safe'}">\${(scan.status || 'Unknown').toUpperCase()}</span></p>
+            <p>Scanned: \${new Date(scan.createdAt || scan.created_at || Date.now()).toLocaleString()}</p>
+          \`;
+
+          container.appendChild(scanCard);
+        });
+      })
+      .catch(error => {
+        document.getElementById('scans-container').innerHTML = '<p>Failed to load recent scans.</p>';
+      });
+
+    // Handle scan button click
+    document.getElementById('scan-button').addEventListener('click', () => {
+      const urlInput = document.getElementById('url-input');
+      const url = urlInput.value.trim();
+
+      if (!url) {
+        alert('Please enter a valid URL');
+        return;
+      }
+
+      // Fetch scan results
+      fetch(\`/api/scans?url=\${encodeURIComponent(url)}\`)
+        .then(response => response.json())
+        .then(data => {
+          alert(\`Scan complete for \${url}!\\nTrust Score: \${data.trust_score || data.trustScore}/100\\nStatus: \${data.status.toUpperCase()}\`);
+
+          // Reload recent scans
+          location.reload();
+        })
+        .catch(error => {
+          alert('Error during scan. Please try again later.');
+        });
+    });
+  </script>
+</body>
+</html>
+  `);
+}
+// Serve static files
+app.use(express.static(path.join(__dirname, 'client', 'src')));
+// Catch-all route to serve index.html
+app.get('*', (req, res) => {
+  // Skip API routes
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'API endpoint not found' });
+  }
+
+  // Send the index.html file
+  res.sendFile(path.join(__dirname, 'client', 'src', 'index.html'));
+});
+// Error handler
+app.use((err, req, res, next) => {
+  console.error('Server error:', err);
+  res.status(500).json({ error: 'Something broke!' });
+});
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

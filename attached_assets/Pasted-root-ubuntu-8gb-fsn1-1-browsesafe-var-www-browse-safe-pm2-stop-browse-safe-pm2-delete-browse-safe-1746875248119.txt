@@ -1,0 +1,37 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 stop browse-safe
+pm2 delete browse-safe
+pm2 start test-server.js --name browse-safe -- \
+  DATABASE_URL="postgres://browsesafe_user:Vauxhall0102011982@localhost:5432/browsesafe" \
+  VIRUSTOTAL_API_KEY="3234a65284872a9d80e56bf2e6404823268a3dae5c496ccbb7954df79dfe33fa" \
+  ABUSEIPDB_API_KEY="71476be41b4012e5e13dea1f953876fb3fc99c8ed451c6ba28605b0518e4242656c13db6fa1d5acf" \
+  WHOISXML_API_KEY="at_AMR07hdb3t1HGls1hQOr34aQj4Q2o" \
+  GOOGLE_SAFEBROWSING_API_KEY="AIzaSyBiSji2Fx1zqs-j2qmKPUthzzpDwhzFY4I"
+[PM2] Applying action stopProcessId on app [browse-safe](ids: [ 7 ])
+[PM2] [browse-safe](7) ✓
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 7  │ browse-safe        │ fork     │ 1    │ stopped   │ 0%       │ 0b       │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+Module
+┌────┬────────────────────┬──────────┬──────────┬──────────┐
+│ id │ name               │ status   │ cpu      │ mem      │
+├────┼────────────────────┼──────────┼──────────┼──────────┤
+│ 1  │ pm2-logrotate      │ online   │ 0%       │ 64.0mb   │
+└────┴────────────────────┴──────────┴──────────┴──────────┘
+[PM2] Applying action deleteProcessId on app [browse-safe](ids: [ 7 ])
+[PM2] [browse-safe](7) ✓
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+Module
+┌────┬────────────────────┬──────────┬──────────┬──────────┐
+│ id │ name               │ status   │ cpu      │ mem      │
+├────┼────────────────────┼──────────┼──────────┼──────────┤
+│ 1  │ pm2-logrotate      │ online   │ 0%       │ 64.0mb   │
+└────┴────────────────────┴──────────┴──────────┴──────────┘
+[PM2][ERROR] Script not found: /var/www/browse-safe/test-server.js
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 save
+[PM2] Saving current process list...
+[PM2][WARN] PM2 is not managing any process, skipping save...
+[PM2][WARN] To force saving use: pm2 save --force

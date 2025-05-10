@@ -1,0 +1,45 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Check the Nginx configuration
+cat /etc/nginx/sites-available/browse-safe.com
+server {
+    listen 80;
+    server_name browse-safe.com www.browse-safe.com 49.12.32.23;
+    # Logging
+    access_log /var/log/nginx/browse-safe-access.log;
+    error_log /var/log/nginx/browse-safe-error.log;
+    # Proxy configuration
+    location / {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Extended timeouts
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+}
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Check Nginx error logs
+tail -n 50 /var/log/nginx/error.log
+tail -n 50 /var/log/nginx/browse-safe-error.log
+2025/05/10 10:01:53 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:01:54 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:01:56 [error] 13476#13476: *77 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "49.12.32.23"
+2025/05/10 10:02:49 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:02:49 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:02:50 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:03:50 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:03:51 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:03:51 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:03:52 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:03:52 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:03:52 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:03:52 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:03:52 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:03:53 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:04:12 [error] 13476#13476: *74 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 10:04:25 [error] 13476#13476: *93 connect() failed (111: Connection refused) while connecting to upstream, client: 202.50.55.16, server: browse-safe.com, request: "POST /boaform/admin/formLogin HTTP/1.1", upstream: "http://127.0.0.1:5000/boaform/admin/formLogin", host: "49.12.32.23:80", referrer: "http://49.12.32.23:80/admin/login.asp"

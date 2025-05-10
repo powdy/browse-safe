@@ -1,0 +1,109 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Start your application with PM2 and the database URL
+pm2 start production-server.js --name browse-safe -- DATABASE_URL="postgres://browsesafe_user:Vauxhall0102011982@localhost:5432/browsesafe"
+[PM2] Starting /var/www/browse-safe/production-server.js in fork_mode (1 instance)
+[PM2] Done.
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 3  │ browse-safe        │ fork     │ 0    │ online    │ 0%       │ 23.3mb   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+Module
+┌────┬────────────────────┬──────────┬──────────┬──────────┐
+│ id │ name               │ status   │ cpu      │ mem      │
+├────┼────────────────────┼──────────┼──────────┼──────────┤
+│ 1  │ pm2-logrotate      │ online   │ 0%       │ 61.1mb   │
+└────┴────────────────────┴──────────┴──────────┴──────────┘
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 status
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 3  │ browse-safe        │ fork     │ 0    │ online    │ 0%       │ 69.4mb   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+Module
+┌────┬────────────────────┬──────────┬──────────┬──────────┐
+│ id │ name               │ status   │ cpu      │ mem      │
+├────┼────────────────────┼──────────┼──────────┼──────────┤
+│ 1  │ pm2-logrotate      │ online   │ 0%       │ 61.3mb   │
+└────┴────────────────────┴──────────┴──────────┴──────────┘
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# netstat -tupln | grep 5000
+tcp6       0      0 :::5000                 :::*                    LISTEN      14078/node /var/www
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Check the application logs
+pm2 logs browse-safe --lines 30
+[TAILING] Tailing last 30 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error.log last 30 lines:
+3|browse-s |   code: 'ENOENT',
+3|browse-s |   syscall: 'stat',
+3|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+3|browse-s |   expose: false,
+3|browse-s |   statusCode: 404,
+3|browse-s |   status: 404
+3|browse-s | }
+3|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+3|browse-s |   errno: -2,
+3|browse-s |   code: 'ENOENT',
+3|browse-s |   syscall: 'stat',
+3|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+3|browse-s |   expose: false,
+3|browse-s |   statusCode: 404,
+3|browse-s |   status: 404
+3|browse-s | }
+3|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+3|browse-s |   errno: -2,
+3|browse-s |   code: 'ENOENT',
+3|browse-s |   syscall: 'stat',
+3|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+3|browse-s |   expose: false,
+3|browse-s |   statusCode: 404,
+3|browse-s |   status: 404
+3|browse-s | }
+3|browse-s | Error: DATABASE_URL must be set. Did you forget to provision a database?
+3|browse-s |     at file:///var/www/browse-safe/dist/index.js:84:9
+3|browse-s |     at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+3|browse-s |     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+3|browse-s |     at async importModuleDynamicallyWrapper (node:internal/vm/module:432:15)
+
+/root/.pm2/logs/browse-safe-out.log last 30 lines:
+3|browse-s | [2025-05-10T09:55:59.702Z] GET /
+3|browse-s | [2025-05-10T09:55:59.746Z] GET /health
+3|browse-s | [2025-05-10T09:55:59.749Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:56:26.872Z] GET /portal/redlion
+3|browse-s | Server running on port 5000
+3|browse-s | Database connected successfully: 2025-05-10T09:57:55.334Z
+3|browse-s | [2025-05-10T09:58:06.116Z] GET /
+3|browse-s | [2025-05-10T09:58:06.165Z] GET /health
+3|browse-s | [2025-05-10T09:58:06.210Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:06.834Z] GET /
+3|browse-s | [2025-05-10T09:58:06.877Z] GET /health
+3|browse-s | [2025-05-10T09:58:06.878Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:07.382Z] GET /
+3|browse-s | [2025-05-10T09:58:07.421Z] GET /health
+3|browse-s | [2025-05-10T09:58:07.425Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:07.771Z] GET /
+3|browse-s | [2025-05-10T09:58:07.811Z] GET /health
+3|browse-s | [2025-05-10T09:58:07.815Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:07.984Z] GET /
+3|browse-s | [2025-05-10T09:58:08.026Z] GET /health
+3|browse-s | [2025-05-10T09:58:08.028Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:53.218Z] GET /
+3|browse-s | [2025-05-10T09:58:53.264Z] GET /health
+3|browse-s | [2025-05-10T09:58:53.269Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:53.884Z] GET /
+3|browse-s | [2025-05-10T09:58:53.928Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:53.930Z] GET /health
+3|browse-s | [2025-05-10T09:59:09.084Z] GET /
+3|browse-s | Server running on port 5000
+3|browse-s | Database connected successfully: 2025-05-10T10:07:52.842Z
+
+3|browse-safe  | [2025-05-10T10:08:16.537Z] GET /
+3|browse-safe  | [2025-05-10T10:08:16.592Z] GET /health
+3|browse-safe  | [2025-05-10T10:08:16.632Z] GET /api/scans/recent
+3|browse-safe  | [2025-05-10T10:08:17.210Z] GET /
+3|browse-safe  | [2025-05-10T10:08:17.251Z] GET /health
+3|browse-safe  | [2025-05-10T10:08:17.257Z] GET /api/scans/recent
+3|browse-safe  | [2025-05-10T10:08:17.671Z] GET /
+3|browse-safe  | [2025-05-10T10:08:17.715Z] GET /health
+3|browse-safe  | [2025-05-10T10:08:17.717Z] GET /api/scans/recent
+3|browse-safe  | [2025-05-10T10:08:17.915Z] GET /
+3|browse-safe  | [2025-05-10T10:08:17.958Z] GET /api/scans/recent
+3|browse-safe  | [2025-05-10T10:08:17.960Z] GET /health
+

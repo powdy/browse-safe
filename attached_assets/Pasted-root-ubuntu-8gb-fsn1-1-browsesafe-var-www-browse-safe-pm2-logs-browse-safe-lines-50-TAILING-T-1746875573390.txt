@@ -1,0 +1,106 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe --lines 50
+[TAILING] Tailing last 50 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error.log last 50 lines:
+9|browse-s |   errno: -2,
+9|browse-s |   code: 'ENOENT',
+9|browse-s |   syscall: 'stat',
+9|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+9|browse-s |   expose: false,
+9|browse-s |   statusCode: 404,
+9|browse-s |   status: 404
+9|browse-s | }
+9|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+9|browse-s |   errno: -2,
+9|browse-s |   code: 'ENOENT',
+9|browse-s |   syscall: 'stat',
+9|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+9|browse-s |   expose: false,
+9|browse-s |   statusCode: 404,
+9|browse-s |   status: 404
+9|browse-s | }
+9|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+9|browse-s |   errno: -2,
+9|browse-s |   code: 'ENOENT',
+9|browse-s |   syscall: 'stat',
+9|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+9|browse-s |   expose: false,
+9|browse-s |   statusCode: 404,
+9|browse-s |   status: 404
+9|browse-s | }
+9|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+9|browse-s |   errno: -2,
+9|browse-s |   code: 'ENOENT',
+9|browse-s |   syscall: 'stat',
+9|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+9|browse-s |   expose: false,
+9|browse-s |   statusCode: 404,
+9|browse-s |   status: 404
+9|browse-s | }
+9|browse-s | Error: DATABASE_URL must be set. Did you forget to provision a database?
+9|browse-s |     at file:///var/www/browse-safe/dist/index.js:84:9
+9|browse-s |     at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+9|browse-s |     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+9|browse-s |     at async importModuleDynamicallyWrapper (node:internal/vm/module:432:15)
+9|browse-s | Error: DATABASE_URL must be set. Did you forget to provision a database?
+9|browse-s |     at file:///var/www/browse-safe/dist/index.js:84:9
+9|browse-s |     at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+9|browse-s |     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+9|browse-s |     at async importModuleDynamicallyWrapper (node:internal/vm/module:432:15)
+9|browse-s | Error: DATABASE_URL must be set. Did you forget to provision a database?
+9|browse-s |     at file:///var/www/browse-safe/dist/index.js:84:9
+9|browse-s |     at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+9|browse-s |     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+9|browse-s |     at async importModuleDynamicallyWrapper (node:internal/vm/module:432:15)
+
+/root/.pm2/logs/browse-safe-out.log last 50 lines:
+9|browse-s | [2025-05-10T10:50:27.860Z] GET /assets/index-DMPwqFPn.css
+9|browse-s | [2025-05-10T10:50:27.940Z] GET /api/scans?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:28.414Z] GET /scan?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:28.459Z] GET /assets/index-v8T9xR3H.js
+9|browse-s | [2025-05-10T10:50:28.460Z] GET /assets/index-DMPwqFPn.css
+9|browse-s | [2025-05-10T10:50:28.538Z] GET /api/scans?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:29.015Z] GET /scan?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:29.059Z] GET /assets/index-v8T9xR3H.js
+9|browse-s | [2025-05-10T10:50:29.063Z] GET /assets/index-DMPwqFPn.css
+9|browse-s | [2025-05-10T10:50:29.144Z] GET /api/scans?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:29.728Z] GET /scan?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:29.773Z] GET /assets/index-v8T9xR3H.js
+9|browse-s | [2025-05-10T10:50:29.778Z] GET /assets/index-DMPwqFPn.css
+9|browse-s | [2025-05-10T10:50:29.837Z] GET /api/scans?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:30.352Z] GET /scan?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:30.398Z] GET /assets/index-v8T9xR3H.js
+9|browse-s | [2025-05-10T10:50:30.400Z] GET /assets/index-DMPwqFPn.css
+9|browse-s | [2025-05-10T10:50:30.464Z] GET /api/scans?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:31.534Z] GET /scan?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:31.588Z] GET /assets/index-v8T9xR3H.js
+9|browse-s | [2025-05-10T10:50:31.592Z] GET /assets/index-DMPwqFPn.css
+9|browse-s | [2025-05-10T10:50:31.652Z] GET /api/scans?url=https%3A%2F%2Fgoogle.com&force=true
+9|browse-s | [2025-05-10T10:50:56.432Z] GET /
+9|browse-s | [2025-05-10T10:51:45.916Z] GET /
+9|browse-s | [2025-05-10T10:51:45.963Z] GET /assets/index-v8T9xR3H.js
+9|browse-s | [2025-05-10T10:51:45.964Z] GET /assets/index-DMPwqFPn.css
+9|browse-s | [2025-05-10T10:51:46.035Z] GET /api/scans/recent
+9|browse-s | [2025-05-10T10:54:08.658Z] GET /
+9|browse-s | [2025-05-10T10:54:08.778Z] GET /assets/index-v8T9xR3H.js
+9|browse-s | Serving static files from: /var/www/browse-safe/dist
+9|browse-s | Also serving static files from: /var/www/browse-safe/dist/public
+9|browse-s | Test server running on port 5000
+9|browse-s | Database tables verified
+9|browse-s | Database connected successfully: 2025-05-10T11:09:03.614Z
+9|browse-s | [2025-05-10T11:09:31.932Z] GET /api/scans/recent
+9|browse-s | [2025-05-10T11:09:40.778Z] GET /api/scans?url=https%3A%2F%2Fcloudtoolz.com&force=true
+9|browse-s | Scanning domain: cloudtoolz.com
+9|browse-s | No VirusTotal API key found
+9|browse-s | Loaded environment variables from .env file
+9|browse-s | Environment variables:
+9|browse-s | DATABASE_URL: Set (hidden)
+9|browse-s | VIRUSTOTAL_API_KEY: Set (hidden)
+9|browse-s | ABUSEIPDB_API_KEY: Set (hidden)
+9|browse-s | WHOISXML_API_KEY: Set (hidden)
+9|browse-s | GOOGLE_SAFEBROWSING_API_KEY: Set (hidden)
+9|browse-s | Serving static files from: /var/www/browse-safe/dist
+9|browse-s | Also serving static files from: /var/www/browse-safe/dist/public
+9|browse-s | Test server running on port 5000
+9|browse-s | Database connected successfully: 2025-05-10T11:12:30.882Z
+9|browse-s | Database tables verified
+

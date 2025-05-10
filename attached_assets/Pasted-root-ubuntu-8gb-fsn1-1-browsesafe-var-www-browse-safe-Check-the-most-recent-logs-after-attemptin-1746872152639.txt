@@ -1,0 +1,107 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Check the most recent logs after attempting a scan
+pm2 logs browse-safe --lines 50
+[TAILING] Tailing last 50 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error.log last 50 lines:
+3|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+3|browse-s |   errno: -2,
+3|browse-s |   code: 'ENOENT',
+3|browse-s |   syscall: 'stat',
+3|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+3|browse-s |   expose: false,
+3|browse-s |   statusCode: 404,
+3|browse-s |   status: 404
+3|browse-s | }
+3|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+3|browse-s |   errno: -2,
+3|browse-s |   code: 'ENOENT',
+3|browse-s |   syscall: 'stat',
+3|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+3|browse-s |   expose: false,
+3|browse-s |   statusCode: 404,
+3|browse-s |   status: 404
+3|browse-s | }
+3|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+3|browse-s |   errno: -2,
+3|browse-s |   code: 'ENOENT',
+3|browse-s |   syscall: 'stat',
+3|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+3|browse-s |   expose: false,
+3|browse-s |   statusCode: 404,
+3|browse-s |   status: 404
+3|browse-s | }
+3|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+3|browse-s |   errno: -2,
+3|browse-s |   code: 'ENOENT',
+3|browse-s |   syscall: 'stat',
+3|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+3|browse-s |   expose: false,
+3|browse-s |   statusCode: 404,
+3|browse-s |   status: 404
+3|browse-s | }
+3|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+3|browse-s |   errno: -2,
+3|browse-s |   code: 'ENOENT',
+3|browse-s |   syscall: 'stat',
+3|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+3|browse-s |   expose: false,
+3|browse-s |   statusCode: 404,
+3|browse-s |   status: 404
+3|browse-s | }
+3|browse-s | Error: DATABASE_URL must be set. Did you forget to provision a database?
+3|browse-s |     at file:///var/www/browse-safe/dist/index.js:84:9
+3|browse-s |     at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+3|browse-s |     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+3|browse-s |     at async importModuleDynamicallyWrapper (node:internal/vm/module:432:15)
+
+/root/.pm2/logs/browse-safe-out.log last 50 lines:
+3|browse-s | [2025-05-10T09:58:08.028Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:53.218Z] GET /
+3|browse-s | [2025-05-10T09:58:53.264Z] GET /health
+3|browse-s | [2025-05-10T09:58:53.269Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:53.884Z] GET /
+3|browse-s | [2025-05-10T09:58:53.928Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T09:58:53.930Z] GET /health
+3|browse-s | [2025-05-10T09:59:09.084Z] GET /
+3|browse-s | Server running on port 5000
+3|browse-s | Database connected successfully: 2025-05-10T10:07:52.842Z
+3|browse-s | [2025-05-10T10:08:16.537Z] GET /
+3|browse-s | [2025-05-10T10:08:16.592Z] GET /health
+3|browse-s | [2025-05-10T10:08:16.632Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T10:08:17.210Z] GET /
+3|browse-s | [2025-05-10T10:08:17.251Z] GET /health
+3|browse-s | [2025-05-10T10:08:17.257Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T10:08:17.671Z] GET /
+3|browse-s | [2025-05-10T10:08:17.715Z] GET /health
+3|browse-s | [2025-05-10T10:08:17.717Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T10:08:17.915Z] GET /
+3|browse-s | [2025-05-10T10:08:17.958Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T10:08:17.960Z] GET /health
+3|browse-s | [2025-05-10T10:08:49.874Z] GET /
+3|browse-s | Server running on port 5000
+3|browse-s | Database connected successfully: 2025-05-10T10:13:24.532Z
+3|browse-s | [2025-05-10T10:13:25.959Z] GET /
+3|browse-s | [2025-05-10T10:13:26.014Z] GET /assets/index-v8T9xR3H.js
+3|browse-s | [2025-05-10T10:13:26.060Z] GET /assets/index-DMPwqFPn.css
+3|browse-s | [2025-05-10T10:13:26.287Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T10:13:26.330Z] GET /favicon.svg
+3|browse-s | [2025-05-10T10:13:26.336Z] GET /favicon.png
+3|browse-s | [2025-05-10T10:13:42.715Z] GET /api/scans?url=https%3A%2F%2Fcloudtoolz.com&force=true
+3|browse-s | [2025-05-10T10:13:46.185Z] GET /scan?url=https%3A%2F%2Fcloudtoolz.com&force=true
+3|browse-s | [2025-05-10T10:13:46.240Z] GET /assets/index-DMPwqFPn.css
+3|browse-s | [2025-05-10T10:13:46.244Z] GET /assets/index-v8T9xR3H.js
+3|browse-s | [2025-05-10T10:13:46.323Z] GET /api/scans?url=https%3A%2F%2Fcloudtoolz.com&force=true
+3|browse-s | [2025-05-10T10:13:52.439Z] GET /
+3|browse-s | [2025-05-10T10:13:52.495Z] GET /assets/index-v8T9xR3H.js
+3|browse-s | [2025-05-10T10:13:52.500Z] GET /assets/index-DMPwqFPn.css
+3|browse-s | [2025-05-10T10:13:52.584Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T10:14:09.243Z] GET /api/scans?url=https%3A%2F%2Fgoogle.com&force=true
+3|browse-s | [2025-05-10T10:14:15.042Z] GET /scan?url=https%3A%2F%2Fgoogle.com&force=true
+3|browse-s | [2025-05-10T10:14:15.095Z] GET /assets/index-v8T9xR3H.js
+3|browse-s | [2025-05-10T10:14:15.096Z] GET /assets/index-DMPwqFPn.css
+3|browse-s | [2025-05-10T10:14:15.181Z] GET /api/scans?url=https%3A%2F%2Fgoogle.com&force=true
+3|browse-s | [2025-05-10T10:14:19.483Z] GET /
+3|browse-s | [2025-05-10T10:14:19.530Z] GET /assets/index-DMPwqFPn.css
+3|browse-s | [2025-05-10T10:14:19.530Z] GET /assets/index-v8T9xR3H.js
+3|browse-s | [2025-05-10T10:14:19.598Z] GET /api/scans/recent
+3|browse-s | [2025-05-10T10:14:38.492Z] GET /api/scans?url=https%3A%2F%2Ffacebook.com&force=true
+

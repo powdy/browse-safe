@@ -1,0 +1,107 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe --lines 50
+[TAILING] Tailing last 50 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-out.log last 50 lines:
+2|browse-s | [2025-05-10T09:45:33.847Z] GET /
+2|browse-s | [2025-05-10T09:45:33.900Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:45:33.902Z] GET /health
+2|browse-s | [2025-05-10T09:50:31.186Z] GET /
+2|browse-s | Server running on port 5000
+2|browse-s | Database connected successfully: 2025-05-10T09:50:43.448Z
+2|browse-s | [2025-05-10T09:50:46.214Z] GET /
+2|browse-s | [2025-05-10T09:50:48.092Z] GET /
+2|browse-s | [2025-05-10T09:50:48.835Z] GET /
+2|browse-s | [2025-05-10T09:50:53.517Z] GET /
+2|browse-s | [2025-05-10T09:51:36.121Z] GET /
+2|browse-s | [2025-05-10T09:51:37.492Z] GET /
+2|browse-s | [2025-05-10T09:52:54.946Z] GET /
+2|browse-s | Server running on port 5000
+2|browse-s | Database connected successfully: 2025-05-10T09:54:07.236Z
+2|browse-s | [2025-05-10T09:54:08.988Z] GET /
+2|browse-s | [2025-05-10T09:54:10.108Z] GET /
+2|browse-s | Server running on port 5000
+2|browse-s | Database connected successfully: 2025-05-10T09:55:30.556Z
+2|browse-s | [2025-05-10T09:55:57.737Z] GET /
+2|browse-s | [2025-05-10T09:55:57.791Z] GET /health
+2|browse-s | [2025-05-10T09:55:57.831Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:55:59.702Z] GET /
+2|browse-s | [2025-05-10T09:55:59.746Z] GET /health
+2|browse-s | [2025-05-10T09:55:59.749Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:56:26.872Z] GET /portal/redlion
+2|browse-s | Server running on port 5000
+2|browse-s | Database connected successfully: 2025-05-10T09:57:55.334Z
+2|browse-s | [2025-05-10T09:58:06.116Z] GET /
+2|browse-s | [2025-05-10T09:58:06.165Z] GET /health
+2|browse-s | [2025-05-10T09:58:06.210Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:58:06.834Z] GET /
+2|browse-s | [2025-05-10T09:58:06.877Z] GET /health
+2|browse-s | [2025-05-10T09:58:06.878Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:58:07.382Z] GET /
+2|browse-s | [2025-05-10T09:58:07.421Z] GET /health
+2|browse-s | [2025-05-10T09:58:07.425Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:58:07.771Z] GET /
+2|browse-s | [2025-05-10T09:58:07.811Z] GET /health
+2|browse-s | [2025-05-10T09:58:07.815Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:58:07.984Z] GET /
+2|browse-s | [2025-05-10T09:58:08.026Z] GET /health
+2|browse-s | [2025-05-10T09:58:08.028Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:58:53.218Z] GET /
+2|browse-s | [2025-05-10T09:58:53.264Z] GET /health
+2|browse-s | [2025-05-10T09:58:53.269Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:58:53.884Z] GET /
+2|browse-s | [2025-05-10T09:58:53.928Z] GET /api/scans/recent
+2|browse-s | [2025-05-10T09:58:53.930Z] GET /health
+2|browse-s | [2025-05-10T09:59:09.084Z] GET /
+
+/root/.pm2/logs/browse-safe-error.log last 50 lines:
+2|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+2|browse-s |   errno: -2,
+2|browse-s |   code: 'ENOENT',
+2|browse-s |   syscall: 'stat',
+2|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+2|browse-s |   expose: false,
+2|browse-s |   statusCode: 404,
+2|browse-s |   status: 404
+2|browse-s | }
+2|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+2|browse-s |   errno: -2,
+2|browse-s |   code: 'ENOENT',
+2|browse-s |   syscall: 'stat',
+2|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+2|browse-s |   expose: false,
+2|browse-s |   statusCode: 404,
+2|browse-s |   status: 404
+2|browse-s | }
+2|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+2|browse-s |   errno: -2,
+2|browse-s |   code: 'ENOENT',
+2|browse-s |   syscall: 'stat',
+2|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+2|browse-s |   expose: false,
+2|browse-s |   statusCode: 404,
+2|browse-s |   status: 404
+2|browse-s | }
+2|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+2|browse-s |   errno: -2,
+2|browse-s |   code: 'ENOENT',
+2|browse-s |   syscall: 'stat',
+2|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+2|browse-s |   expose: false,
+2|browse-s |   statusCode: 404,
+2|browse-s |   status: 404
+2|browse-s | }
+2|browse-s | Server error: [Error: ENOENT: no such file or directory, stat '/var/www/browse-safe/client/dist/index.html'] {
+2|browse-s |   errno: -2,
+2|browse-s |   code: 'ENOENT',
+2|browse-s |   syscall: 'stat',
+2|browse-s |   path: '/var/www/browse-safe/client/dist/index.html',
+2|browse-s |   expose: false,
+2|browse-s |   statusCode: 404,
+2|browse-s |   status: 404
+2|browse-s | }
+2|browse-s | Error: DATABASE_URL must be set. Did you forget to provision a database?
+2|browse-s |     at file:///var/www/browse-safe/dist/index.js:84:9
+2|browse-s |     at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+2|browse-s |     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+2|browse-s |     at async importModuleDynamicallyWrapper (node:internal/vm/module:432:15)
+
+

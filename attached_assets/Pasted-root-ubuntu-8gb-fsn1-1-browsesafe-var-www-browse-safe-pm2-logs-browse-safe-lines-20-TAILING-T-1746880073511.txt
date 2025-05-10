@@ -1,0 +1,141 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe --lines 20
+[TAILING] Tailing last 20 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-out.log last 20 lines:
+0|browse-s | 12:22:35 PM [express] serving on port 5000
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | Scanning URL: https://google.com, cleaned to: google.com
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 12:23:01 PM [express] GET /api/scans 500 in 28ms :: {"message":"Failed to scan website"}
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 12:25:53 PM [express] GET /api/scans/recent 500 in 20ms :: {"message":"Failed to fetch recent scans"}
+0|browse-s | 12:26:37 PM [express] serving on port 5000
+0|browse-s | Connected to PostgreSQL database
+
+/root/.pm2/logs/browse-safe-error.log last 20 lines:
+0|browse-s |     at async file:///var/www/browse-safe/node_modules/drizzle-orm/node-postgres/session.js:113:22
+0|browse-s |     at async seedDatabase (file:///var/www/browse-safe/dist/index.js:172:27) {
+0|browse-s |   length: 105,
+0|browse-s |   severity: 'ERROR',
+0|browse-s |   code: '42P01',
+0|browse-s |   detail: undefined,
+0|browse-s |   hint: undefined,
+0|browse-s |   position: '373',
+0|browse-s |   internalPosition: undefined,
+0|browse-s |   internalQuery: undefined,
+0|browse-s |   where: undefined,
+0|browse-s |   schema: undefined,
+0|browse-s |   table: undefined,
+0|browse-s |   column: undefined,
+0|browse-s |   dataType: undefined,
+0|browse-s |   constraint: undefined,
+0|browse-s |   file: 'parse_relation.c',
+0|browse-s |   line: '1449',
+0|browse-s |   routine: 'parserOpenTable'
+0|browse-s | }
+
+^C
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Download the schema.ts file to look at the expected database structure
+cat shared/schema.ts
+
+# Connect to the database and check if tables were created
+sudo -u postgres psql -d browsesafe -c "\dt"
+sudo -u postgres psql -d browsesafe -c "SELECT * FROM scans LIMIT 5;"
+import { pgTable, text, serial, integer, boolean, timestamp, jsonb } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
+
+// User schema remains as is
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
+  username: text("username").notNull().unique(),
+  password: text("password").notNull(),
+});
+
+export const insertUserSchema = createInsertSchema(users).pick({
+  username: true,
+  password: true,
+});
+
+export type InsertUser = z.infer<typeof insertUserSchema>;
+export type User = typeof users.$inferSelect;
+
+// Website scans schema
+export const scans = pgTable("scans", {
+  id: serial("id").primaryKey(),
+  url: text("url").notNull(),
+  trustScore: integer("trust_score").notNull(),
+  domainAge: text("domain_age"),
+  registrationDate: text("registration_date"),
+  expirationDate: text("expiration_date"),
+  registrar: text("registrar"),
+  registrantCountry: text("registrant_country"),
+  ipAddress: text("ip_address"),
+  ipLocation: text("ip_location"),
+  nameServers: text("name_servers"),
+  hasValidSSL: boolean("has_valid_ssl"),
+  hasDNSSEC: boolean("has_dnssec"),
+  hasSecurityHeaders: boolean("has_security_headers"),
+  hasMalware: boolean("has_malware"),
+  hasPhishing: boolean("has_phishing"),
+  blacklistStatus: text("blacklist_status"),
+  suspiciousPatterns: text("suspicious_patterns"),
+  userReports: integer("user_reports"),
+  relatedSites: integer("related_sites"),
+  lastScanned: timestamp("last_scanned").notNull(),
+  status: text("status").notNull(), // "safe", "suspicious", "dangerous"
+  details: jsonb("details"), // Additional details that don't fit in the schema
+});
+
+export const insertScanSchema = createInsertSchema(scans).omit({
+  id: true,
+});
+
+export type InsertScan = z.infer<typeof insertScanSchema>;
+export type Scan = typeof scans.$inferSelect;
+
+// Reports schema for user-submitted website reports
+export const reports = pgTable("reports", {
+  id: serial("id").primaryKey(),
+  url: text("url").notNull(),
+  reason: text("reason").notNull(),
+  details: text("details"),
+  reportedAt: timestamp("reported_at").notNull(),
+  reportedBy: text("reported_by"),
+  status: text("status").notNull(), // "pending", "reviewed", "dismissed"
+});
+
+export const insertReportSchema = createInsertSchema(reports).omit({
+  id: true,
+});
+
+export type InsertReport = z.infer<typeof insertReportSchema>;
+export type Report = typeof reports.$inferSelect;
+Did not find any relations.
+ERROR:  relation "scans" does not exist
+LINE 1: SELECT * FROM scans LIMIT 5;
+                      ^
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe#
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# curl -v "http://localhost:5000/api/scans?url=google.com"
+* Host localhost:5000 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:5000...
+* connect to ::1 port 5000 from ::1 port 60660 failed: Connection refused
+*   Trying 127.0.0.1:5000...
+* Connected to localhost (127.0.0.1) port 5000
+> GET /api/scans?url=google.com HTTP/1.1
+> Host: localhost:5000
+> User-Agent: curl/8.5.0
+> Accept: */*
+>
+< HTTP/1.1 500 Internal Server Error
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 36
+< ETag: W/"24-Jbf+1fCaHENdT03fB9LYrCVV0yQ"
+< Date: Sat, 10 May 2025 12:27:11 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+<
+* Connection #0 to host localhost left intact
+{"message":"Failed to scan website"}r

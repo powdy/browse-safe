@@ -1,0 +1,40 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Check running processes
+ps aux | grep node
+
+# If you don't see your server running, it means it crashed or didn't start
+root       13127  0.9  2.1 22284820 84564 ?      Ssl  12:07   0:01 node /var/www/browse-safe/dist/index.js
+root       13604  0.0  0.0   6544  2304 pts/1    S+   12:10   0:00 grep --color=auto node
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# ps aux | grep node      root       13127  0.8  2.1 22284820 84444 ?      Ssl  12:07   0:01 node /var/www/browse-safe/dist/index.js
+root       13610  0.0  0.0   6544  2304 pts/1    S+   12:10   0:00 grep --color=auto node
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Check what processes are listening on which ports
+netstat -tulpn | grep LISTEN
+tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      12115/nginx: master
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      12115/nginx: master
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      574/systemd-resolve
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      12517/postgres
+tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      574/systemd-resolve
+tcp6       0      0 :::80                   :::*                    LISTEN      12115/nginx: master
+tcp6       0      0 :::22                   :::*                    LISTEN      1/systemd
+tcp6       0      0 ::1:5432                :::*                    LISTEN      12517/postgres
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# tail -n 50 /var/log/nginx/error.log
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# cat /var/log/nginx/error.log
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# cat /var/log/nginx/browse-safe.error.log
+2025/05/10 12:08:01 [error] 13089#13089: *10 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://[::1]:5000/", host: "browse-safe.com"
+2025/05/10 12:08:01 [error] 13089#13089: *10 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 12:08:01 [error] 13089#13089: *10 no live upstreams while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "browse-safe.com"
+2025/05/10 12:09:03 [error] 13585#13585: *24 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://[::1]:5000/", host: "browse-safe.com"
+2025/05/10 12:09:03 [error] 13585#13585: *24 connect() failed (111: Connection refused) while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 12:09:04 [error] 13585#13585: *24 no live upstreams while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET /favicon.ico HTTP/1.1", upstream: "http://localhost/favicon.ico", host: "browse-safe.com", referrer: "https://browse-safe.com/"
+2025/05/10 12:09:04 [error] 13585#13585: *24 no live upstreams while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "browse-safe.com"
+2025/05/10 12:09:05 [error] 13585#13585: *24 no live upstreams while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "browse-safe.com"
+2025/05/10 12:10:01 [error] 13586#13586: *28 connect() failed (111: Connection refused) while connecting to upstream, client: 51.81.245.138, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://[::1]:5000/", host: "browse-safe.com"
+2025/05/10 12:10:01 [error] 13586#13586: *28 connect() failed (111: Connection refused) while connecting to upstream, client: 51.81.245.138, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "browse-safe.com"
+2025/05/10 12:10:02 [error] 13585#13585: *31 connect() failed (111: Connection refused) while connecting to upstream, client: 51.81.245.138, server: browse-safe.com, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:5000/favicon.ico", host: "browse-safe.com"
+2025/05/10 12:10:02 [error] 13585#13585: *31 connect() failed (111: Connection refused) while connecting to upstream, client: 51.81.245.138, server: browse-safe.com, request: "GET /favicon.ico HTTP/1.1", upstream: "http://[::1]:5000/favicon.ico", host: "browse-safe.com"
+2025/05/10 12:10:12 [error] 13585#13585: *24 no live upstreams while connecting to upstream, client: 82.0.207.82, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "browse-safe.com"
+2025/05/10 12:10:35 [error] 13585#13585: *40 connect() failed (111: Connection refused) while connecting to upstream, client: 130.180.239.57, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "www.browse-safe.com"
+2025/05/10 12:10:35 [error] 13585#13585: *40 connect() failed (111: Connection refused) while connecting to upstream, client: 130.180.239.57, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://[::1]:5000/", host: "www.browse-safe.com"
+2025/05/10 12:10:35 [error] 13585#13585: *40 no live upstreams while connecting to upstream, client: 130.180.239.57, server: browse-safe.com, request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "www.browse-safe.com"
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# sudo ufw allow 80/tcp
+Rules updated
+Rules updated (v6)

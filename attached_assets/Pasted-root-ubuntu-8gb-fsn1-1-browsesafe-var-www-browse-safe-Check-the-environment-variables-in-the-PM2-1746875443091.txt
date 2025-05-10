@@ -1,0 +1,40 @@
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Check the environment variables in the PM2 process
+pm2 env browse-safe
+[PM2][ERROR] Modules with id browse-safe not found
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# # Monitor the logs in real-time as you try to scan a website
+pm2 logs browse-safe
+[TAILING] Tailing last 15 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-error.log last 15 lines:
+8|browse-s | Error: DATABASE_URL must be set. Did you forget to provision a database?
+8|browse-s |     at file:///var/www/browse-safe/dist/index.js:84:9
+8|browse-s |     at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+8|browse-s |     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+8|browse-s |     at async importModuleDynamicallyWrapper (node:internal/vm/module:432:15)
+8|browse-s | Error: DATABASE_URL must be set. Did you forget to provision a database?
+8|browse-s |     at file:///var/www/browse-safe/dist/index.js:84:9
+8|browse-s |     at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+8|browse-s |     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+8|browse-s |     at async importModuleDynamicallyWrapper (node:internal/vm/module:432:15)
+8|browse-s | Error: DATABASE_URL must be set. Did you forget to provision a database?
+8|browse-s |     at file:///var/www/browse-safe/dist/index.js:84:9
+8|browse-s |     at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+8|browse-s |     at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+8|browse-s |     at async importModuleDynamicallyWrapper (node:internal/vm/module:432:15)
+
+/root/.pm2/logs/browse-safe-out.log last 15 lines:
+8|browse-s | [2025-05-10T10:51:45.916Z] GET /
+8|browse-s | [2025-05-10T10:51:45.963Z] GET /assets/index-v8T9xR3H.js
+8|browse-s | [2025-05-10T10:51:45.964Z] GET /assets/index-DMPwqFPn.css
+8|browse-s | [2025-05-10T10:51:46.035Z] GET /api/scans/recent
+8|browse-s | [2025-05-10T10:54:08.658Z] GET /
+8|browse-s | [2025-05-10T10:54:08.778Z] GET /assets/index-v8T9xR3H.js
+8|browse-s | Serving static files from: /var/www/browse-safe/dist
+8|browse-s | Also serving static files from: /var/www/browse-safe/dist/public
+8|browse-s | Test server running on port 5000
+8|browse-s | Database tables verified
+8|browse-s | Database connected successfully: 2025-05-10T11:09:03.614Z
+8|browse-s | [2025-05-10T11:09:31.932Z] GET /api/scans/recent
+8|browse-s | [2025-05-10T11:09:40.778Z] GET /api/scans?url=https%3A%2F%2Fcloudtoolz.com&force=true
+8|browse-s | Scanning domain: cloudtoolz.com
+8|browse-s | No VirusTotal API key found
+

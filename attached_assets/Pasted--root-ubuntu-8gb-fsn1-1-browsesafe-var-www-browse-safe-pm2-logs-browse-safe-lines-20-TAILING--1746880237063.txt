@@ -1,0 +1,174 @@
+
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe# pm2 logs browse-safe --lines 20
+[TAILING] Tailing last 20 lines for [browse-safe] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-out.log last 20 lines:
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 12:25:53 PM [express] GET /api/scans/recent 500 in 20ms :: {"message":"Failed to fetch recent scans"}
+0|browse-s | 12:26:37 PM [express] serving on port 5000
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | Scanning URL: google.com, cleaned to: google.com
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 12:27:11 PM [express] GET /api/scans 500 in 32ms :: {"message":"Failed to scan website"}
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 12:28:14 PM [express] GET /api/scans/recent 500 in 26ms :: {"message":"Failed to fetch recent scans"}
+0|browse-s | Scanning URL: https://google.com, cleaned to: google.com
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 12:28:20 PM [express] GET /api/scans 500 in 18ms :: {"message":"Failed to scan website"}
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 12:28:34 PM [express] GET /api/scans/recent 500 in 22ms :: {"message":"Failed to fetch recent scans"}
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 12:28:43 PM [express] GET /api/scans/recent 500 in 26ms :: {"message":"Failed to fetch recent scans"}
+0|browse-s | Connected to PostgreSQL database
+0|browse-s | 12:28:53 PM [express] GET /api/scans/recent 500 in 16ms :: {"message":"Failed to fetch recent scans"}
+0|browse-s | 12:29:40 PM [express] serving on port 5000
+0|browse-s | Connected to PostgreSQL database
+
+/root/.pm2/logs/browse-safe-error.log last 20 lines:
+0|browse-s |     at async file:///var/www/browse-safe/node_modules/drizzle-orm/node-postgres/session.js:113:22
+0|browse-s |     at async seedDatabase (file:///var/www/browse-safe/dist/index.js:172:27) {
+0|browse-s |   length: 93,
+0|browse-s |   severity: 'ERROR',
+0|browse-s |   code: '42501',
+0|browse-s |   detail: undefined,
+0|browse-s |   hint: undefined,
+0|browse-s |   position: undefined,
+0|browse-s |   internalPosition: undefined,
+0|browse-s |   internalQuery: undefined,
+0|browse-s |   where: undefined,
+0|browse-s |   schema: undefined,
+0|browse-s |   table: undefined,
+0|browse-s |   column: undefined,
+0|browse-s |   dataType: undefined,
+0|browse-s |   constraint: undefined,
+0|browse-s |   file: 'aclchk.c',
+0|browse-s |   line: '2812',
+0|browse-s |   routine: 'aclcheck_error'
+0|browse-s | }
+
+0|browse-safe  | Connected to PostgreSQL database
+0|browse-safe  | Error fetching recent scans: error: permission denied for table scans
+0|browse-safe  |     at /var/www/browse-safe/node_modules/pg-pool/index.js:45:11
+0|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+0|browse-safe  |     at async file:///var/www/browse-safe/node_modules/drizzle-orm/node-postgres/session.js:113:22
+0|browse-safe  |     at async file:///var/www/browse-safe/dist/index.js:1599:27 {
+0|browse-safe  |   length: 93,
+0|browse-safe  |   severity: 'ERROR',
+0|browse-safe  |   code: '42501',
+0|browse-safe  |   detail: undefined,
+0|browse-safe  |   hint: undefined,
+0|browse-safe  |   position: undefined,
+0|browse-safe  |   internalPosition: undefined,
+0|browse-safe  |   internalQuery: undefined,
+0|browse-safe  |   where: undefined,
+0|browse-safe  |   schema: undefined,
+0|browse-safe  |   table: undefined,
+0|browse-safe  |   column: undefined,
+0|browse-safe  |   dataType: undefined,
+0|browse-safe  |   constraint: undefined,
+0|browse-safe  |   file: 'aclchk.c',
+0|browse-safe  |   line: '2812',
+0|browse-safe  |   routine: 'aclcheck_error'
+0|browse-safe  | }
+0|browse-safe  | 12:29:51 PM [express] GET /api/scans/recent 500 in 33ms :: {"message":"Failed to fetch recent scans"}
+0|browse-safe  | Connected to PostgreSQL database
+0|browse-safe  | Error fetching recent scans: error: permission denied for table scans
+0|browse-safe  |     at /var/www/browse-safe/node_modules/pg-pool/index.js:45:11
+0|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+0|browse-safe  |     at async file:///var/www/browse-safe/node_modules/drizzle-orm/node-postgres/session.js:113:22
+0|browse-safe  |     at async file:///var/www/browse-safe/dist/index.js:1599:27 {
+0|browse-safe  |   length: 93,
+0|browse-safe  |   severity: 'ERROR',
+0|browse-safe  |   code: '42501',
+0|browse-safe  |   detail: undefined,
+0|browse-safe  |   hint: undefined,
+0|browse-safe  |   position: undefined,
+0|browse-safe  |   internalPosition: undefined,
+0|browse-safe  |   internalQuery: undefined,
+0|browse-safe  |   where: undefined,
+0|browse-safe  |   schema: undefined,
+0|browse-safe  |   table: undefined,
+0|browse-safe  |   column: undefined,
+0|browse-safe  |   dataType: undefined,
+0|browse-safe  |   constraint: undefined,
+0|browse-safe  |   file: 'aclchk.c',
+0|browse-safe  |   line: '2812',
+0|browse-safe  |   routine: 'aclcheck_error'
+0|browse-safe  | }
+0|browse-safe  | 12:29:55 PM [express] GET /api/scans/recent 500 in 27ms :: {"message":"Failed to fetch recent scans"}
+0|browse-safe  | Connected to PostgreSQL database
+0|browse-safe  | Error fetching recent scans: error: permission denied for table scans
+0|browse-safe  |     at /var/www/browse-safe/node_modules/pg-pool/index.js:45:11
+0|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+0|browse-safe  |     at async file:///var/www/browse-safe/node_modules/drizzle-orm/node-postgres/session.js:113:22
+0|browse-safe  |     at async file:///var/www/browse-safe/dist/index.js:1599:27 {
+0|browse-safe  |   length: 93,
+0|browse-safe  |   severity: 'ERROR',
+0|browse-safe  |   code: '42501',
+0|browse-safe  |   detail: undefined,
+0|browse-safe  |   hint: undefined,
+0|browse-safe  |   position: undefined,
+0|browse-safe  |   internalPosition: undefined,
+0|browse-safe  |   internalQuery: undefined,
+0|browse-safe  |   where: undefined,
+0|browse-safe  |   schema: undefined,
+0|browse-safe  |   table: undefined,
+0|browse-safe  |   column: undefined,
+0|browse-safe  |   dataType: undefined,
+0|browse-safe  |   constraint: undefined,
+0|browse-safe  |   file: 'aclchk.c',
+0|browse-safe  |   line: '2812',
+0|browse-safe  |   routine: 'aclcheck_error'
+0|browse-safe  | }
+0|browse-safe  | 12:29:57 PM [express] GET /api/scans/recent 500 in 23ms :: {"message":"Failed to fetch recent scans"}
+0|browse-safe  | Connected to PostgreSQL database
+0|browse-safe  | Error fetching recent scans: error: permission denied for table scans
+0|browse-safe  |     at /var/www/browse-safe/node_modules/pg-pool/index.js:45:11
+0|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+0|browse-safe  |     at async file:///var/www/browse-safe/node_modules/drizzle-orm/node-postgres/session.js:113:22
+0|browse-safe  |     at async file:///var/www/browse-safe/dist/index.js:1599:27 {
+0|browse-safe  |   length: 93,
+0|browse-safe  |   severity: 'ERROR',
+0|browse-safe  |   code: '42501',
+0|browse-safe  |   detail: undefined,
+0|browse-safe  |   hint: undefined,
+0|browse-safe  |   position: undefined,
+0|browse-safe  |   internalPosition: undefined,
+0|browse-safe  |   internalQuery: undefined,
+0|browse-safe  |   where: undefined,
+0|browse-safe  |   schema: undefined,
+0|browse-safe  |   table: undefined,
+0|browse-safe  |   column: undefined,
+0|browse-safe  |   dataType: undefined,
+0|browse-safe  |   constraint: undefined,
+0|browse-safe  |   file: 'aclchk.c',
+0|browse-safe  |   line: '2812',
+0|browse-safe  |   routine: 'aclcheck_error'
+0|browse-safe  | }
+0|browse-safe  | 12:29:58 PM [express] GET /api/scans/recent 500 in 28ms :: {"message":"Failed to fetch recent scans"}
+0|browse-safe  | Scanning URL: https://facebook.com, cleaned to: facebook.com
+0|browse-safe  | Connected to PostgreSQL database
+0|browse-safe  | Error scanning website: error: permission denied for table scans
+0|browse-safe  |     at /var/www/browse-safe/node_modules/pg-pool/index.js:45:11
+0|browse-safe  |     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+0|browse-safe  |     at async file:///var/www/browse-safe/node_modules/drizzle-orm/node-postgres/session.js:113:22
+0|browse-safe  |     at async DatabaseStorage.getScanByUrl (file:///var/www/browse-safe/dist/index.js:123:21)
+0|browse-safe  |     at async file:///var/www/browse-safe/dist/index.js:1700:28 {
+0|browse-safe  |   length: 93,
+0|browse-safe  |   severity: 'ERROR',
+0|browse-safe  |   code: '42501',
+0|browse-safe  |   detail: undefined,
+0|browse-safe  |   hint: undefined,
+0|browse-safe  |   position: undefined,
+0|browse-safe  |   internalPosition: undefined,
+0|browse-safe  |   internalQuery: undefined,
+0|browse-safe  |   where: undefined,
+0|browse-safe  |   schema: undefined,
+0|browse-safe  |   table: undefined,
+0|browse-safe  |   column: undefined,
+0|browse-safe  |   dataType: undefined,
+0|browse-safe  |   constraint: undefined,
+0|browse-safe  |   file: 'aclchk.c',
+0|browse-safe  |   line: '2812',
+0|browse-safe  |   routine: 'aclcheck_error'
+0|browse-safe  | }
+0|browse-safe  | 12:30:01 PM [express] GET /api/scans 500 in 22ms :: {"message":"Failed to scan website"}

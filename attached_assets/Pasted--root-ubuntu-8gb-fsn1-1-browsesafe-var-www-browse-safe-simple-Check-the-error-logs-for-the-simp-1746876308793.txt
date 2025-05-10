@@ -1,0 +1,38 @@
+
+root@ubuntu-8gb-fsn1-1-browsesafe:/var/www/browse-safe-simple# # Check the error logs for the simple server
+pm2 logs browse-safe-simple --lines 30
+[TAILING] Tailing last 30 lines for [browse-safe-simple] process (change the value with --lines option)
+/root/.pm2/logs/browse-safe-simple-out.log last 30 lines:
+/root/.pm2/logs/browse-safe-simple-error.log last 30 lines:
+11|browse- | ^^^^^^
+11|browse- |
+11|browse- | SyntaxError: Cannot use import statement outside a module
+11|browse- |     at internalCompileFunction (node:internal/vm:76:18)
+11|browse- |     at wrapSafe (node:internal/modules/cjs/loader:1283:20)
+11|browse- |     at Module._compile (node:internal/modules/cjs/loader:1328:27)
+11|browse- |     at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+11|browse- |     at Module.load (node:internal/modules/cjs/loader:1203:32)
+11|browse- |     at Module._load (node:internal/modules/cjs/loader:1019:12)
+11|browse- |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+11|browse- |     at Module._compile (node:internal/modules/cjs/loader:1364:14)
+11|browse- |     at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+11|browse- |     at Module.load (node:internal/modules/cjs/loader:1203:32)
+11|browse- | (node:15902) Warning: To load an ES module, set "type": "module" in the package.json or use the .mjs extension.
+11|browse- | (Use `node --trace-warnings ...` to show where the warning was created)
+11|browse- | /var/www/browse-safe-simple/server.js:2
+11|browse- | import express from 'express';
+11|browse- | ^^^^^^
+11|browse- |
+11|browse- | SyntaxError: Cannot use import statement outside a module
+11|browse- |     at internalCompileFunction (node:internal/vm:76:18)
+11|browse- |     at wrapSafe (node:internal/modules/cjs/loader:1283:20)
+11|browse- |     at Module._compile (node:internal/modules/cjs/loader:1328:27)
+11|browse- |     at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+11|browse- |     at Module.load (node:internal/modules/cjs/loader:1203:32)
+11|browse- |     at Module._load (node:internal/modules/cjs/loader:1019:12)
+11|browse- |     at Object.<anonymous> (/usr/lib/node_modules/pm2/lib/ProcessContainerFork.js:33:23)
+11|browse- |     at Module._compile (node:internal/modules/cjs/loader:1364:14)
+11|browse- |     at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+11|browse- |     at Module.load (node:internal/modules/cjs/loader:1203:32)
+
+
