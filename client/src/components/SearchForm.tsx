@@ -90,20 +90,20 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
         </Button>
       </form>
       
-      <div className={`flex flex-wrap justify-center mt-4 ${darkMode ? "bg-white/20 backdrop-blur-md" : "bg-gray-100"} px-4 py-2 rounded-lg border ${darkMode ? "border-white/40" : "border-gray-300"} text-sm shadow-md`}>
-        <p className={`font-semibold text-black bg-yellow-300 px-2 py-1 rounded shadow-sm`}>Popular searches:</p>
-        <div className="flex flex-wrap gap-2 ml-2">
+      <div className={`flex flex-col items-center mt-4 ${darkMode ? "bg-white/20 backdrop-blur-md" : "bg-gray-100"} px-4 py-3 rounded-lg border ${darkMode ? "border-white/40" : "border-gray-300"} text-sm shadow-md`}>
+        <p className={`font-semibold text-black bg-yellow-300 px-3 py-1 rounded-md shadow-sm mb-2`}>Popular searches:</p>
+        <div className="flex items-center justify-center flex-wrap gap-2">
           {popularSearches.map((url, index) => (
             <div key={url} className="flex items-center">
               <button 
                 type="button"
                 onClick={() => handlePopularSearch(url)}
-                className={`font-medium ${darkMode ? "text-yellow-200 hover:text-yellow-100 bg-blue-800/90 px-2 py-0.5 rounded" : "text-blue-600 hover:text-blue-800"}`}
+                className={`font-medium ${darkMode ? "text-black bg-yellow-200 hover:bg-yellow-300 px-3 py-1 rounded shadow-sm" : "text-blue-600 hover:bg-blue-100 px-2 py-0.5 rounded"}`}
               >
                 {url}
               </button>
               {index < popularSearches.length - 1 && (
-                <span className={darkMode ? "text-blue-400 mx-1" : "text-blue-300 mx-1"}>•</span>
+                <span className={darkMode ? "text-white font-bold mx-2" : "text-blue-300 mx-1"}>•</span>
               )}
             </div>
           ))}
