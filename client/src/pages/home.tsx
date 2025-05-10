@@ -183,8 +183,8 @@ export default function Home() {
                 </svg>
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-purple-700 to-violet-700 text-transparent bg-clip-text">
-              Key Security Features
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-700 via-purple-700 to-violet-700 text-transparent bg-clip-text relative z-10">
+              <span className="bg-white/90 px-4 py-1 rounded">Key Security Features</span>
             </h2>
           </div>
           
@@ -220,15 +220,15 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Title with gradient text */}
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text">
-              Real-Time Website Security Scans
+            {/* Title with gradient text - added background to improve visibility */}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-transparent bg-clip-text relative z-10">
+              <span className="bg-white/90 px-4 py-1 rounded">Real-Time Website Security Scans</span>
             </h2>
             
             {/* Decorative underline */}
-            <div className="w-24 h-1.5 bg-gradient-to-r from-purple-400 to-violet-500 rounded-full mx-auto mb-6"></div>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-purple-400 to-violet-500 rounded-full mx-auto mb-6 relative z-10"></div>
             
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto relative z-10 bg-white/90 p-2 rounded inline-block">
               Explore our latest website security checks and discover potential threats before visiting unfamiliar sites
             </p>
           </div>
