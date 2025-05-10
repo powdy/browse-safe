@@ -168,13 +168,13 @@ export default function Home() {
       
       {/* Security Features Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50 relative">
-        <div className="absolute top-0 left-0 right-0">
+        <div className="absolute top-0 left-0 right-0" style={{ zIndex: 1 }}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full rotate-180">
             <path fill="#fff" fillOpacity="1" d="M0,224L48,218.7C96,213,192,203,288,213.3C384,224,480,256,576,245.3C672,235,768,181,864,181.3C960,181,1056,235,1152,245.3C1248,256,1344,224,1392,208L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
           </svg>
         </div>
         
-        <div className="container mx-auto px-4 pt-10">
+        <div className="container mx-auto px-4 pt-10 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block p-2 bg-indigo-50 rounded-full mb-4">
               <div className="p-1 bg-indigo-100 rounded-full">
@@ -195,13 +195,13 @@ export default function Home() {
       {/* Recent Scans Section with Enhanced Design */}
       <section className="py-20 bg-white relative">
         {/* Top wave decoration */}
-        <div className="absolute top-0 left-0 right-0">
+        <div className="absolute top-0 left-0 right-0" style={{ zIndex: 1 }}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
             <path fill="#f9fafb" fillOpacity="1" d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,186.7C672,213,768,235,864,224C960,213,1056,171,1152,149.3C1248,128,1344,128,1392,128L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
           </svg>
         </div>
         
-        <div className="container mx-auto px-4 pt-10">
+        <div className="container mx-auto px-4 pt-10 relative z-10">
           <div className="text-center mb-10">
             <div className="mx-auto text-center mb-8">
               {/* Icon with particle effects */}
