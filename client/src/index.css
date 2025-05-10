@@ -69,3 +69,14 @@
   );
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+
+/* Improve text visibility on sections with background images */
+h2[class*="bg-gradient-to-r"] {
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.8));
+}
+
+/* Enhance paragraph text visibility without altering markup */
+section p {
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+}
