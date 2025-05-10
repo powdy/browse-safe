@@ -89,17 +89,17 @@ export default function Home() {
             
             {/* Stats */}
             <div className="flex flex-wrap justify-center mt-16 gap-8 md:gap-12">
-              <div className="text-center bg-indigo-900/90 backdrop-blur-md px-6 py-4 rounded-xl border border-indigo-700/70 shadow-lg min-w-[140px]">
-                <p className="text-3xl md:text-4xl font-bold text-white mb-2">3.5M+</p>
-                <p className="text-blue-100 text-sm font-medium bg-indigo-700/50 px-3 py-1 rounded-md">Websites Analyzed</p>
+              <div className="text-center bg-white/30 backdrop-blur-md px-6 py-4 rounded-xl border border-white/50 shadow-lg min-w-[140px]">
+                <p className="text-3xl md:text-4xl font-bold text-black bg-yellow-300 px-3 py-1 rounded-lg mb-2 shadow-md">3.5M+</p>
+                <p className="text-black text-sm font-semibold bg-white/80 px-3 py-1 rounded-md shadow-sm">Websites Analyzed</p>
               </div>
-              <div className="text-center bg-indigo-900/90 backdrop-blur-md px-6 py-4 rounded-xl border border-indigo-700/70 shadow-lg min-w-[140px]">
-                <p className="text-3xl md:text-4xl font-bold text-white mb-2">98.7%</p>
-                <p className="text-blue-100 text-sm font-medium bg-indigo-700/50 px-3 py-1 rounded-md">Accuracy Rate</p>
+              <div className="text-center bg-white/30 backdrop-blur-md px-6 py-4 rounded-xl border border-white/50 shadow-lg min-w-[140px]">
+                <p className="text-3xl md:text-4xl font-bold text-black bg-yellow-300 px-3 py-1 rounded-lg mb-2 shadow-md">98.7%</p>
+                <p className="text-black text-sm font-semibold bg-white/80 px-3 py-1 rounded-md shadow-sm">Accuracy Rate</p>
               </div>
-              <div className="text-center bg-indigo-900/90 backdrop-blur-md px-6 py-4 rounded-xl border border-indigo-700/70 shadow-lg min-w-[140px]">
-                <p className="text-3xl md:text-4xl font-bold text-white mb-2">247K+</p>
-                <p className="text-blue-100 text-sm font-medium bg-indigo-700/50 px-3 py-1 rounded-md">Frauds Detected</p>
+              <div className="text-center bg-white/30 backdrop-blur-md px-6 py-4 rounded-xl border border-white/50 shadow-lg min-w-[140px]">
+                <p className="text-3xl md:text-4xl font-bold text-black bg-yellow-300 px-3 py-1 rounded-lg mb-2 shadow-md">247K+</p>
+                <p className="text-black text-sm font-semibold bg-white/80 px-3 py-1 rounded-md shadow-sm">Frauds Detected</p>
               </div>
             </div>
           </div>

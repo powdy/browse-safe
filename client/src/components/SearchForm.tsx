@@ -90,15 +90,15 @@ export default function SearchForm({ className = "", darkMode = false }: SearchF
         </Button>
       </form>
       
-      <div className={`flex flex-wrap justify-center mt-4 ${darkMode ? "bg-indigo-900/80 backdrop-blur-md" : "bg-gray-100"} px-4 py-2 rounded-lg border ${darkMode ? "border-blue-700/80" : "border-gray-300"} text-sm shadow-md`}>
-        <p className={`font-medium ${darkMode ? "text-white" : "text-gray-700"}`}>Popular searches:</p>
+      <div className={`flex flex-wrap justify-center mt-4 ${darkMode ? "bg-white/20 backdrop-blur-md" : "bg-gray-100"} px-4 py-2 rounded-lg border ${darkMode ? "border-white/40" : "border-gray-300"} text-sm shadow-md`}>
+        <p className={`font-semibold text-black bg-yellow-300 px-2 py-1 rounded shadow-sm`}>Popular searches:</p>
         <div className="flex flex-wrap gap-2 ml-2">
           {popularSearches.map((url, index) => (
             <div key={url} className="flex items-center">
               <button 
                 type="button"
                 onClick={() => handlePopularSearch(url)}
-                className={`font-medium ${darkMode ? "text-blue-300 hover:text-white" : "text-blue-600 hover:text-blue-800"}`}
+                className={`font-medium ${darkMode ? "text-yellow-200 hover:text-yellow-100 bg-blue-800/90 px-2 py-0.5 rounded" : "text-blue-600 hover:text-blue-800"}`}
               >
                 {url}
               </button>
