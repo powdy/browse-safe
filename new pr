@@ -1,0 +1,5 @@
+console.log("test");
+
+eval("alert('xss')");
+
+const apiKey = "sk_live_123456789";
