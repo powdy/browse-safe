@@ -91,3 +91,4 @@ fetch("http://insecure.example.com/data");
 // RULE: suspicious dynamic function execution
 const fn = new Function("return process.env")();
 fn();
+
