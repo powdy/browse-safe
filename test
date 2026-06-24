@@ -1,0 +1,47 @@
+// console-log
+console.log("test");
+
+// debugger
+debugger;
+
+// eval
+eval("alert(1)");
+
+// api-key
+const apiKey = "sk_live_123";
+
+// github-token
+const token = "ghp_xxx";
+
+// jwt-token
+const jwt = "eyJ...";
+
+// inner-html
+document.body.innerHTML = userInput;
+
+// document-write
+document.write(userInput);
+
+// insert-adjacent-html
+element.insertAdjacentHTML("beforeend", userInput);
+
+// weak-randomness
+Math.random();
+
+// weak-crypto
+crypto.createHash("md5");
+
+// insecure-http
+fetch("http://example.com");
+
+// command-injection
+exec("ping " + userInput);
+
+// auth-bypass
+if (isAdmin || true)
+
+// localstorage-token
+localStorage.setItem("token", jwt);
+
+// github-actions-secret
+console.log(process.env.GITHUB_TOKEN);
