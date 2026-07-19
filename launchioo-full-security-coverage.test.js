@@ -3,7 +3,7 @@
 // Purpose: trigger ALL detection rules
 // DO NOT USE IN PRODUCTION
 // ===============================
-
+vbnvbnbvnbvnbvnbvnbvnbv
 // RULE: console-log (Low)
 console.log("debug log");
 
